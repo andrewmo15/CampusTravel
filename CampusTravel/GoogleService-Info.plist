@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>395987485602-rr6eqcoe3ifs7majri8h5capetfrrqqa.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.395987485602-rr6eqcoe3ifs7majri8h5capetfrrqqa</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAZsjJ3gFfBFkYxDcYzSPD-8y_7Up_2sck</string>
+	<key>GCM_SENDER_ID</key>
+	<string>395987485602</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.andrewmo.CampusTravel</string>
+	<key>PROJECT_ID</key>
+	<string>campustravel-80294</string>
+	<key>STORAGE_BUCKET</key>
+	<string>campustravel-80294.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:395987485602:ios:2937abffdf597530f2e8fb</string>
+	<key>DATABASE_URL</key>
+	<string>https://campustravel-80294.firebaseio.com</string>
+</dict>
+</plist>
