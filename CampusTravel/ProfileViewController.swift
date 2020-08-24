@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import FirebaseAuth
 import FirebaseDatabase
+import FirebaseAuth
 
 class ProfileViewController: UIViewController {
     
@@ -23,7 +23,7 @@ class ProfileViewController: UIViewController {
         let email = UserDefaults.standard.object(forKey: "Email") as? String ?? " "
         var safeEmail = email.replacingOccurrences(of: ".", with: "-")
         safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
-        Database.database().reference().child(safeEmail).observe(.value, with: { (snapshot) in
+        Database.database().reference().child("Users").child(safeEmail).observe(.value, with: { (snapshot) in
             let dict = snapshot.value as? NSDictionary
             name.text = dict?["first_name"] as? String ?? "Failed To Retrieve Name"
             name.text? += " "
@@ -39,7 +39,7 @@ class ProfileViewController: UIViewController {
         let email = UserDefaults.standard.object(forKey: "Email") as? String ?? " "
         var safeEmail = email.replacingOccurrences(of: ".", with: "-")
         safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
-        Database.database().reference().child(safeEmail).observe(.value, with: { (snapshot) in
+        Database.database().reference().child("Users").child(safeEmail).observe(.value, with: { (snapshot) in
             let dict = snapshot.value as? NSDictionary
             phone.text = dict?["phone_number"] as? String ?? "Failed To Retrieve Phone"
         })

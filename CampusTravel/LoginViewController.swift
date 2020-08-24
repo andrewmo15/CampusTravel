@@ -65,6 +65,7 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        validateAuth()
         view.backgroundColor = .white
         view.addSubview(email)
         view.addSubview(password)

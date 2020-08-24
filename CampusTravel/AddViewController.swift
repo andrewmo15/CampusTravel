@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class AddViewController: UIViewController {
     
@@ -76,7 +77,6 @@ class AddViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor.white
-        self.title = "Add Listing"
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AddViewController.viewTapped(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
         time.inputView = datePicker
@@ -102,6 +102,13 @@ class AddViewController: UIViewController {
     
     @objc func add() {
         self.dismiss(animated: true, completion: nil)
+        let email = UserDefaults.standard.object(forKey: "Email") as? String ?? " "
+        var safeEmail = email.replacingOccurrences(of: ".", with: "-")
+        safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
+        Database.database().reference().child("Listings").child(safeEmail).child(destination.text!).setValue([
+            "time_date": time.text,
+            "meeting_location": meeting.text
+        ])
     }
     
     @objc func dateChanged(datePicker: UIDatePicker) {
@@ -114,4 +121,6 @@ class AddViewController: UIViewController {
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
         view.endEditing(true)
     }
+    
+    
 }

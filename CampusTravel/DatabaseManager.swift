@@ -26,10 +26,12 @@ final class DatabaseManager {
     }
     
     public func insertUser(with user: User) {
-        database.child(user.safeEmail).setValue([
+        database.child("Users").child(user.safeEmail).setValue([
             "first_name": user.firstName,
             "last_name": user.lastName,
-            "phone_number": user.phoneNumber
+            "phone_number": user.phoneNumber,
+            "listing": [],
+            "accepted_listing": []
         ])
     }
 }
