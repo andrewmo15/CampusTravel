@@ -155,8 +155,11 @@ class RegisterViewController: UIViewController {
                     strongSelf.present(alert, animated: true)
                     return
                 }
+                var safeEmail = emailer.replacingOccurrences(of: ".", with: "-")
+                safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
+                UserDefaults.standard.set(safeEmail, forKey: "SafeEmail")
                 UserDefaults.standard.set(emailer, forKey: "Email")
-                DatabaseManager.shared.insertUser(with: User(firstName: first, lastName: last, emailAddress: emailer, phoneNumber: phonee))
+                DatabaseManager.shared.insertUser(with: User(firstName: first, lastName: last, emailAddress: safeEmail, phoneNumber: phonee))
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
                 let vc = storyboard.instantiateViewController(identifier: "tabbar")
                 vc.modalPresentationStyle = .fullScreen

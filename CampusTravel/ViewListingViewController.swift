@@ -75,12 +75,26 @@ class ViewListingViewController: UIViewController {
             text += dict?["last_name"] as? String ?? ""
             self.title = text
         })
+        Database.database().reference().child("Listings").child(currentListing!.listingID).observe(.value, with: { [weak self] (snapshot) in
+            guard let strongSelf = self else {
+                return
+            }
+            let dict = snapshot.value as? NSDictionary
+            let email = dict?["email"] as? String ?? "Error"
+            let safeEmail = UserDefaults.standard.string(forKey: "SafeEmail")
+            if email == safeEmail {
+                strongSelf.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Delete", style: .done, target: strongSelf, action: #selector(strongSelf.deleteListing))
+                strongSelf.navigationItem.rightBarButtonItem?.tintColor = UIColor.red
+            } else {
+                strongSelf.view.addSubview(strongSelf.accept)
+            }
+        })
+        
         view.addSubview(scrollView)
         view.addSubview(destination)
         view.addSubview(time)
         view.addSubview(meeting)
         view.addSubview(phone)
-        view.addSubview(accept)
     }
     
     override func viewDidLayoutSubviews() {
@@ -94,6 +108,23 @@ class ViewListingViewController: UIViewController {
     }
     
     @objc func acceptTapped() {
+        let safeEmail = UserDefaults.standard.string(forKey: "SafeEmail")
+        Database.database().reference().child("Listings").child(currentListing!.listingID).child("acceptedBy").setValue(safeEmail)
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func deleteListing() {
+        let confirm = UIAlertController(title: "Are You Sure?", message: "Do you want to delete?", preferredStyle: .alert)
+        let yes = UIAlertAction(title: "Yes", style: .destructive) { [weak self] action in
+            guard let strongSelf = self else {
+                return
+            }
+            Database.database().reference().child("Listings").child(strongSelf.currentListing!.listingID).removeValue()
+            strongSelf.navigationController?.popViewController(animated: true)
+        }
+        let no = UIAlertAction(title: "No", style: .default, handler: nil)
+        confirm.addAction(yes)
+        confirm.addAction(no)
+        present(confirm, animated: true, completion: nil)
     }
 }

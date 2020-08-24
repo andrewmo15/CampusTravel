@@ -13,7 +13,8 @@ class ListingsViewController: UIViewController {
 
     @IBOutlet weak var table: UITableView!
     
-    var list = [Listing]()
+    var myList = [Listing]()
+    var otherList = [Listing]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,20 +25,27 @@ class ListingsViewController: UIViewController {
     }
     
     private func loadTable() {
+        let safeEmail = UserDefaults.standard.object(forKey: "SafeEmail") as? String ?? " "
         Database.database().reference().child("Listings").observe(.value, with: { (snapshot) in
             if snapshot.childrenCount > 0 {
-                self.list.removeAll()
+                self.otherList.removeAll()
+                self.myList.removeAll()
                 
                 for email in snapshot.children.allObjects as! [DataSnapshot] {
+                    let listingKey = email.key
                     let listingObject = email.value as? [String: AnyObject]
                     let listingEmail = listingObject?["email"]
                     let listingDestination = listingObject?["destination"]
                     let listingMeeting = listingObject?["meeting_location"]
                     let listingTime = listingObject?["time_date"]
                     
-                    let listing = Listing(email: listingEmail as! String, time: listingTime as! String, destination: listingDestination as! String, meeting: listingMeeting as! String)
+                    let listing = Listing(email: listingEmail as! String, time: listingTime as! String, destination: listingDestination as! String, meeting: listingMeeting as! String, listingID: listingKey)
                     
-                    self.list.append(listing)
+                    if listingEmail as! String == safeEmail {
+                        self.myList.append(listing)
+                    } else {
+                        self.otherList.append(listing)
+                    }
                 }
                 
                 self.table.reloadData()
@@ -56,20 +64,60 @@ class ListingsViewController: UIViewController {
 extension ListingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
+        switch section {
+        case 0:
+            return myList.count
+        case 1:
+            return otherList.count
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = list[indexPath.row].destination
-        cell.detailTextLabel?.text = list[indexPath.row].time
-        cell.accessoryType = .disclosureIndicator
+        switch indexPath.section {
+        case 0:
+            cell.textLabel?.text = myList[indexPath.row].destination
+            cell.detailTextLabel?.text = myList[indexPath.row].time
+            cell.accessoryType = .disclosureIndicator
+        case 1:
+            cell.textLabel?.text = otherList[indexPath.row].destination
+            cell.detailTextLabel?.text = otherList[indexPath.row].time
+            cell.accessoryType = .disclosureIndicator
+        default:
+            cell.textLabel?.text = "Error"
+            cell.detailTextLabel?.text = "Something went wrong"
+        }
         return cell
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "My Listings"
+        case 1:
+            return "Other Listings"
+        default:
+            return nil
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let listing = list[indexPath.row]
-        performSegue(withIdentifier: "showIt", sender: listing)
+        switch indexPath.section {
+        case 0:
+            let listing = myList[indexPath.row]
+            performSegue(withIdentifier: "showIt", sender: listing)
+        case 1:
+            let listing = otherList[indexPath.row]
+            performSegue(withIdentifier: "showIt", sender: listing)
+        default:
+            break
+        }
     }
 }
 
@@ -78,4 +126,5 @@ struct Listing {
     let time: String
     let destination: String
     let meeting: String
+    let listingID: String
 }

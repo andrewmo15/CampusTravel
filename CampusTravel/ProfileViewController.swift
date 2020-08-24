@@ -20,9 +20,7 @@ class ProfileViewController: UIViewController {
     
     private let name: UILabel = {
         let name = UILabel()
-        let email = UserDefaults.standard.object(forKey: "Email") as? String ?? " "
-        var safeEmail = email.replacingOccurrences(of: ".", with: "-")
-        safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
+        let safeEmail = UserDefaults.standard.object(forKey: "SafeEmail") as? String ?? " "
         Database.database().reference().child("Users").child(safeEmail).observe(.value, with: { (snapshot) in
             let dict = snapshot.value as? NSDictionary
             name.text = dict?["first_name"] as? String ?? "Failed To Retrieve Name"
@@ -36,9 +34,7 @@ class ProfileViewController: UIViewController {
     
     private let phone: UILabel = {
         let phone = UILabel()
-        let email = UserDefaults.standard.object(forKey: "Email") as? String ?? " "
-        var safeEmail = email.replacingOccurrences(of: ".", with: "-")
-        safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
+        let safeEmail = UserDefaults.standard.object(forKey: "SafeEmail") as? String ?? " "
         Database.database().reference().child("Users").child(safeEmail).observe(.value, with: { (snapshot) in
             let dict = snapshot.value as? NSDictionary
             phone.text = dict?["phone_number"] as? String ?? "Failed To Retrieve Phone"

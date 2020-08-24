@@ -20,7 +20,7 @@
 		49F2B7B024F31FFC00BB138E /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2B7AF24F31FFC00BB138E /* DatabaseManager.swift */; };
 		49F2B7B224F323B800BB138E /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2B7B124F323B800BB138E /* AddViewController.swift */; };
 		49F2B7B424F3245600BB138E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2B7B324F3245600BB138E /* ProfileViewController.swift */; };
-		49F2B7B624F3426200BB138E /* EditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2B7B524F3426200BB138E /* EditViewController.swift */; };
+		49F2B7B624F3426200BB138E /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2B7B524F3426200BB138E /* EditProfileViewController.swift */; };
 		49F2B7B824F34A0800BB138E /* ViewListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2B7B724F34A0800BB138E /* ViewListingViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -41,7 +41,7 @@
 		49F2B7AF24F31FFC00BB138E /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatabaseManager.swift; path = /Users/andrew/Document/Projects/CampusTravel/CampusTravel/DatabaseManager.swift; sourceTree = "<absolute>"; };
 		49F2B7B124F323B800BB138E /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		49F2B7B324F3245600BB138E /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		49F2B7B524F3426200BB138E /* EditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditViewController.swift; sourceTree = "<group>"; };
+		49F2B7B524F3426200BB138E /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		49F2B7B724F34A0800BB138E /* ViewListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewListingViewController.swift; sourceTree = "<group>"; };
 		A1EAC85BF03E6F49509B5DCA /* Pods-CampusTravel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampusTravel.release.xcconfig"; path = "Target Support Files/Pods-CampusTravel/Pods-CampusTravel.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -98,14 +98,14 @@
 			children = (
 				493E058524F314CC00F8BFB1 /* AppDelegate.swift */,
 				493E058724F314CC00F8BFB1 /* SceneDelegate.swift */,
-				493E058924F314CC00F8BFB1 /* LoginViewController.swift */,
-				493E059924F3164B00F8BFB1 /* RegisterViewController.swift */,
 				493E059B24F317C100F8BFB1 /* ListingsViewController.swift */,
-				49F2B7AF24F31FFC00BB138E /* DatabaseManager.swift */,
-				49F2B7B524F3426200BB138E /* EditViewController.swift */,
-				49F2B7B324F3245600BB138E /* ProfileViewController.swift */,
 				49F2B7B124F323B800BB138E /* AddViewController.swift */,
 				49F2B7B724F34A0800BB138E /* ViewListingViewController.swift */,
+				49F2B7B324F3245600BB138E /* ProfileViewController.swift */,
+				49F2B7B524F3426200BB138E /* EditProfileViewController.swift */,
+				493E058924F314CC00F8BFB1 /* LoginViewController.swift */,
+				493E059924F3164B00F8BFB1 /* RegisterViewController.swift */,
+				49F2B7AF24F31FFC00BB138E /* DatabaseManager.swift */,
 				493E058B24F314CC00F8BFB1 /* Main.storyboard */,
 				493E058E24F314CD00F8BFB1 /* Assets.xcassets */,
 				493E059024F314CD00F8BFB1 /* LaunchScreen.storyboard */,
@@ -240,7 +240,7 @@
 				49F2B7B424F3245600BB138E /* ProfileViewController.swift in Sources */,
 				493E059C24F317C100F8BFB1 /* ListingsViewController.swift in Sources */,
 				49F2B7B824F34A0800BB138E /* ViewListingViewController.swift in Sources */,
-				49F2B7B624F3426200BB138E /* EditViewController.swift in Sources */,
+				49F2B7B624F3426200BB138E /* EditProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

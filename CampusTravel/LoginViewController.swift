@@ -110,7 +110,10 @@ class LoginViewController: UIViewController {
                 strongSelf.present(alert, animated: true)
                 return
             }
+            var safeEmail = emailer.replacingOccurrences(of: ".", with: "-")
+            safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
             UserDefaults.standard.set(emailer, forKey: "Email")
+            UserDefaults.standard.set(safeEmail, forKey: "SafeEmail")
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(identifier: "tabbar")
             vc.modalPresentationStyle = .fullScreen

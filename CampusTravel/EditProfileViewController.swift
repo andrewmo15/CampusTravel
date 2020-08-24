@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-class EditViewController: UIViewController {
+class EditProfileViewController: UIViewController {
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -20,9 +20,7 @@ class EditViewController: UIViewController {
     private let firstName: UITextField = {
         let firstName = UITextField()
         
-        let email = UserDefaults.standard.object(forKey: "Email") as? String ?? " "
-        var safeEmail = email.replacingOccurrences(of: ".", with: "-")
-        safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
+        let safeEmail = UserDefaults.standard.object(forKey: "SafeEmail") as? String ?? " "
         Database.database().reference().child("Users").child(safeEmail).observe(.value, with: { (snapshot) in
             let dict = snapshot.value as? NSDictionary
             firstName.placeholder = dict?["first_name"] as? String ?? "Enter First Name"
@@ -43,9 +41,7 @@ class EditViewController: UIViewController {
     private let lastName: UITextField = {
         let lastName = UITextField()
         
-        let email = UserDefaults.standard.object(forKey: "Email") as? String ?? " "
-        var safeEmail = email.replacingOccurrences(of: ".", with: "-")
-        safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
+        let safeEmail = UserDefaults.standard.object(forKey: "SafeEmail") as? String ?? " "
         Database.database().reference().child("Users").child(safeEmail).observe(.value, with: { (snapshot) in
             let dict = snapshot.value as? NSDictionary
             lastName.placeholder = dict?["last_name"] as? String ?? "Enter Last Name"
@@ -67,9 +63,7 @@ class EditViewController: UIViewController {
     private let phone: UITextField = {
         let phone = UITextField()
         
-        let email = UserDefaults.standard.object(forKey: "Email") as? String ?? " "
-        var safeEmail = email.replacingOccurrences(of: ".", with: "-")
-        safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
+        let safeEmail = UserDefaults.standard.object(forKey: "SafeEmail") as? String ?? " "
         Database.database().reference().child("Users").child(safeEmail).observe(.value, with: { (snapshot) in
             let dict = snapshot.value as? NSDictionary
             phone.placeholder = dict?["phone_number"] as? String ?? "Enter Phone Number"
@@ -108,9 +102,7 @@ class EditViewController: UIViewController {
     }
     
     @IBAction func save(_ sender: Any) {
-        let email = UserDefaults.standard.object(forKey: "Email") as? String ?? " "
-        var safeEmail = email.replacingOccurrences(of: ".", with: "-")
-        safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
+        let safeEmail = UserDefaults.standard.object(forKey: "SafeEmail") as? String ?? " "
         if firstName.text != "" {
             Database.database().reference().child("Users").child(safeEmail).child("first_name").setValue(firstName.text)
         }

@@ -102,9 +102,7 @@ class AddViewController: UIViewController {
     
     @objc func add() {
         self.dismiss(animated: true, completion: nil)
-        let email = UserDefaults.standard.object(forKey: "Email") as? String ?? " "
-        var safeEmail = email.replacingOccurrences(of: ".", with: "-")
-        safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
+        let safeEmail = UserDefaults.standard.object(forKey: "SafeEmail") as? String ?? " "
         Database.database().reference().child("Listings").childByAutoId().setValue([
             "email": safeEmail,
             "destination": destination.text!,

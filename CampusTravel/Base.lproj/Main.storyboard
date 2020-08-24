@@ -186,6 +186,7 @@
                 <tabBarController storyboardIdentifier="tabbar" automaticallyAdjustsScrollViewInsets="NO" id="WvK-G5-WqT" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="6HF-wS-Dz9">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -228,7 +229,7 @@
         <!--Edit Profile-->
         <scene sceneID="YUL-bt-WjY">
             <objects>
-                <viewController id="65a-FS-vKx" customClass="EditViewController" customModule="CampusTravel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="65a-FS-vKx" customClass="EditProfileViewController" customModule="CampusTravel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g9N-gj-Qgj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
