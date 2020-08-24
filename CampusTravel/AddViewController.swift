@@ -105,10 +105,13 @@ class AddViewController: UIViewController {
         let email = UserDefaults.standard.object(forKey: "Email") as? String ?? " "
         var safeEmail = email.replacingOccurrences(of: ".", with: "-")
         safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
-        Database.database().reference().child("Listings").child(safeEmail).child(destination.text!).setValue([
-            "time_date": time.text,
-            "meeting_location": meeting.text
+        Database.database().reference().child("Listings").childByAutoId().setValue([
+            "email": safeEmail,
+            "destination": destination.text!,
+            "time_date": time.text!,
+            "meeting_location": meeting.text!
         ])
+        
     }
     
     @objc func dateChanged(datePicker: UIDatePicker) {
@@ -121,6 +124,4 @@ class AddViewController: UIViewController {
     @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
         view.endEditing(true)
     }
-    
-    
 }
