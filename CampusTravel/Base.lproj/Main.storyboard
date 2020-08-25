@@ -98,7 +98,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="table" destination="FEk-kT-1cq" id="2Nr-dv-Pdv"/>
-                        <segue destination="haP-Bn-0FI" kind="show" identifier="showIt" id="TJv-U2-WH8"/>
+                        <segue destination="TBF-gO-iHP" kind="show" identifier="showIt" id="2Tc-9C-Yru"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rjy-zp-v3f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -106,20 +106,20 @@
             <point key="canvasLocation" x="4438" y="-524"/>
         </scene>
         <!--View Listing View Controller-->
-        <scene sceneID="JE5-sB-ElL">
+        <scene sceneID="h1W-ub-qFQ">
             <objects>
-                <viewController id="haP-Bn-0FI" customClass="ViewListingViewController" customModule="CampusTravel" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="GPH-FC-NhI">
+                <viewController id="TBF-gO-iHP" customClass="ViewListingViewController" customModule="CampusTravel" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ljk-E7-85X">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="GYn-mx-ryC"/>
+                        <viewLayoutGuide key="safeArea" id="hzp-tB-mod"/>
                     </view>
-                    <navigationItem key="navigationItem" id="ZNW-Ew-yx6"/>
+                    <navigationItem key="navigationItem" id="wvM-kn-K7Q"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="PlR-eu-7H7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="46t-Cm-Osm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5570" y="-202"/>
+            <point key="canvasLocation" x="5570" y="-212"/>
         </scene>
         <!--Add Listing-->
         <scene sceneID="zcZ-Zj-aJv">
