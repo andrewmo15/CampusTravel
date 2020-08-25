@@ -101,20 +101,26 @@ class AddViewController: UIViewController {
     }
     
     @objc func add() {
-        self.dismiss(animated: true, completion: nil)
         let safeEmail = UserDefaults.standard.object(forKey: "SafeEmail") as? String ?? " "
-        Database.database().reference().child("Listings").childByAutoId().setValue([
-            "email": safeEmail,
-            "destination": destination.text!,
-            "time_date": time.text!,
-            "meeting_location": meeting.text!
-        ])
-        
+        if destination.text!.isEmpty || time.text!.isEmpty || meeting.text!.isEmpty {
+            let alert = UIAlertController(title: "Whoops!", message: "Please fill in all information!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+            present(alert, animated: true)
+        } else {
+            Database.database().reference().child("Listings").childByAutoId().setValue([
+                "email": safeEmail,
+                "destination": destination.text!,
+                "time_date": time.text!,
+                "meeting_location": meeting.text!
+            ])
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @objc func dateChanged(datePicker: UIDatePicker) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm E, d MMM y"
+        dateFormatter.timeStyle = .medium
+        dateFormatter.dateStyle = .long
         time.text = dateFormatter.string(from: datePicker.date)
         view.endEditing(true)
     }

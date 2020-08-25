@@ -40,13 +40,6 @@ class ViewListingViewController: UIViewController {
         return meeting
     }()
     
-    private let phone: UILabel = {
-        let phone = UILabel()
-        phone.textAlignment = .center
-        phone.font = .systemFont(ofSize: 20, weight: .bold)
-        return phone
-    }()
-    
     private let acceptedBy: UILabel = {
         let acceptedBy = UILabel()
         acceptedBy.textAlignment = .center
@@ -109,7 +102,6 @@ class ViewListingViewController: UIViewController {
         }
         Database.database().reference().child("Users").child(currentListing!.email).observe(.value, with: { (snapshot) in
             let dict = snapshot.value as? NSDictionary
-            self.phone.text = dict?["phone_number"] as? String ?? "Failed To Retrieve Phone Number"
             var text = dict?["first_name"] as? String ?? "Failed To Retrieve Name"
             text += " "
             text += dict?["last_name"] as? String ?? ""
@@ -118,7 +110,6 @@ class ViewListingViewController: UIViewController {
         view.addSubview(destination)
         view.addSubview(time)
         view.addSubview(meeting)
-        view.addSubview(phone)
     }
     
     override func viewDidLayoutSubviews() {
@@ -127,23 +118,32 @@ class ViewListingViewController: UIViewController {
         destination.frame = CGRect(x: 30, y: 200, width: scrollView.frame.width - 60, height: 52)
         time.frame = CGRect(x: 30, y: 260, width: scrollView.frame.width - 60, height: 52)
         meeting.frame = CGRect(x: 30, y: 320, width: scrollView.frame.width - 60, height: 52)
-        phone.frame = CGRect(x: 30, y: 380, width: scrollView.frame.width - 60, height: 52)
-        acceptedBy.frame = CGRect(x: 30, y: 440, width: scrollView.frame.width - 60, height: 52)
-        contact.frame = CGRect(x: 30, y: 500, width: scrollView.frame.width - 60, height: 52)
-        accept.frame = CGRect(x: 30, y: 500, width: scrollView.frame.width - 60, height: 52)
+        acceptedBy.frame = CGRect(x: 30, y: 380, width: scrollView.frame.width - 60, height: 52)
+        contact.frame = CGRect(x: 30, y: 440, width: scrollView.frame.width - 60, height: 52)
+        accept.frame = CGRect(x: 30, y: 440, width: scrollView.frame.width - 60, height: 52)
     }
     
     @objc func acceptTapped() {
-        let safeEmail = UserDefaults.standard.string(forKey: "SafeEmail")
-        Database.database().reference().child("Accepted").child(currentListing!.listingID).setValue([
-            "acceptedBy": safeEmail,
-            "destination": currentListing?.destination,
-            "email": currentListing?.email,
-            "meeting_location": currentListing?.meeting,
-            "time_date": currentListing?.time
-        ])
-        Database.database().reference().child("Listings").child(currentListing!.listingID).removeValue()
-        navigationController?.popViewController(animated: true)
+        let confirm = UIAlertController(title: "Are You Sure?", message: "This action cannot be undone", preferredStyle: .alert)
+        let yes = UIAlertAction(title: "Yes", style: .destructive) { [weak self] action in
+            guard let strongSelf = self else {
+                return
+            }
+            let safeEmail = UserDefaults.standard.string(forKey: "SafeEmail")
+            Database.database().reference().child("Accepted").child(strongSelf.currentListing!.listingID).setValue([
+                "acceptedBy": safeEmail,
+                "destination": strongSelf.currentListing?.destination,
+                "email": strongSelf.currentListing?.email,
+                "meeting_location": strongSelf.currentListing?.meeting,
+                "time_date": strongSelf.currentListing?.time
+            ])
+            Database.database().reference().child("Listings").child(strongSelf.currentListing!.listingID).removeValue()
+            strongSelf.navigationController?.popViewController(animated: true)
+        }
+        let no = UIAlertAction(title: "No", style: .default, handler: nil)
+        confirm.addAction(yes)
+        confirm.addAction(no)
+        present(confirm, animated: true, completion: nil)
     }
     
     @objc func contactTapped() {

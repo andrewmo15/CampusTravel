@@ -21,8 +21,11 @@ class ListingsViewController: UIViewController {
         super.viewDidLoad()
         table.delegate = self
         table.dataSource = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         loadTable()
-        
     }
     
     private func loadTable() {
