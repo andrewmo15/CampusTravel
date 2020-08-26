@@ -30,7 +30,8 @@ class AddViewController: UIViewController {
         time.layer.cornerRadius = 12
         time.layer.borderWidth = 1
         time.layer.borderColor = UIColor.lightGray.cgColor
-        time.placeholder = "Enter a time"
+        let placeholderText = NSAttributedString(string: "Enter a time", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        time.attributedPlaceholder = placeholderText
         time.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         time.leftViewMode = .always
         time.backgroundColor = .white
@@ -40,11 +41,11 @@ class AddViewController: UIViewController {
     private let destination: UITextField = {
         let destination = UITextField()
         destination.textColor = .black
-        destination.returnKeyType = .continue
         destination.layer.cornerRadius = 12
         destination.layer.borderWidth = 1
         destination.layer.borderColor = UIColor.lightGray.cgColor
-        destination.placeholder = "Enter a destination"
+        let placeholderText = NSAttributedString(string: "Enter a destination", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        destination.attributedPlaceholder = placeholderText
         destination.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         destination.leftViewMode = .always
         destination.backgroundColor = .white
@@ -54,11 +55,11 @@ class AddViewController: UIViewController {
     private let meeting: UITextField = {
         let meeting = UITextField()
         meeting.textColor = .black
-        meeting.returnKeyType = .continue
         meeting.layer.cornerRadius = 12
         meeting.layer.borderWidth = 1
         meeting.layer.borderColor = UIColor.lightGray.cgColor
-        meeting.placeholder = "Enter a meeting location"
+        let placeholderText = NSAttributedString(string: "Enter a meeting location", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        meeting.attributedPlaceholder = placeholderText
         meeting.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         meeting.leftViewMode = .always
         meeting.backgroundColor = .white
@@ -79,7 +80,6 @@ class AddViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AddViewController.viewTapped(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
         time.inputView = datePicker
@@ -93,10 +93,10 @@ class AddViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         scrollView.frame = view.bounds
-        time.frame = CGRect(x: 30, y: 200, width: scrollView.frame.width - 60, height: 52)
-        destination.frame = CGRect(x: 30, y: 260, width: scrollView.frame.width - 60, height: 52)
-        meeting.frame = CGRect(x: 30, y: 320, width: scrollView.frame.width - 60, height: 52)
-        submit.frame = CGRect(x: 30, y: 380, width: scrollView.frame.width - 60, height: 52)
+        time.frame = CGRect(x: 30, y: 150, width: scrollView.frame.width - 60, height: 52)
+        destination.frame = CGRect(x: 30, y: 210, width: scrollView.frame.width - 60, height: 52)
+        meeting.frame = CGRect(x: 30, y: 270, width: scrollView.frame.width - 60, height: 52)
+        submit.frame = CGRect(x: 30, y: 330, width: scrollView.frame.width - 60, height: 52)
     }
     
     @IBAction func cancel(_ sender: Any) {

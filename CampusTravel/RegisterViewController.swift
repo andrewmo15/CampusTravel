@@ -23,13 +23,12 @@ class RegisterViewController: UIViewController {
     private let firstName: UITextField = {
         let firstName = UITextField()
         firstName.textColor = .black
-        firstName.autocapitalizationType = .none
         firstName.autocorrectionType = .no
-        firstName.returnKeyType = .continue
         firstName.layer.cornerRadius = 12
         firstName.layer.borderWidth = 1
         firstName.layer.borderColor = UIColor.lightGray.cgColor
-        firstName.placeholder = "Enter First Name"
+        let placeholderText = NSAttributedString(string: "Enter First Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        firstName.attributedPlaceholder = placeholderText
         firstName.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         firstName.leftViewMode = .always
         firstName.backgroundColor = .white
@@ -39,13 +38,12 @@ class RegisterViewController: UIViewController {
     private let lastName: UITextField = {
         let lastName = UITextField()
         lastName.textColor = .black
-        lastName.autocapitalizationType = .none
         lastName.autocorrectionType = .no
-        lastName.returnKeyType = .continue
         lastName.layer.cornerRadius = 12
         lastName.layer.borderWidth = 1
         lastName.layer.borderColor = UIColor.lightGray.cgColor
-        lastName.placeholder = "Enter Last Name"
+        let placeholderText = NSAttributedString(string: "Enter Last Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        lastName.attributedPlaceholder = placeholderText
         lastName.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         lastName.leftViewMode = .always
         lastName.backgroundColor = .white
@@ -57,11 +55,11 @@ class RegisterViewController: UIViewController {
         email.textColor = .black
         email.autocapitalizationType = .none
         email.autocorrectionType = .no
-        email.returnKeyType = .continue
         email.layer.cornerRadius = 12
         email.layer.borderWidth = 1
         email.layer.borderColor = UIColor.lightGray.cgColor
-        email.placeholder = "Enter Valid Email"
+        let placeholderText = NSAttributedString(string: "Enter Gatech Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        email.attributedPlaceholder = placeholderText
         email.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         email.leftViewMode = .always
         email.backgroundColor = .white
@@ -73,11 +71,11 @@ class RegisterViewController: UIViewController {
         phone.textColor = .black
         phone.autocapitalizationType = .none
         phone.autocorrectionType = .no
-        phone.returnKeyType = .continue
         phone.layer.cornerRadius = 12
         phone.layer.borderWidth = 1
         phone.layer.borderColor = UIColor.lightGray.cgColor
-        phone.placeholder = "Enter Phone Number"
+        let placeholderText = NSAttributedString(string: "Enter Phone Number as **********", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        phone.attributedPlaceholder = placeholderText
         phone.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         phone.leftViewMode = .always
         phone.backgroundColor = .white
@@ -89,11 +87,11 @@ class RegisterViewController: UIViewController {
         password.textColor = .black
         password.autocapitalizationType = .none
         password.autocorrectionType = .no
-        password.returnKeyType = .done
         password.layer.cornerRadius = 12
         password.layer.borderWidth = 1
         password.layer.borderColor = UIColor.lightGray.cgColor
-        password.placeholder = "Enter Password"
+        let placeholderText = NSAttributedString(string: "Enter Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        password.attributedPlaceholder = placeholderText
         password.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         password.leftViewMode = .always
         password.backgroundColor = .white
@@ -112,36 +110,67 @@ class RegisterViewController: UIViewController {
         signUp.addTarget(self, action: #selector(signUpTapped), for: .touchUpInside)
         return signUp
     }()
+    
+    private let error: UILabel = {
+        let error = UILabel()
+        error.textAlignment = .left
+        error.textColor = .red
+        error.font = .systemFont(ofSize: 10, weight: .bold)
+        error.numberOfLines = 6
+        error.minimumScaleFactor = 0.1
+        return error
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Log In"
-        view.backgroundColor = .white
         view.addSubview(firstName)
         view.addSubview(lastName)
         view.addSubview(email)
         view.addSubview(phone)
         view.addSubview(password)
         view.addSubview(signUp)
+        view.addSubview(error)
     }
        
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         scrollView.frame = view.bounds
-        firstName.frame = CGRect(x: 30, y: 200, width: scrollView.frame.width - 60, height: 52)
-        lastName.frame = CGRect(x: 30, y: 260, width: scrollView.frame.width - 60, height: 52)
-        email.frame = CGRect(x: 30, y: 320, width: scrollView.frame.width - 60, height: 52)
-        phone.frame = CGRect(x: 30, y: 380, width: scrollView.frame.width - 60, height: 52)
-        password.frame = CGRect(x: 30, y: 440, width: scrollView.frame.width - 60, height: 52)
-        signUp.frame = CGRect(x: 30, y: 500, width: scrollView.frame.width - 60, height: 52)
+        firstName.frame = CGRect(x: 30, y: 100, width: scrollView.frame.width - 60, height: 52)
+        lastName.frame = CGRect(x: 30, y: 160, width: scrollView.frame.width - 60, height: 52)
+        email.frame = CGRect(x: 30, y: 220, width: scrollView.frame.width - 60, height: 52)
+        phone.frame = CGRect(x: 30, y: 280, width: scrollView.frame.width - 60, height: 52)
+        password.frame = CGRect(x: 30, y: 340, width: scrollView.frame.width - 60, height: 52)
+        signUp.frame = CGRect(x: 30, y: 400, width: scrollView.frame.width - 60, height: 52)
+        error.frame = CGRect(x: 30, y: 460, width: scrollView.frame.width - 60, height: 104)
     }
     
     @objc private func signUpTapped() {
-        guard let first = firstName.text, let last = lastName.text, let emailer = email.text, let phonee = phone.text, let pass = password.text, !first.isEmpty, !last.isEmpty, !phonee.isEmpty, !last.isEmpty, !emailer.isEmpty, pass.count >= 6 else {
+        firstName.resignFirstResponder()
+        lastName.resignFirstResponder()
+        email.resignFirstResponder()
+        phone.resignFirstResponder()
+        password.resignFirstResponder()
+        guard let first = firstName.text, let last = lastName.text, let emailer = email.text, let phonee = phone.text, let pass = password.text, !first.isEmpty, !last.isEmpty, !phonee.isEmpty, !last.isEmpty, !emailer.isEmpty else {
             alertUser()
             return
         }
+        error.text = " "
+        guard checkPassword(password: pass), emailer.contains("@gatech.edu"), checkPhone(with: phonee) else {
+            if !checkPassword(password: pass) {
+                error.text! += "* Password must have one letter, one number, and 6 letters long\n"
+            }
+            if !emailer.contains("@gatech.edu") {
+                error.text! += "* Must be a valid Georgia tech email\n"
+            }
+            if !checkPhone(with: phonee) {
+                error.text! += "* Phone must comform to style ##########"
+            }
+            return
+        }
+        
         spinner.show(in: view)
+        
+        
         DatabaseManager.shared.userExists(with: emailer, completion: { [weak self] exists in
             guard let strongSelf = self else {
                 return
@@ -166,7 +195,7 @@ class RegisterViewController: UIViewController {
                 UserDefaults.standard.set(emailer, forKey: "Email")
                 DatabaseManager.shared.insertUser(with: User(firstName: first, lastName: last, emailAddress: safeEmail, phoneNumber: phonee))
                 let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(identifier: "tabbar")
+                let vc = storyboard.instantiateViewController(identifier: "container")
                 vc.modalPresentationStyle = .fullScreen
                 strongSelf.present(vc, animated: true)
             })
@@ -177,5 +206,29 @@ class RegisterViewController: UIViewController {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         present(alert, animated: true)
+    }
+    
+    private func checkPhone(with: String) -> Bool {
+        var onlyNum = true
+        for character in with {
+            if !character.isNumber {
+                onlyNum = false
+            }
+        }
+        return onlyNum && with.count == 10
+    }
+    
+    private func checkPassword(password: String) -> Bool {
+        var letter = false
+        var number = false
+        for character in password {
+            if character.isLetter {
+                letter = true
+            }
+            if character.isNumber {
+                number = true
+            }
+        }
+        return letter && number && (password.count >= 6)
     }
 }

@@ -23,29 +23,33 @@ class ViewListingViewController: UIViewController {
     }()
     
     private let destination: UILabel = {
-        let phone = UILabel()
-        phone.textAlignment = .center
-        phone.font = .systemFont(ofSize: 20, weight: .bold)
-        return phone
+        let destination = UILabel()
+        destination.textAlignment = .left
+        destination.numberOfLines = 3
+        destination.font = .systemFont(ofSize: 20, weight: .bold)
+        return destination
     }()
     
     private let time: UILabel = {
         let time = UILabel()
-        time.textAlignment = .center
+        time.textAlignment = .left
+        time.numberOfLines = 2
         time.font = .systemFont(ofSize: 20, weight: .bold)
         return time
     }()
     
     private let meeting: UILabel = {
         let meeting = UILabel()
-        meeting.textAlignment = .center
+        meeting.textAlignment = .left
+        meeting.numberOfLines = 3
         meeting.font = .systemFont(ofSize: 20, weight: .bold)
         return meeting
     }()
     
     private let acceptedBy: UILabel = {
         let acceptedBy = UILabel()
-        acceptedBy.textAlignment = .center
+        acceptedBy.textAlignment = .left
+        acceptedBy.numberOfLines = 2
         acceptedBy.font = .systemFont(ofSize: 20, weight: .bold)
         return acceptedBy
     }()
@@ -77,9 +81,9 @@ class ViewListingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(scrollView)
-        destination.text = currentListing?.destination
-        time.text = currentListing?.time
-        meeting.text = currentListing?.meeting
+        destination.text = "Destination: " + currentListing!.destination
+        time.text = "Time/Date: " + currentListing!.time
+        meeting.text = "Meeting location: " + currentListing!.meeting
         let email = currentListing?.email
         let safeEmail = UserDefaults.standard.string(forKey: "SafeEmail")
         if email == safeEmail && currentListing?.accepted == "No one" {
@@ -99,17 +103,23 @@ class ViewListingViewController: UIViewController {
                     strongSelf.acceptedBy.text? += " "
                     strongSelf.acceptedBy.text? += dict?["last_name"] as? String ?? ""
                 })
-                view.addSubview(acceptedBy)
+            } else {
+                acceptedBy.text = "Accepted by: You"
             }
+            view.addSubview(acceptedBy)
             view.addSubview(contact)
         }
-        Database.database().reference().child("Users").child(currentListing!.email).observe(.value, with: { (snapshot) in
-            let dict = snapshot.value as? NSDictionary
-            var text = dict?["first_name"] as? String ?? "Failed To Retrieve Name"
-            text += " "
-            text += dict?["last_name"] as? String ?? ""
-            self.title = text
-        })
+        if email == safeEmail {
+            self.title = "You"
+        } else {
+            Database.database().reference().child("Users").child(currentListing!.email).observe(.value, with: { (snapshot) in
+                let dict = snapshot.value as? NSDictionary
+                var text = dict?["first_name"] as? String ?? "Failed To Retrieve Name"
+                text += " "
+                text += dict?["last_name"] as? String ?? ""
+                self.title = text
+            })
+        }
         view.addSubview(destination)
         view.addSubview(time)
         view.addSubview(meeting)
@@ -118,12 +128,12 @@ class ViewListingViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         scrollView.frame = view.bounds
-        destination.frame = CGRect(x: 30, y: 200, width: scrollView.frame.width - 60, height: 52)
-        time.frame = CGRect(x: 30, y: 260, width: scrollView.frame.width - 60, height: 52)
-        meeting.frame = CGRect(x: 30, y: 320, width: scrollView.frame.width - 60, height: 52)
-        acceptedBy.frame = CGRect(x: 30, y: 380, width: scrollView.frame.width - 60, height: 52)
-        contact.frame = CGRect(x: 30, y: 440, width: scrollView.frame.width - 60, height: 52)
-        accept.frame = CGRect(x: 30, y: 440, width: scrollView.frame.width - 60, height: 52)
+        destination.frame = CGRect(x: 30, y: 150, width: scrollView.frame.width - 60, height: 80)
+        time.frame = CGRect(x: 30, y: 230, width: scrollView.frame.width - 60, height: 80)
+        meeting.frame = CGRect(x: 30, y: 310, width: scrollView.frame.width - 60, height: 80)
+        acceptedBy.frame = CGRect(x: 30, y: 390, width: scrollView.frame.width - 60, height: 80)
+        contact.frame = CGRect(x: 30, y: 500, width: scrollView.frame.width - 60, height: 52)
+        accept.frame = CGRect(x: 30, y: 500, width: scrollView.frame.width - 60, height: 52)
     }
     
     @objc func acceptTapped() {

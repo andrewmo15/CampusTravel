@@ -8,10 +8,14 @@
 
 import UIKit
 import FirebaseDatabase
+import FirebaseAuth
+import SideMenu
 
 class ListingsViewController: UIViewController {
 
     @IBOutlet weak var table: UITableView!
+    
+    var menu: SideMenuNavigationController?
     
     var myList = [Listing]()
     var otherList = [Listing]()
@@ -20,18 +24,24 @@ class ListingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        menu = SideMenuNavigationController(rootViewController: MenuListController())
+        menu?.leftSide = true
+        menu?.setNavigationBarHidden(true, animated: false)
+        SideMenuManager.default.leftMenuNavigationController = menu
+        SideMenuManager.default.addPanGestureToPresent(toView: self.view)
         table.delegate = self
         table.dataSource = self
         loadTable()
     }
     
+    @IBAction func didTapMenu(_ sender: Any) {
+        present(menu!, animated: true)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         loadTable()
-    }
-    
-    @IBAction func refresh(_ sender: Any) {
-        loadTable()
+        clearExpired()
     }
     
     private func loadTable() {
@@ -116,6 +126,27 @@ class ListingsViewController: UIViewController {
             vc.currentListing = sender as? Listing
         }
     }
+    
+    @IBAction func signOutTapped(_ sender: Any) {
+        let confirm = UIAlertController(title: "Are You Sure?", message: "Do you want to sign out?", preferredStyle: .alert)
+        let yes = UIAlertAction(title: "Yes", style: .destructive) { [weak self] action in
+            guard let strongSelf = self else {
+                return
+            }
+            do {
+                try FirebaseAuth.Auth.auth().signOut()
+                strongSelf.dismiss(animated: true, completion: nil)
+            } catch {
+                let alert = UIAlertController(title: "Error", message: "Failed to log in", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+                strongSelf.present(alert, animated: true)
+            }
+        }
+        let no = UIAlertAction(title: "No", style: .default, handler: nil)
+        confirm.addAction(yes)
+        confirm.addAction(no)
+        present(confirm, animated: true, completion: nil)
+    }
 }
 
 extension ListingsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -153,6 +184,10 @@ extension ListingsViewController: UITableViewDelegate, UITableViewDataSource {
             cell.detailTextLabel?.text = "Something went wrong"
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
