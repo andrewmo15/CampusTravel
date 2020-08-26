@@ -26,6 +26,7 @@ class AddViewController: UIViewController {
     
     private let time: UITextField = {
         let time = UITextField()
+        time.textColor = .black
         time.layer.cornerRadius = 12
         time.layer.borderWidth = 1
         time.layer.borderColor = UIColor.lightGray.cgColor
@@ -38,6 +39,7 @@ class AddViewController: UIViewController {
     
     private let destination: UITextField = {
         let destination = UITextField()
+        destination.textColor = .black
         destination.returnKeyType = .continue
         destination.layer.cornerRadius = 12
         destination.layer.borderWidth = 1
@@ -51,6 +53,7 @@ class AddViewController: UIViewController {
     
     private let meeting: UITextField = {
         let meeting = UITextField()
+        meeting.textColor = .black
         meeting.returnKeyType = .continue
         meeting.layer.cornerRadius = 12
         meeting.layer.borderWidth = 1
@@ -119,8 +122,7 @@ class AddViewController: UIViewController {
     
     @objc func dateChanged(datePicker: UIDatePicker) {
         let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = .medium
-        dateFormatter.dateStyle = .long
+        dateFormatter.dateFormat = "HH:mm E, d MMM y"
         time.text = dateFormatter.string(from: datePicker.date)
         view.endEditing(true)
     }

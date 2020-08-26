@@ -16,15 +16,21 @@ class ListingsViewController: UIViewController {
     var myList = [Listing]()
     var otherList = [Listing]()
     var acceptedList = [Listing]()
+    var expiredList = [Listing]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         table.delegate = self
         table.dataSource = self
+        loadTable()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        loadTable()
+    }
+    
+    @IBAction func refresh(_ sender: Any) {
         loadTable()
     }
     
@@ -45,8 +51,15 @@ class ListingsViewController: UIViewController {
                     let listingMeeting = listingObject?["meeting_location"] as! String
                     let listingTime = listingObject?["time_date"] as! String
                     
+                    let currentDateTime = Date()
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "HH:mm E, d MMM y"
+                    let listingDate = formatter.date(from: listingTime)
+                    
                     let listing = Listing(email: listingEmail, time: listingTime, destination: listingDestination, meeting: listingMeeting, listingID: listingKey, accepted: "No one")
-                    if listingEmail == safeEmail {
+                    if (listingDate! < currentDateTime) {
+                        strongSelf.expiredList.append(listing)
+                    } else if listingEmail == safeEmail {
                         strongSelf.myList.append(listing)
                     } else {
                         strongSelf.otherList.append(listing)
@@ -70,7 +83,15 @@ class ListingsViewController: UIViewController {
                     let listingTime = listingObject?["time_date"] as! String
                     let listingAccepted = listingObject?["acceptedBy"] as! String
                     
-                    if listingEmail == safeEmail || safeEmail == listingAccepted {
+                    let currentDateTime = Date()
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "HH:mm E, d MMM y"
+                    let listingDate = formatter.date(from: listingTime)
+                    
+                    if (listingDate! < currentDateTime) {
+                        let listing = Listing(email: listingEmail, time: listingTime, destination: listingDestination, meeting: listingMeeting, listingID: listingKey, accepted: listingAccepted)
+                        strongSelf.expiredList.append(listing)
+                    } else if listingEmail == safeEmail || safeEmail == listingAccepted {
                         let listing = Listing(email: listingEmail, time: listingTime, destination: listingDestination, meeting: listingMeeting, listingID: listingKey, accepted: listingAccepted)
                         strongSelf.acceptedList.append(listing)
                     }
@@ -78,6 +99,15 @@ class ListingsViewController: UIViewController {
             }
             strongSelf.table.reloadData()
         })
+        clearExpired()
+    }
+    
+    private func clearExpired() {
+        for thing in expiredList {
+            Database.database().reference().child("Accepted").child(thing.listingID).removeValue()
+            Database.database().reference().child("Listings").child(thing.listingID).removeValue()
+        }
+        expiredList.removeAll()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -89,7 +119,7 @@ class ListingsViewController: UIViewController {
 }
 
 extension ListingsViewController: UITableViewDelegate, UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:

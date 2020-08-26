@@ -22,6 +22,7 @@ class RegisterViewController: UIViewController {
        
     private let firstName: UITextField = {
         let firstName = UITextField()
+        firstName.textColor = .black
         firstName.autocapitalizationType = .none
         firstName.autocorrectionType = .no
         firstName.returnKeyType = .continue
@@ -37,6 +38,7 @@ class RegisterViewController: UIViewController {
        
     private let lastName: UITextField = {
         let lastName = UITextField()
+        lastName.textColor = .black
         lastName.autocapitalizationType = .none
         lastName.autocorrectionType = .no
         lastName.returnKeyType = .continue
@@ -52,6 +54,7 @@ class RegisterViewController: UIViewController {
        
     private let email: UITextField = {
         let email = UITextField()
+        email.textColor = .black
         email.autocapitalizationType = .none
         email.autocorrectionType = .no
         email.returnKeyType = .continue
@@ -67,6 +70,7 @@ class RegisterViewController: UIViewController {
        
     private let phone: UITextField = {
         let phone = UITextField()
+        phone.textColor = .black
         phone.autocapitalizationType = .none
         phone.autocorrectionType = .no
         phone.returnKeyType = .continue
@@ -82,6 +86,7 @@ class RegisterViewController: UIViewController {
        
     private let password: UITextField = {
         let password = UITextField()
+        password.textColor = .black
         password.autocapitalizationType = .none
         password.autocorrectionType = .no
         password.returnKeyType = .done

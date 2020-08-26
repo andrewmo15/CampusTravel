@@ -89,6 +89,11 @@
                         <viewLayoutGuide key="safeArea" id="iQd-34-jcC"/>
                     </view>
                     <navigationItem key="navigationItem" title="Listings" id="7ml-L0-trg">
+                        <barButtonItem key="leftBarButtonItem" title="Refresh" id="2Iz-i8-b9j">
+                            <connections>
+                                <action selector="refresh:" destination="UC6-2h-e5W" id="1lx-gp-by4"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="oBg-PF-yS3">
                             <connections>
                                 <action selector="add:" destination="UC6-2h-e5W" id="MZR-fX-DQm"/>

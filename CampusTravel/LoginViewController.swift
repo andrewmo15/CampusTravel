@@ -22,6 +22,7 @@ class LoginViewController: UIViewController {
     
     private let email: UITextField = {
         let email = UITextField()
+        email.textColor = .black
         email.autocapitalizationType = .none
         email.autocorrectionType = .no
         email.returnKeyType = .continue
@@ -37,6 +38,7 @@ class LoginViewController: UIViewController {
     
     private let password: UITextField = {
         let password = UITextField()
+        password.textColor = .black
         password.autocapitalizationType = .none
         password.autocorrectionType = .no
         password.returnKeyType = .done
@@ -85,7 +87,7 @@ class LoginViewController: UIViewController {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(identifier: "tabbar")
             vc.modalPresentationStyle = .fullScreen
-            present(vc, animated: true)
+            present(vc, animated: false)
         }
     }
     

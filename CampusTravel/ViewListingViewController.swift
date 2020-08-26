@@ -8,8 +8,11 @@
 
 import UIKit
 import FirebaseDatabase
+import MessageUI
 
 class ViewListingViewController: UIViewController {
+    
+    let messageComposer = MessageComposer()
     
     var currentListing: Listing?
     
@@ -147,7 +150,35 @@ class ViewListingViewController: UIViewController {
     }
     
     @objc func contactTapped() {
-        print("yes")
+        if messageComposer.canSendText() {
+            let email = currentListing?.email
+            let safeEmail = UserDefaults.standard.string(forKey: "SafeEmail")
+            if safeEmail == email {
+                Database.database().reference().child("Users").child(currentListing!.accepted).observe(.value, with: { [weak self] (snapshot) in
+                    guard let strongSelf = self else {
+                        return
+                    }
+                    let mydict = snapshot.value as? NSDictionary
+                    let contact = mydict?["phone_number"] as? String ?? "Error, cannot get phone number"
+                    let messageComposeVC = strongSelf.messageComposer.configuredMessageComposeViewController(person: contact)
+                    strongSelf.present(messageComposeVC, animated: true, completion: nil)
+                })
+            } else {
+                Database.database().reference().child("Users").child(currentListing!.email).observe(.value, with: { [weak self] (snapshot) in
+                    guard let strongSelf = self else {
+                        return
+                    }
+                    let mydict = snapshot.value as? NSDictionary
+                    let contact = mydict?["phone_number"] as? String ?? "Error, cannot get phone number"
+                    let messageComposeVC = strongSelf.messageComposer.configuredMessageComposeViewController(person: contact)
+                    strongSelf.present(messageComposeVC, animated: true, completion: nil)
+                })
+            }
+        } else {
+            let alert = UIAlertController(title: "Error!", message: "Cannot open iMessage!", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+            present(alert, animated: true)
+        }
     }
     
     @objc func deleteListing() {

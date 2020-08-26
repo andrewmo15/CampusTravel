@@ -26,6 +26,7 @@ class EditProfileViewController: UIViewController {
             firstName.placeholder = dict?["first_name"] as? String ?? "Enter First Name"
         })
         
+        firstName.textColor = .black
         firstName.autocapitalizationType = .none
         firstName.autocorrectionType = .no
         firstName.returnKeyType = .continue
@@ -47,6 +48,7 @@ class EditProfileViewController: UIViewController {
             lastName.placeholder = dict?["last_name"] as? String ?? "Enter Last Name"
         })
         
+        lastName.textColor = .black
         lastName.autocapitalizationType = .none
         lastName.autocorrectionType = .no
         lastName.returnKeyType = .continue
@@ -69,6 +71,7 @@ class EditProfileViewController: UIViewController {
             phone.placeholder = dict?["phone_number"] as? String ?? "Enter Phone Number"
         })
         
+        phone.textColor = .black
         phone.autocapitalizationType = .none
         phone.autocorrectionType = .no
         phone.returnKeyType = .continue
