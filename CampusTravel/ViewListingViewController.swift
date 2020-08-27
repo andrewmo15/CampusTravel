@@ -81,14 +81,14 @@ class ViewListingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(scrollView)
-        destination.text = "Destination: " + currentListing!.destination
-        time.text = "Time/Date: " + currentListing!.time
-        meeting.text = "Meeting location: " + currentListing!.meeting
+        destination.text = "Destination:\n" + currentListing!.destination
+        time.text = "Time/Date:\n" + currentListing!.time
+        meeting.text = "Meeting location:\n" + currentListing!.meeting
         let email = currentListing?.email
         let safeEmail = UserDefaults.standard.string(forKey: "SafeEmail")
         if email == safeEmail && currentListing?.accepted == "No one" {
             navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Delete", style: .done, target: self, action: #selector(deleteListing))
-            navigationItem.rightBarButtonItem?.tintColor = UIColor.red
+            navigationItem.rightBarButtonItem?.tintColor = UIColor.systemRed
         } else if (currentListing?.accepted == "No one" && email != safeEmail) {
             view.addSubview(accept)
         } else {
@@ -98,7 +98,7 @@ class ViewListingViewController: UIViewController {
                         return
                     }
                     let dict = snapshot.value as? NSDictionary
-                    strongSelf.acceptedBy.text = "Accepted by: "
+                    strongSelf.acceptedBy.text = "Accepted by:\n"
                     strongSelf.acceptedBy.text? += dict?["first_name"] as? String ?? "Failed To Retrieve Name"
                     strongSelf.acceptedBy.text? += " "
                     strongSelf.acceptedBy.text? += dict?["last_name"] as? String ?? ""
@@ -128,12 +128,12 @@ class ViewListingViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         scrollView.frame = view.bounds
-        destination.frame = CGRect(x: 30, y: 150, width: scrollView.frame.width - 60, height: 80)
-        time.frame = CGRect(x: 30, y: 230, width: scrollView.frame.width - 60, height: 80)
-        meeting.frame = CGRect(x: 30, y: 310, width: scrollView.frame.width - 60, height: 80)
-        acceptedBy.frame = CGRect(x: 30, y: 390, width: scrollView.frame.width - 60, height: 80)
-        contact.frame = CGRect(x: 30, y: 500, width: scrollView.frame.width - 60, height: 52)
-        accept.frame = CGRect(x: 30, y: 500, width: scrollView.frame.width - 60, height: 52)
+        destination.frame = CGRect(x: 40, y: 150, width: scrollView.frame.width - 60, height: 80)
+        time.frame = CGRect(x: 40, y: 230, width: scrollView.frame.width - 60, height: 80)
+        meeting.frame = CGRect(x: 40, y: 310, width: scrollView.frame.width - 60, height: 80)
+        acceptedBy.frame = CGRect(x: 40, y: 390, width: scrollView.frame.width - 60, height: 80)
+        accept.frame = CGRect(x: 40, y: 420, width: scrollView.frame.width - 60, height: 52)
+        contact.frame = CGRect(x: 40, y: 500, width: scrollView.frame.width - 60, height: 52)
     }
     
     @objc func acceptTapped() {
