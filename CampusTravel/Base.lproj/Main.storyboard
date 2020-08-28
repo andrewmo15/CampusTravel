@@ -45,7 +45,7 @@
             </objects>
             <point key="canvasLocation" x="1990" y="-279"/>
         </scene>
-        <!--Listings-->
+        <!--Listings View Controller-->
         <scene sceneID="Kh1-rl-hYu">
             <objects>
                 <viewController id="UC6-2h-e5W" customClass="ListingsViewController" customModule="CampusTravel" customModuleProvider="target" sceneMemberID="viewController">
@@ -89,7 +89,7 @@
                                 </constraints>
                                 <items>
                                     <barButtonItem style="plain" id="DRh-ES-ZSe">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ehr-eR-bDL">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ehr-eR-bDL">
                                             <rect key="frame" x="20" y="15" width="374" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Add New Listing"/>
@@ -113,7 +113,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iQd-34-jcC"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Listings" id="7ml-L0-trg">
+                    <navigationItem key="navigationItem" id="7ml-L0-trg">
                         <barButtonItem key="leftBarButtonItem" title="Menu" image="list.number.rtl" catalog="system" id="qbZ-qt-aGa">
                             <connections>
                                 <action selector="didTapMenu:" destination="UC6-2h-e5W" id="gMy-ut-nld"/>

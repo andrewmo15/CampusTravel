@@ -30,8 +30,11 @@ class ListingsViewController: UIViewController {
         menu?.setNavigationBarHidden(true, animated: false)
         SideMenuManager.default.leftMenuNavigationController = menu
         SideMenuManager.default.addPanGestureToPresent(toView: view)
+        self.title = "Listings"
         table.delegate = self
         table.dataSource = self
+        table.refreshControl = UIRefreshControl()
+        table.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         loadTable()
     }
     
@@ -42,7 +45,13 @@ class ListingsViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         loadTable()
-        clearExpired()
+    }
+    
+    @objc private func refresh() {
+        loadTable()
+        DispatchQueue.main.async {
+            self.table.refreshControl?.endRefreshing()
+        }
     }
     
     private func loadTable() {

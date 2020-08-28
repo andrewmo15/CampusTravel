@@ -77,10 +77,18 @@ class ViewListingViewController: UIViewController {
         contact.addTarget(self, action: #selector(contactTapped), for: .touchUpInside)
         return contact
     }()
+    
+    private let myView: UIView = {
+        let myView = UIView()
+        myView.backgroundColor = UIColor.lightGray
+        myView.layer.cornerRadius = 5
+        return myView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(scrollView)
+        view.addSubview(myView)
         destination.text = "Destination:\n" + currentListing!.destination
         time.text = "Time/Date:\n" + currentListing!.time
         meeting.text = "Meeting location:\n" + currentListing!.meeting
@@ -134,6 +142,7 @@ class ViewListingViewController: UIViewController {
         acceptedBy.frame = CGRect(x: 40, y: 390, width: scrollView.frame.width - 60, height: 80)
         accept.frame = CGRect(x: 40, y: 420, width: scrollView.frame.width - 60, height: 52)
         contact.frame = CGRect(x: 40, y: 500, width: scrollView.frame.width - 60, height: 52)
+        myView.frame = CGRect(x: 20, y: 140, width: scrollView.frame.width - 30, height: 350)
     }
     
     @objc func acceptTapped() {
