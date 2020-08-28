@@ -19,14 +19,9 @@ class EditProfileViewController: UIViewController {
        
     private let firstName: UITextField = {
         let firstName = UITextField()
-        
-        let safeEmail = UserDefaults.standard.object(forKey: "SafeEmail") as? String ?? " "
-        Database.database().reference().child("Users").child(safeEmail).observe(.value, with: { (snapshot) in
-            let dict = snapshot.value as? NSDictionary
-            let placeholderText = NSAttributedString(string: dict?["first_name"] as? String ?? "Enter First Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
-            firstName.attributedPlaceholder = placeholderText
-        })
-        
+        let fullName = UserDefaults.standard.string(forKey: "Name")!
+        let placeholderText = NSAttributedString(string: String(fullName.split(separator: " ")[0]), attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        firstName.attributedPlaceholder = placeholderText
         firstName.textColor = .black
         firstName.autocorrectionType = .no
         firstName.layer.cornerRadius = 12
@@ -40,20 +35,14 @@ class EditProfileViewController: UIViewController {
        
     private let lastName: UITextField = {
         let lastName = UITextField()
-        
-        let safeEmail = UserDefaults.standard.object(forKey: "SafeEmail") as? String ?? " "
-        Database.database().reference().child("Users").child(safeEmail).observe(.value, with: { (snapshot) in
-            let dict = snapshot.value as? NSDictionary
-            let placeholderText = NSAttributedString(string: dict?["last_name"] as? String ?? "Enter Last Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
-            lastName.attributedPlaceholder = placeholderText
-        })
-        
+        let fullName = UserDefaults.standard.string(forKey: "Name")!
+        let placeholderText = NSAttributedString(string: String(fullName.split(separator: " ")[1]), attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        lastName.attributedPlaceholder = placeholderText
         lastName.textColor = .black
         lastName.autocorrectionType = .no
         lastName.layer.cornerRadius = 12
         lastName.layer.borderWidth = 1
         lastName.layer.borderColor = UIColor.lightGray.cgColor
-        lastName.placeholder = "Enter Last Name"
         lastName.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         lastName.leftViewMode = .always
         lastName.backgroundColor = .white
@@ -62,20 +51,13 @@ class EditProfileViewController: UIViewController {
        
     private let phone: UITextField = {
         let phone = UITextField()
-        
-        let safeEmail = UserDefaults.standard.object(forKey: "SafeEmail") as? String ?? " "
-        Database.database().reference().child("Users").child(safeEmail).observe(.value, with: { (snapshot) in
-            let dict = snapshot.value as? NSDictionary
-            let placeholderText = NSAttributedString(string: dict?["phone_number"] as? String ?? "Enter Phone Number", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
-            phone.attributedPlaceholder = placeholderText
-        })
-        
+        let placeholderText = NSAttributedString(string: UserDefaults.standard.string(forKey: "Phone")!, attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        phone.attributedPlaceholder = placeholderText
         phone.textColor = .black
         phone.autocorrectionType = .no
         phone.layer.cornerRadius = 12
         phone.layer.borderWidth = 1
         phone.layer.borderColor = UIColor.lightGray.cgColor
-        phone.placeholder = "Enter Phone Number"
         phone.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         phone.leftViewMode = .always
         phone.backgroundColor = .white
@@ -124,16 +106,20 @@ class EditProfileViewController: UIViewController {
     }
 
     @IBAction func cancel(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     @objc private func saveTapped() {
         let safeEmail = UserDefaults.standard.object(forKey: "SafeEmail") as? String ?? " "
         if firstName.text != "" {
             Database.database().reference().child("Users").child(safeEmail).child("first_name").setValue(firstName.text)
+            let last = String(UserDefaults.standard.string(forKey: "Name")!.split(separator: " ")[1])
+            UserDefaults.standard.set(firstName.text! + " " + last, forKey: "Name")
         }
         if lastName.text != "" {
             Database.database().reference().child("Users").child(safeEmail).child("last_name").setValue(lastName.text)
+            let first = String(UserDefaults.standard.string(forKey: "Name")!.split(separator: " ")[0])
+            UserDefaults.standard.set(first + " " + lastName.text!, forKey: "Name")
         }
         error.text = " "
         if phone.text != "" {
@@ -142,8 +128,9 @@ class EditProfileViewController: UIViewController {
                 return
             }
             Database.database().reference().child("Users").child(safeEmail).child("phone_number").setValue(phone.text)
+            UserDefaults.standard.set(phone.text, forKey: "Phone")
         }
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     private func checkPhone(with: String) -> Bool {

@@ -24,11 +24,12 @@ class ListingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(FirebaseAuth.Auth.auth().currentUser!.uid)
         menu = SideMenuNavigationController(rootViewController: MenuListController())
         menu?.leftSide = true
         menu?.setNavigationBarHidden(true, animated: false)
         SideMenuManager.default.leftMenuNavigationController = menu
-        SideMenuManager.default.addPanGestureToPresent(toView: self.view)
+        SideMenuManager.default.addPanGestureToPresent(toView: view)
         table.delegate = self
         table.dataSource = self
         loadTable()

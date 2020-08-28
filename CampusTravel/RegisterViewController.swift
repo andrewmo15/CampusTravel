@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 import JGProgressHUD
 
 class RegisterViewController: UIViewController {
@@ -145,13 +146,10 @@ class RegisterViewController: UIViewController {
     }
     
     @objc private func signUpTapped() {
-        firstName.resignFirstResponder()
-        lastName.resignFirstResponder()
-        email.resignFirstResponder()
-        phone.resignFirstResponder()
-        password.resignFirstResponder()
         guard let first = firstName.text, let last = lastName.text, let emailer = email.text, let phonee = phone.text, let pass = password.text, !first.isEmpty, !last.isEmpty, !phonee.isEmpty, !last.isEmpty, !emailer.isEmpty else {
-            alertUser()
+            let alert = UIAlertController(title: "Error", message: "Please enter in all information", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+            present(alert, animated: true)
             return
         }
         error.text = " "
@@ -170,42 +168,36 @@ class RegisterViewController: UIViewController {
         
         spinner.show(in: view)
         
-        
-        DatabaseManager.shared.userExists(with: emailer, completion: { [weak self] exists in
+        FirebaseAuth.Auth.auth().createUser(withEmail: emailer, password: pass, completion: { [weak self] authResult, error in
             guard let strongSelf = self else {
                 return
             }
-            guard !exists else {
-                strongSelf.alertUser(message: "Email address already exists")
+            guard authResult != nil, error == nil else {
+                let alert = UIAlertController(title: "Error", message: "Failed to sign up", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+                strongSelf.present(alert, animated: true)
                 return
             }
+            var safeEmail = emailer.replacingOccurrences(of: ".", with: "-")
+            safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
+            UserDefaults.standard.set(safeEmail, forKey: "SafeEmail")
+            UserDefaults.standard.set(emailer, forKey: "Email")
+            UserDefaults.standard.set(first + " " + last, forKey: "Name")
+            UserDefaults.standard.set(phonee, forKey: "Phone")
+            Database.database().reference().child("Users").child(safeEmail).setValue([
+                "first_name": first,
+                "last_name": last,
+                "phone_number": phonee,
+            ])
+            Database.database().reference().child("UIDs").child(FirebaseAuth.Auth.auth().currentUser!.uid).setValue(safeEmail)
             DispatchQueue.main.async {
                 strongSelf.spinner.dismiss()
             }
-            FirebaseAuth.Auth.auth().createUser(withEmail: emailer, password: pass, completion: { authResult, error in
-                guard authResult != nil, error == nil else {
-                    let alert = UIAlertController(title: "Error", message: "Failed to sign up", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
-                    strongSelf.present(alert, animated: true)
-                    return
-                }
-                var safeEmail = emailer.replacingOccurrences(of: ".", with: "-")
-                safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
-                UserDefaults.standard.set(safeEmail, forKey: "SafeEmail")
-                UserDefaults.standard.set(emailer, forKey: "Email")
-                DatabaseManager.shared.insertUser(with: User(firstName: first, lastName: last, emailAddress: safeEmail, phoneNumber: phonee))
-                let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                let vc = storyboard.instantiateViewController(identifier: "container")
-                vc.modalPresentationStyle = .fullScreen
-                strongSelf.present(vc, animated: true)
-            })
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vc = storyboard.instantiateViewController(identifier: "container")
+            vc.modalPresentationStyle = .fullScreen
+            strongSelf.present(vc, animated: true)
         })
-    }
-    
-    private func alertUser(message: String = "Please enter in all information") {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
-        present(alert, animated: true)
     }
     
     private func checkPhone(with: String) -> Bool {

@@ -54,7 +54,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="FEk-kT-1cq">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="714"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="NKA-Xa-qJN" detailTextLabel="WhL-9w-qnY" rowHeight="85" style="IBUITableViewCellStyleSubtitle" id="uNc-WQ-1x9">
                                         <rect key="frame" x="20" y="55.5" width="374" height="85"/>
@@ -83,32 +83,32 @@
                                 </prototypes>
                             </tableView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CCY-FO-uBC">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="802" width="414" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="414" id="Dgq-tL-E5q"/>
+                                    <constraint firstAttribute="height" constant="60" id="hSx-QC-o9Y"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem style="plain" id="2sk-Nd-18A">
-                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="XVj-p0-jdi">
-                                            <rect key="frame" x="20" y="12" width="374" height="30"/>
+                                    <barButtonItem style="plain" id="DRh-ES-ZSe">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ehr-eR-bDL">
+                                            <rect key="frame" x="20" y="15" width="374" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Add New Listing"/>
-                                            <connections>
-                                                <segue destination="eJE-Gh-9Km" kind="presentation" id="8lz-aG-uCN"/>
-                                            </connections>
                                         </button>
+                                        <connections>
+                                            <segue destination="eJE-Gh-9Km" kind="presentation" id="KGM-aW-ieV"/>
+                                        </connections>
                                     </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="FEk-kT-1cq" firstAttribute="top" secondItem="iQd-34-jcC" secondAttribute="top" id="0HG-dm-tNu"/>
+                            <constraint firstItem="FEk-kT-1cq" firstAttribute="leading" secondItem="iQd-34-jcC" secondAttribute="leading" id="CG0-JT-Rv3"/>
                             <constraint firstItem="CCY-FO-uBC" firstAttribute="leading" secondItem="iQd-34-jcC" secondAttribute="leading" id="KUh-CS-aT7"/>
-                            <constraint firstItem="CCY-FO-uBC" firstAttribute="top" secondItem="FEk-kT-1cq" secondAttribute="bottom" id="P7o-e3-UVB"/>
+                            <constraint firstItem="FEk-kT-1cq" firstAttribute="trailing" secondItem="iQd-34-jcC" secondAttribute="trailing" id="UM1-4m-UEt"/>
                             <constraint firstItem="CCY-FO-uBC" firstAttribute="trailing" secondItem="iQd-34-jcC" secondAttribute="trailing" id="Xvt-oY-bdK"/>
-                            <constraint firstItem="FEk-kT-1cq" firstAttribute="top" secondItem="iQd-34-jcC" secondAttribute="top" id="Y3W-Zd-dRb"/>
-                            <constraint firstItem="FEk-kT-1cq" firstAttribute="leading" secondItem="iQd-34-jcC" secondAttribute="leading" id="pqv-c7-Bva"/>
-                            <constraint firstItem="FEk-kT-1cq" firstAttribute="trailing" secondItem="iQd-34-jcC" secondAttribute="trailing" id="sRC-wg-lgy"/>
+                            <constraint firstItem="CCY-FO-uBC" firstAttribute="top" secondItem="FEk-kT-1cq" secondAttribute="bottom" id="gpF-GX-gEn"/>
                             <constraint firstItem="CCY-FO-uBC" firstAttribute="bottom" secondItem="iQd-34-jcC" secondAttribute="bottom" id="zmx-3e-eSF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iQd-34-jcC"/>

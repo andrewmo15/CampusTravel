@@ -11,46 +11,29 @@ import FirebaseDatabase
 
 class MenuListController: UITableViewController {
     
-    private let name: UILabel = {
-        let name = UILabel()
-        let safeEmail = UserDefaults.standard.object(forKey: "SafeEmail") as? String ?? " "
-        Database.database().reference().child("Users").child(safeEmail).observe(.value, with: { (snapshot) in
-            let dict = snapshot.value as? NSDictionary
-            name.text = dict?["first_name"] as? String ?? "Failed To Retrieve Name"
-            name.text? += " "
-            name.text? += dict?["last_name"] as? String ?? ""
-        })
-        return name
-    }()
-    
-    private let phone: UILabel = {
-        let phone = UILabel()
-        let safeEmail = UserDefaults.standard.object(forKey: "SafeEmail") as? String ?? " "
-        Database.database().reference().child("Users").child(safeEmail).observe(.value, with: { (snapshot) in
-            let dict = snapshot.value as? NSDictionary
-            phone.text = dict?["phone_number"] as? String ?? "Failed To Retrieve Phone"
-        })
-        return phone
-    }()
-    
     private var items = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        items.removeAll()
         tableView.backgroundColor = UIColor(red: 33/255.0, green: 33/255.0, blue: 33/255.0, alpha: 1)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell2")
-        items.append("Welcome " + name.text! + "!")
+        let name = UserDefaults.standard.string(forKey: "Name") ?? "Failed to Retrieve Name"
+        let phone = UserDefaults.standard.string(forKey: "Phone") ?? "Failed to Retrieve Phone"
+        items.append("Welcome " + name + "!")
         items.append(UserDefaults.standard.string(forKey: "Email") ?? "Failed to Retrieve Email")
-        items.append(phone.text!)
+        items.append(phone)
         items.append(" ")
         items.append("Edit Profile")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         items.removeAll()
-        items.append("Welcome " + name.text! + "!")
+        let name = UserDefaults.standard.string(forKey: "Name") ?? "Failed to Retrieve Name"
+        let phone = UserDefaults.standard.string(forKey: "Phone") ?? "Failed to Retrieve Phone"
+        items.append("Welcome " + name + "!")
         items.append(UserDefaults.standard.string(forKey: "Email") ?? "Failed to Retrieve Email")
-        items.append(phone.text!)
+        items.append(phone)
         items.append(" ")
         items.append("Edit Profile")
     }

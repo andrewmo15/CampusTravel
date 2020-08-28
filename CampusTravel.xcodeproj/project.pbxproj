@@ -18,7 +18,6 @@
 		493E059C24F317C100F8BFB1 /* ListingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E059B24F317C100F8BFB1 /* ListingsViewController.swift */; };
 		49E2C62424F5EFA300EC53D7 /* MessageComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E2C62324F5EFA300EC53D7 /* MessageComposer.swift */; };
 		49F2B7AC24F31AB700BB138E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49F2B7AB24F31AB700BB138E /* GoogleService-Info.plist */; };
-		49F2B7B024F31FFC00BB138E /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2B7AF24F31FFC00BB138E /* DatabaseManager.swift */; };
 		49F2B7B224F323B800BB138E /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2B7B124F323B800BB138E /* AddViewController.swift */; };
 		49F2B7B624F3426200BB138E /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2B7B524F3426200BB138E /* EditProfileViewController.swift */; };
 		49F2B7B824F34A0800BB138E /* ViewListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2B7B724F34A0800BB138E /* ViewListingViewController.swift */; };
@@ -40,7 +39,6 @@
 		493E059B24F317C100F8BFB1 /* ListingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingsViewController.swift; sourceTree = "<group>"; };
 		49E2C62324F5EFA300EC53D7 /* MessageComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageComposer.swift; sourceTree = "<group>"; };
 		49F2B7AB24F31AB700BB138E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		49F2B7AF24F31FFC00BB138E /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DatabaseManager.swift; path = /Users/andrew/Document/Projects/CampusTravel/CampusTravel/DatabaseManager.swift; sourceTree = "<absolute>"; };
 		49F2B7B124F323B800BB138E /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
 		49F2B7B524F3426200BB138E /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		49F2B7B724F34A0800BB138E /* ViewListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewListingViewController.swift; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 				49F2B7B524F3426200BB138E /* EditProfileViewController.swift */,
 				493E058924F314CC00F8BFB1 /* LoginViewController.swift */,
 				493E059924F3164B00F8BFB1 /* RegisterViewController.swift */,
-				49F2B7AF24F31FFC00BB138E /* DatabaseManager.swift */,
 				493E058B24F314CC00F8BFB1 /* Main.storyboard */,
 				493E058E24F314CD00F8BFB1 /* Assets.xcassets */,
 				493E059024F314CD00F8BFB1 /* LaunchScreen.storyboard */,
@@ -237,7 +234,6 @@
 				493E058A24F314CC00F8BFB1 /* LoginViewController.swift in Sources */,
 				493E058624F314CC00F8BFB1 /* AppDelegate.swift in Sources */,
 				49F2B7B224F323B800BB138E /* AddViewController.swift in Sources */,
-				49F2B7B024F31FFC00BB138E /* DatabaseManager.swift in Sources */,
 				49F7E5C124F6E1C000E89BE4 /* MenuListController.swift in Sources */,
 				493E058824F314CC00F8BFB1 /* SceneDelegate.swift in Sources */,
 				493E059A24F3164B00F8BFB1 /* RegisterViewController.swift in Sources */,

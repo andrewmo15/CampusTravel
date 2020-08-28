@@ -100,23 +100,22 @@ class AddViewController: UIViewController {
     }
     
     @IBAction func cancel(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     @objc func add() {
-        let safeEmail = UserDefaults.standard.object(forKey: "SafeEmail") as? String ?? " "
         if destination.text!.isEmpty || time.text!.isEmpty || meeting.text!.isEmpty {
             let alert = UIAlertController(title: "Whoops!", message: "Please fill in all information!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
             present(alert, animated: true)
         } else {
             Database.database().reference().child("Listings").childByAutoId().setValue([
-                "email": safeEmail,
+                "email": UserDefaults.standard.object(forKey: "SafeEmail") as? String ?? " ",
                 "destination": destination.text!,
                 "time_date": time.text!,
                 "meeting_location": meeting.text!
             ])
-            self.dismiss(animated: true, completion: nil)
+            dismiss(animated: true, completion: nil)
         }
     }
     
