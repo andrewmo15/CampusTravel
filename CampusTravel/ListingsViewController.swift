@@ -22,20 +22,36 @@ class ListingsViewController: UIViewController {
     var acceptedList = [Listing]()
     var expiredList = [Listing]()
     
+    private let addListing: UIButton = {
+        let accept = UIButton()
+        accept.setTitle("Add Listing", for: .normal)
+        accept.setTitleColor(.white, for: .normal)
+        accept.backgroundColor = .link
+        accept.layer.cornerRadius = 12
+        accept.layer.masksToBounds = true
+        accept.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
+        accept.addTarget(self, action: #selector(addListingTapped), for: .touchUpInside)
+        return accept
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(FirebaseAuth.Auth.auth().currentUser!.uid)
+        view.addSubview(addListing)
         menu = SideMenuNavigationController(rootViewController: MenuListController())
         menu?.leftSide = true
         menu?.setNavigationBarHidden(true, animated: false)
         SideMenuManager.default.leftMenuNavigationController = menu
         SideMenuManager.default.addPanGestureToPresent(toView: view)
-        self.title = "Listings"
         table.delegate = self
         table.dataSource = self
         table.refreshControl = UIRefreshControl()
         table.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         loadTable()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        addListing.frame = CGRect(x: 30, y: view.frame.height * 0.87, width: view.frame.width - 60, height: 52)
     }
     
     @IBAction func didTapMenu(_ sender: Any) {
@@ -156,6 +172,13 @@ class ListingsViewController: UIViewController {
         confirm.addAction(yes)
         confirm.addAction(no)
         present(confirm, animated: true, completion: nil)
+    }
+    
+    @objc private func addListingTapped() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "adder")
+        vc.modalPresentationStyle = .automatic
+        present(vc, animated: true)
     }
 }
 

@@ -46,8 +46,6 @@ class MenuListController: UITableViewController {
         switch indexPath.row {
         case 0:
             return 125
-        case 1,2,3,4:
-            return 50
         default:
             return 50
         }

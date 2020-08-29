@@ -13,44 +13,14 @@ import MessageUI
 class ViewListingViewController: UIViewController {
     
     let messageComposer = MessageComposer()
-    
+    @IBOutlet weak var table: UITableView!
     var currentListing: Listing?
-    
-    private let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.clipsToBounds = true
-        return scrollView
-    }()
-    
-    private let destination: UILabel = {
-        let destination = UILabel()
-        destination.textAlignment = .left
-        destination.numberOfLines = 3
-        destination.font = .systemFont(ofSize: 20, weight: .bold)
-        return destination
-    }()
-    
-    private let time: UILabel = {
-        let time = UILabel()
-        time.textAlignment = .left
-        time.numberOfLines = 2
-        time.font = .systemFont(ofSize: 20, weight: .bold)
-        return time
-    }()
-    
-    private let meeting: UILabel = {
-        let meeting = UILabel()
-        meeting.textAlignment = .left
-        meeting.numberOfLines = 3
-        meeting.font = .systemFont(ofSize: 20, weight: .bold)
-        return meeting
-    }()
+    var listing = [String]()
     
     private let acceptedBy: UILabel = {
         let acceptedBy = UILabel()
-        acceptedBy.textAlignment = .left
-        acceptedBy.numberOfLines = 2
-        acceptedBy.font = .systemFont(ofSize: 20, weight: .bold)
+        acceptedBy.font = .systemFont(ofSize: 20)
+        acceptedBy.textAlignment = .center
         return acceptedBy
     }()
     
@@ -77,21 +47,14 @@ class ViewListingViewController: UIViewController {
         contact.addTarget(self, action: #selector(contactTapped), for: .touchUpInside)
         return contact
     }()
-    
-    private let myView: UIView = {
-        let myView = UIView()
-        myView.backgroundColor = UIColor.lightGray
-        myView.layer.cornerRadius = 5
-        return myView
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(scrollView)
-        view.addSubview(myView)
-        destination.text = "Destination:\n" + currentListing!.destination
-        time.text = "Time/Date:\n" + currentListing!.time
-        meeting.text = "Meeting location:\n" + currentListing!.meeting
+        table.delegate = self
+        table.dataSource = self
+        listing.append(currentListing!.destination)
+        listing.append(currentListing!.time)
+        listing.append(currentListing!.meeting)
         let email = currentListing?.email
         let safeEmail = UserDefaults.standard.string(forKey: "SafeEmail")
         if email == safeEmail && currentListing?.accepted == "No one" {
@@ -106,13 +69,13 @@ class ViewListingViewController: UIViewController {
                         return
                     }
                     let dict = snapshot.value as? NSDictionary
-                    strongSelf.acceptedBy.text = "Accepted by:\n"
-                    strongSelf.acceptedBy.text? += dict?["first_name"] as? String ?? "Failed To Retrieve Name"
+                    strongSelf.acceptedBy.text = dict?["first_name"] as? String ?? "Failed To Retrieve Name"
                     strongSelf.acceptedBy.text? += " "
                     strongSelf.acceptedBy.text? += dict?["last_name"] as? String ?? ""
+                    strongSelf.acceptedBy.text? += " accepted your listing!"
                 })
             } else {
-                acceptedBy.text = "Accepted by: You"
+                acceptedBy.text = "You accepted their listing!"
             }
             view.addSubview(acceptedBy)
             view.addSubview(contact)
@@ -120,29 +83,24 @@ class ViewListingViewController: UIViewController {
         if email == safeEmail {
             self.title = "You"
         } else {
-            Database.database().reference().child("Users").child(currentListing!.email).observe(.value, with: { (snapshot) in
+            Database.database().reference().child("Users").child(currentListing!.email).observe(.value, with: { [weak self] (snapshot) in
+                guard let strongSelf = self else {
+                    return
+                }
                 let dict = snapshot.value as? NSDictionary
                 var text = dict?["first_name"] as? String ?? "Failed To Retrieve Name"
                 text += " "
                 text += dict?["last_name"] as? String ?? ""
-                self.title = text
+                strongSelf.title = text
             })
         }
-        view.addSubview(destination)
-        view.addSubview(time)
-        view.addSubview(meeting)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        scrollView.frame = view.bounds
-        destination.frame = CGRect(x: 40, y: 150, width: scrollView.frame.width - 60, height: 80)
-        time.frame = CGRect(x: 40, y: 230, width: scrollView.frame.width - 60, height: 80)
-        meeting.frame = CGRect(x: 40, y: 310, width: scrollView.frame.width - 60, height: 80)
-        acceptedBy.frame = CGRect(x: 40, y: 390, width: scrollView.frame.width - 60, height: 80)
-        accept.frame = CGRect(x: 40, y: 420, width: scrollView.frame.width - 60, height: 52)
-        contact.frame = CGRect(x: 40, y: 500, width: scrollView.frame.width - 60, height: 52)
-        myView.frame = CGRect(x: 20, y: 140, width: scrollView.frame.width - 30, height: 350)
+        acceptedBy.frame = CGRect(x: 30, y: view.frame.height * 0.8, width: view.frame.width - 60, height: 52)
+        accept.frame = CGRect(x: 30, y: view.frame.height * 0.87, width: view.frame.width - 60, height: 52)
+        contact.frame = CGRect(x: 30, y: view.frame.height * 0.87, width: view.frame.width - 60, height: 52)
     }
     
     @objc func acceptTapped() {
@@ -213,5 +171,41 @@ class ViewListingViewController: UIViewController {
         confirm.addAction(yes)
         confirm.addAction(no)
         present(confirm, animated: true, completion: nil)
+    }
+}
+
+extension ViewListingViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath)
+        cell.textLabel?.text = listing[indexPath.section]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return listing.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+          return 1
+      }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        switch section {
+        case 0:
+            return "Destination"
+        case 1:
+            return "Time/Date"
+        case 2:
+            return "Meeting location"
+        case 3:
+            return "Accepted by"
+        default:
+            return nil
+        }
     }
 }

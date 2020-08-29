@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
         email.layer.cornerRadius = 12
         email.layer.borderWidth = 1
         email.layer.borderColor = UIColor.lightGray.cgColor
-        let placeholderText = NSAttributedString(string: "Enter Gatech Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        let placeholderText = NSAttributedString(string: "Enter GT Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         email.attributedPlaceholder = placeholderText
         email.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         email.leftViewMode = .always
@@ -71,6 +71,16 @@ class LoginViewController: UIViewController {
         login.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
         return login
     }()
+    
+    private let forgotButton: UIButton = {
+        let forgotButton = UIButton()
+        forgotButton.setTitle("Forgot password?", for: .normal)
+        forgotButton.setTitleColor(.systemBlue, for: .normal)
+        forgotButton.layer.masksToBounds = true
+        forgotButton.titleLabel?.font = .systemFont(ofSize: 15, weight: .bold)
+        forgotButton.addTarget(self, action: #selector(forgotButtonTapped), for: .touchUpInside)
+        return forgotButton
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,6 +89,7 @@ class LoginViewController: UIViewController {
         view.addSubview(email)
         view.addSubview(password)
         view.addSubview(login)
+        view.addSubview(forgotButton)
     }
     
     override func viewDidLayoutSubviews() {
@@ -86,8 +97,9 @@ class LoginViewController: UIViewController {
         scrollView.frame = view.bounds
         image.frame = CGRect(x: (view.frame.width / 2) - 50, y: 150, width: 100, height: 100)
         email.frame = CGRect(x: 30, y: 300, width: scrollView.frame.width - 60, height: 52)
-        password.frame = CGRect(x: 30, y: 360, width: scrollView.frame.width - 60, height: 52)
-        login.frame = CGRect(x: 30, y: 420, width: scrollView.frame.width - 60, height: 52)
+        password.frame = CGRect(x: 30, y: 370, width: scrollView.frame.width - 60, height: 52)
+        login.frame = CGRect(x: 30, y: 440, width: scrollView.frame.width - 60, height: 52)
+        forgotButton.frame = CGRect(x: 30, y: 500, width: scrollView.frame.width - 60, height: 52)
     }
     
     private func validateAuth() {
@@ -97,6 +109,13 @@ class LoginViewController: UIViewController {
             vc.modalPresentationStyle = .fullScreen
             present(vc, animated: false)
         }
+    }
+    
+    @objc private func forgotButtonTapped() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "forgot")
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
     
     @objc private func loginTapped() {
@@ -116,13 +135,7 @@ class LoginViewController: UIViewController {
             DispatchQueue.main.async {
                 strongSelf.spinner.dismiss()
             }
-            guard error == nil else {
-                let alert = UIAlertController(title: "Error", message: "Failed to log in", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
-                strongSelf.present(alert, animated: true)
-                return
-            }
-            guard authResult != nil else {
+            guard authResult != nil || error == nil else {
                 let alert = UIAlertController(title: "Error", message: "Credentials are incorrect", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
                 strongSelf.present(alert, animated: true)

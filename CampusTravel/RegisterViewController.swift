@@ -59,7 +59,7 @@ class RegisterViewController: UIViewController {
         email.layer.cornerRadius = 12
         email.layer.borderWidth = 1
         email.layer.borderColor = UIColor.lightGray.cgColor
-        let placeholderText = NSAttributedString(string: "Enter Gatech Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        let placeholderText = NSAttributedString(string: "Enter GT Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         email.attributedPlaceholder = placeholderText
         email.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         email.leftViewMode = .always
@@ -75,7 +75,7 @@ class RegisterViewController: UIViewController {
         phone.layer.cornerRadius = 12
         phone.layer.borderWidth = 1
         phone.layer.borderColor = UIColor.lightGray.cgColor
-        let placeholderText = NSAttributedString(string: "Enter Phone Number as **********", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        let placeholderText = NSAttributedString(string: "Enter Phone Number", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         phone.attributedPlaceholder = placeholderText
         phone.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         phone.leftViewMode = .always
@@ -136,13 +136,13 @@ class RegisterViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         scrollView.frame = view.bounds
-        firstName.frame = CGRect(x: 30, y: 100, width: scrollView.frame.width - 60, height: 52)
-        lastName.frame = CGRect(x: 30, y: 160, width: scrollView.frame.width - 60, height: 52)
-        email.frame = CGRect(x: 30, y: 220, width: scrollView.frame.width - 60, height: 52)
-        phone.frame = CGRect(x: 30, y: 280, width: scrollView.frame.width - 60, height: 52)
-        password.frame = CGRect(x: 30, y: 340, width: scrollView.frame.width - 60, height: 52)
-        signUp.frame = CGRect(x: 30, y: 400, width: scrollView.frame.width - 60, height: 52)
-        error.frame = CGRect(x: 30, y: 460, width: scrollView.frame.width - 60, height: 104)
+        firstName.frame = CGRect(x: 30, y: 120, width: scrollView.frame.width - 60, height: 52)
+        lastName.frame = CGRect(x: 30, y: 190, width: scrollView.frame.width - 60, height: 52)
+        email.frame = CGRect(x: 30, y: 260, width: scrollView.frame.width - 60, height: 52)
+        phone.frame = CGRect(x: 30, y: 330, width: scrollView.frame.width - 60, height: 52)
+        password.frame = CGRect(x: 30, y: 400, width: scrollView.frame.width - 60, height: 52)
+        signUp.frame = CGRect(x: 30, y: 470, width: scrollView.frame.width - 60, height: 52)
+        error.frame = CGRect(x: 30, y: 520, width: scrollView.frame.width - 60, height: 104)
     }
     
     @objc private func signUpTapped() {
