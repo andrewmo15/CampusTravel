@@ -8,8 +8,11 @@
 
 import UIKit
 import FirebaseAuth
+import JGProgressHUD
 
 class ForgotPasswordViewController: UIViewController {
+    
+    private let spinner = JGProgressHUD(style: .dark)
     
     private let email: UITextField = {
         let email = UITextField()
@@ -52,7 +55,7 @@ class ForgotPasswordViewController: UIViewController {
     }
     
     @IBAction func cancel(_ sender: Any) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     @objc private func resetPasswordTapped() {
@@ -68,6 +71,7 @@ class ForgotPasswordViewController: UIViewController {
             present(alert, animated: true)
             return
         }
+        spinner.show(in: view)
         resetPassword(email: emailAddress, onSuccess: {
             let alert = UIAlertController(title: "Success!", message: "An email has been sent to you", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
@@ -77,6 +81,9 @@ class ForgotPasswordViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
             self.present(alert, animated: true)
         })
+        DispatchQueue.main.async {
+            self.spinner.dismiss()
+        }
     }
     
     private func resetPassword(email: String, onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String) -> Void) {

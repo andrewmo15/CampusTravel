@@ -14,12 +14,6 @@ import JGProgressHUD
 class RegisterViewController: UIViewController {
     
     private let spinner = JGProgressHUD(style: .dark)
-    
-    private let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.clipsToBounds = true
-        return scrollView
-    }()
        
     private let firstName: UITextField = {
         let firstName = UITextField()
@@ -135,14 +129,13 @@ class RegisterViewController: UIViewController {
        
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        scrollView.frame = view.bounds
-        firstName.frame = CGRect(x: 30, y: 120, width: scrollView.frame.width - 60, height: 52)
-        lastName.frame = CGRect(x: 30, y: 190, width: scrollView.frame.width - 60, height: 52)
-        email.frame = CGRect(x: 30, y: 260, width: scrollView.frame.width - 60, height: 52)
-        phone.frame = CGRect(x: 30, y: 330, width: scrollView.frame.width - 60, height: 52)
-        password.frame = CGRect(x: 30, y: 400, width: scrollView.frame.width - 60, height: 52)
-        signUp.frame = CGRect(x: 30, y: 470, width: scrollView.frame.width - 60, height: 52)
-        error.frame = CGRect(x: 30, y: 520, width: scrollView.frame.width - 60, height: 104)
+        firstName.frame = CGRect(x: 30, y: 120, width: view.frame.width - 60, height: 52)
+        lastName.frame = CGRect(x: 30, y: 190, width: view.frame.width - 60, height: 52)
+        email.frame = CGRect(x: 30, y: 260, width: view.frame.width - 60, height: 52)
+        phone.frame = CGRect(x: 30, y: 330, width: view.frame.width - 60, height: 52)
+        password.frame = CGRect(x: 30, y: 400, width: view.frame.width - 60, height: 52)
+        signUp.frame = CGRect(x: 30, y: 470, width: view.frame.width - 60, height: 52)
+        error.frame = CGRect(x: 30, y: 520, width: view.frame.width - 60, height: 104)
     }
     
     @objc private func signUpTapped() {

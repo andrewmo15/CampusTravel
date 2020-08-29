@@ -11,12 +11,6 @@ import FirebaseDatabase
 
 class AddViewController: UIViewController {
     
-    private let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.clipsToBounds = true
-        return scrollView
-    }()
-    
     private var datePicker: UIDatePicker? = {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .dateAndTime
@@ -92,11 +86,10 @@ class AddViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        scrollView.frame = view.bounds
-        time.frame = CGRect(x: 30, y: 150, width: scrollView.frame.width - 60, height: 52)
-        destination.frame = CGRect(x: 30, y: 210, width: scrollView.frame.width - 60, height: 52)
-        meeting.frame = CGRect(x: 30, y: 270, width: scrollView.frame.width - 60, height: 52)
-        submit.frame = CGRect(x: 30, y: 330, width: scrollView.frame.width - 60, height: 52)
+        time.frame = CGRect(x: 30, y: 150, width: view.frame.width - 60, height: 52)
+        destination.frame = CGRect(x: 30, y: 210, width: view.frame.width - 60, height: 52)
+        meeting.frame = CGRect(x: 30, y: 270, width: view.frame.width - 60, height: 52)
+        submit.frame = CGRect(x: 30, y: 330, width: view.frame.width - 60, height: 52)
     }
     
     @IBAction func cancel(_ sender: Any) {

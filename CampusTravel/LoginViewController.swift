@@ -15,12 +15,6 @@ class LoginViewController: UIViewController {
     
     private let spinner = JGProgressHUD(style: .dark)
     
-    private let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.clipsToBounds = true
-        return scrollView
-    }()
-    
     private let image: UIImageView = {
         let image = UIImage(named: "Image")
         let imageView = UIImageView(image: image)
@@ -94,12 +88,11 @@ class LoginViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        scrollView.frame = view.bounds
         image.frame = CGRect(x: (view.frame.width / 2) - 50, y: 150, width: 100, height: 100)
-        email.frame = CGRect(x: 30, y: 300, width: scrollView.frame.width - 60, height: 52)
-        password.frame = CGRect(x: 30, y: 370, width: scrollView.frame.width - 60, height: 52)
-        login.frame = CGRect(x: 30, y: 440, width: scrollView.frame.width - 60, height: 52)
-        forgotButton.frame = CGRect(x: 30, y: 500, width: scrollView.frame.width - 60, height: 52)
+        email.frame = CGRect(x: 30, y: 300, width: view.frame.width - 60, height: 52)
+        password.frame = CGRect(x: 30, y: 370, width: view.frame.width - 60, height: 52)
+        login.frame = CGRect(x: 30, y: 440, width: view.frame.width - 60, height: 52)
+        forgotButton.frame = CGRect(x: 30, y: 500, width: view.frame.width - 60, height: 52)
     }
     
     private func validateAuth() {

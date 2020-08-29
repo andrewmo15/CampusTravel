@@ -10,7 +10,7 @@
         <!--Log In-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="CampusTravel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="GTTravel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,7 +32,7 @@
         <!--Forgot Password View Controller-->
         <scene sceneID="5a6-RH-5A3">
             <objects>
-                <viewController id="v8S-nL-idN" customClass="ForgotPasswordViewController" customModule="CampusTravel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="v8S-nL-idN" customClass="ForgotPasswordViewController" customModule="GTTravel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9to-SW-Oek">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -54,7 +54,7 @@
         <!--Register-->
         <scene sceneID="0zk-oP-pnX">
             <objects>
-                <viewController id="BO7-Lw-TF4" customClass="RegisterViewController" customModule="CampusTravel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BO7-Lw-TF4" customClass="RegisterViewController" customModule="GTTravel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xoT-Rs-HfS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -70,12 +70,12 @@
         <!--Listings-->
         <scene sceneID="Kh1-rl-hYu">
             <objects>
-                <viewController id="UC6-2h-e5W" customClass="ListingsViewController" customModule="CampusTravel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="UC6-2h-e5W" customClass="ListingsViewController" customModule="GTTravel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FTL-LD-LcL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="FEk-kT-1cq">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="FEk-kT-1cq">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="NKA-Xa-qJN" detailTextLabel="WhL-9w-qnY" rowHeight="85" style="IBUITableViewCellStyleSubtitle" id="uNc-WQ-1x9">
@@ -139,12 +139,12 @@
         <!--View Listing View Controller-->
         <scene sceneID="h1W-ub-qFQ">
             <objects>
-                <viewController id="TBF-gO-iHP" customClass="ViewListingViewController" customModule="CampusTravel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="TBF-gO-iHP" customClass="ViewListingViewController" customModule="GTTravel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ljk-E7-85X">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="singleLineEtched" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="vWH-Gd-CSz">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="vWH-Gd-CSz">
                                 <rect key="frame" x="0.0" y="140" width="414" height="722"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell3" textLabel="dgf-MD-hWu" rowHeight="56" style="IBUITableViewCellStyleDefault" id="Itt-Lb-bHh">
@@ -188,7 +188,7 @@
         <!--Add Listing-->
         <scene sceneID="zcZ-Zj-aJv">
             <objects>
-                <viewController id="cTA-R2-Udq" customClass="AddViewController" customModule="CampusTravel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cTA-R2-Udq" customClass="AddViewController" customModule="GTTravel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ed7-e4-h4a">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -247,7 +247,7 @@
         <!--Edit Profile-->
         <scene sceneID="YUL-bt-WjY">
             <objects>
-                <viewController id="65a-FS-vKx" customClass="EditProfileViewController" customModule="CampusTravel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="65a-FS-vKx" customClass="EditProfileViewController" customModule="GTTravel" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="g9N-gj-Qgj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

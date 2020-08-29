@@ -10,12 +10,6 @@ import UIKit
 import FirebaseDatabase
 
 class EditProfileViewController: UIViewController {
-    
-    private let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.clipsToBounds = true
-        return scrollView
-    }()
        
     private let firstName: UITextField = {
         let firstName = UITextField()
@@ -97,12 +91,11 @@ class EditProfileViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        scrollView.frame = view.bounds
-        firstName.frame = CGRect(x: 30, y: 150, width: scrollView.frame.width - 60, height: 52)
-        lastName.frame = CGRect(x: 30, y: 210, width: scrollView.frame.width - 60, height: 52)
-        phone.frame = CGRect(x: 30, y: 270, width: scrollView.frame.width - 60, height: 52)
-        save.frame = CGRect(x: 30, y: 330, width: scrollView.frame.width - 60, height: 52)
-        error.frame = CGRect(x: 30, y: 390, width: scrollView.frame.width - 60, height: 80)
+        firstName.frame = CGRect(x: 30, y: 150, width: view.frame.width - 60, height: 52)
+        lastName.frame = CGRect(x: 30, y: 210, width: view.frame.width - 60, height: 52)
+        phone.frame = CGRect(x: 30, y: 270, width: view.frame.width - 60, height: 52)
+        save.frame = CGRect(x: 30, y: 330, width: view.frame.width - 60, height: 52)
+        error.frame = CGRect(x: 30, y: 390, width: view.frame.width - 60, height: 80)
     }
 
     @IBAction func cancel(_ sender: Any) {
