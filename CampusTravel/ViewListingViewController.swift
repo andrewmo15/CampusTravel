@@ -159,7 +159,7 @@ class ViewListingViewController: UIViewController {
     }
     
     @objc func deleteListing() {
-        let confirm = UIAlertController(title: "Are You Sure?", message: "Do you want to delete?", preferredStyle: .alert)
+        let confirm = UIAlertController(title: "Are You Sure?", message: "This action cannot be undone", preferredStyle: .alert)
         let yes = UIAlertAction(title: "Yes", style: .destructive) { [weak self] action in
             guard let strongSelf = self else {
                 return

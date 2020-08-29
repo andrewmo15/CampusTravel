@@ -62,6 +62,12 @@ class ForgotPasswordViewController: UIViewController {
             present(alert, animated: true)
             return
         }
+        guard emailAddress.contains("@gatech.edu") else {
+            let alert = UIAlertController(title: "Whoops!", message: "Please a valid GT email", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+            present(alert, animated: true)
+            return
+        }
         resetPassword(email: emailAddress, onSuccess: {
             let alert = UIAlertController(title: "Success!", message: "An email has been sent to you", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
