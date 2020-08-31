@@ -38,7 +38,7 @@ class ViewListingViewController: UIViewController {
     
     private let contact: UIButton = {
         let contact = UIButton()
-        contact.setTitle("Contact", for: .normal)
+        contact.setTitle("Contact Them!", for: .normal)
         contact.setTitleColor(.white, for: .normal)
         contact.backgroundColor = .link
         contact.layer.cornerRadius = 12

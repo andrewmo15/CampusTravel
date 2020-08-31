@@ -177,12 +177,12 @@ class RegisterViewController: UIViewController {
             UserDefaults.standard.set(emailer, forKey: "Email")
             UserDefaults.standard.set(first + " " + last, forKey: "Name")
             UserDefaults.standard.set(phonee, forKey: "Phone")
+            Database.database().reference().child("UIDs").child(FirebaseAuth.Auth.auth().currentUser!.uid).setValue(safeEmail)
             Database.database().reference().child("Users").child(safeEmail).setValue([
                 "first_name": first,
                 "last_name": last,
                 "phone_number": phonee,
             ])
-            Database.database().reference().child("UIDs").child(FirebaseAuth.Auth.auth().currentUser!.uid).setValue(safeEmail)
             DispatchQueue.main.async {
                 strongSelf.spinner.dismiss()
             }
