@@ -89,7 +89,7 @@ class ListingsViewController: UIViewController {
                     
                     let currentDateTime = Date()
                     let formatter = DateFormatter()
-                    formatter.dateFormat = "HH:mm E, d MMM y"
+                    formatter.dateFormat = "E, MM/dd/yyyy, h:mm a"
                     let listingDate = formatter.date(from: listingTime)
                     
                     let listing = Listing(email: listingEmail, time: listingTime, destination: listingDestination, meeting: listingMeeting, listingID: listingKey, accepted: "No one")
@@ -101,6 +101,7 @@ class ListingsViewController: UIViewController {
                         strongSelf.otherList.append(listing)
                     }
                 }
+                strongSelf.clearExpired()
                 strongSelf.table.reloadData()
             }
         })
@@ -121,7 +122,7 @@ class ListingsViewController: UIViewController {
                     
                     let currentDateTime = Date()
                     let formatter = DateFormatter()
-                    formatter.dateFormat = "HH:mm E, d MMM y"
+                    formatter.dateFormat = "E, MM/dd/yyyy, h:mm a"
                     let listingDate = formatter.date(from: listingTime)
                     
                     if (listingDate! < currentDateTime) {
@@ -133,9 +134,9 @@ class ListingsViewController: UIViewController {
                     }
                 }
             }
+            strongSelf.clearExpired()
             strongSelf.table.reloadData()
         })
-        clearExpired()
     }
     
     private func clearExpired() {

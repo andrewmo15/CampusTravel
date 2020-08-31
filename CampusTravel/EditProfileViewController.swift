@@ -92,10 +92,10 @@ class EditProfileViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         firstName.frame = CGRect(x: 30, y: 150, width: view.frame.width - 60, height: 52)
-        lastName.frame = CGRect(x: 30, y: 210, width: view.frame.width - 60, height: 52)
-        phone.frame = CGRect(x: 30, y: 270, width: view.frame.width - 60, height: 52)
-        save.frame = CGRect(x: 30, y: 330, width: view.frame.width - 60, height: 52)
-        error.frame = CGRect(x: 30, y: 390, width: view.frame.width - 60, height: 80)
+        lastName.frame = CGRect(x: 30, y: 220, width: view.frame.width - 60, height: 52)
+        phone.frame = CGRect(x: 30, y: 290, width: view.frame.width - 60, height: 52)
+        save.frame = CGRect(x: 30, y: 360, width: view.frame.width - 60, height: 52)
+        error.frame = CGRect(x: 30, y: 410, width: view.frame.width - 60, height: 80)
     }
 
     @IBAction func cancel(_ sender: Any) {

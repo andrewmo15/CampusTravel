@@ -87,16 +87,16 @@ class AddViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         time.frame = CGRect(x: 30, y: 150, width: view.frame.width - 60, height: 52)
-        destination.frame = CGRect(x: 30, y: 210, width: view.frame.width - 60, height: 52)
-        meeting.frame = CGRect(x: 30, y: 270, width: view.frame.width - 60, height: 52)
-        submit.frame = CGRect(x: 30, y: 330, width: view.frame.width - 60, height: 52)
+        destination.frame = CGRect(x: 30, y: 220, width: view.frame.width - 60, height: 52)
+        meeting.frame = CGRect(x: 30, y: 290, width: view.frame.width - 60, height: 52)
+        submit.frame = CGRect(x: 30, y: 360, width: view.frame.width - 60, height: 52)
     }
     
-    @IBAction func cancel(_ sender: Any) {
+    @IBAction private func cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
-    @objc func add() {
+    @objc private func add() {
         if destination.text!.isEmpty || time.text!.isEmpty || meeting.text!.isEmpty {
             let alert = UIAlertController(title: "Whoops!", message: "Please fill in all information!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
@@ -112,14 +112,14 @@ class AddViewController: UIViewController {
         }
     }
     
-    @objc func dateChanged(datePicker: UIDatePicker) {
+    @objc private func dateChanged(datePicker: UIDatePicker) {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm E, d MMM y"
+        dateFormatter.dateFormat = "E, MM/dd/yyyy, h:mm a"
         time.text = dateFormatter.string(from: datePicker.date)
         view.endEditing(true)
     }
     
-    @objc func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
+    @objc private func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
         view.endEditing(true)
     }
 }

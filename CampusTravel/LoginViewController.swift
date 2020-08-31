@@ -16,7 +16,7 @@ class LoginViewController: UIViewController {
     private let spinner = JGProgressHUD(style: .dark)
     
     private let image: UIImageView = {
-        let image = UIImage(named: "Image")
+        let image = UIImage(named: "LoginIcon")
         let imageView = UIImageView(image: image)
         return imageView
     }()

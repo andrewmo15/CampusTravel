@@ -77,7 +77,7 @@ class ForgotPasswordViewController: UIViewController {
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
             self.present(alert, animated: true)
         }, onError: { (errorMessage) in
-            let alert = UIAlertController(title: "Error!", message: "Failed to send email...", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Failed to send email", message: "Is this your actual email?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
             self.present(alert, animated: true)
         })
