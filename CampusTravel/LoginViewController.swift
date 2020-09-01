@@ -11,7 +11,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import JGProgressHUD
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
     private let spinner = JGProgressHUD(style: .dark)
     
@@ -75,15 +75,30 @@ class LoginViewController: UIViewController {
         forgotButton.addTarget(self, action: #selector(forgotButtonTapped), for: .touchUpInside)
         return forgotButton
     }()
+    
+    private let links: UITextView = {
+        let links = UITextView()
+        let text = "By continuing, you agree to our Terms and Conditions and Privacy Policy"
+        let attributedString = NSMutableAttributedString(string: text)
+        attributedString.addAttribute(.link, value: "https://github.com/andrewmo15/GTTravel", range: NSRange(location: 32, length: 20))
+        attributedString.addAttribute(.link, value: "https://github.com/andrewmo15/GTTravel", range: NSRange(location: 57, length: text.count - 57))
+        links.attributedText = attributedString
+        links.textColor = UIColor.lightGray
+        return links
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        email.delegate = self
+        password.delegate = self
+        links.delegate = self
         validateAuth()
         view.addSubview(image)
         view.addSubview(email)
         view.addSubview(password)
         view.addSubview(login)
         view.addSubview(forgotButton)
+        view.addSubview(links)
     }
     
     override func viewDidLayoutSubviews() {
@@ -92,7 +107,8 @@ class LoginViewController: UIViewController {
         email.frame = CGRect(x: 30, y: 300, width: view.frame.width - 60, height: 52)
         password.frame = CGRect(x: 30, y: 370, width: view.frame.width - 60, height: 52)
         login.frame = CGRect(x: 30, y: 440, width: view.frame.width - 60, height: 52)
-        forgotButton.frame = CGRect(x: 30, y: 500, width: view.frame.width - 60, height: 52)
+        links.frame = CGRect(x: 30, y: 500, width: view.frame.width - 60, height: 50)
+        forgotButton.frame = CGRect(x: 30, y: 550, width: view.frame.width - 60, height: 40)
     }
     
     private func validateAuth() {
@@ -109,6 +125,25 @@ class LoginViewController: UIViewController {
         let vc = storyboard.instantiateViewController(identifier: "forgot")
         vc.modalPresentationStyle = .automatic
         present(vc, animated: true)
+    }
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        UIApplication.shared.open(URL)
+        return false
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case email:
+            textField.resignFirstResponder()
+            password.becomeFirstResponder()
+        case password:
+            textField.resignFirstResponder()
+            loginTapped()
+        default:
+            break
+        }
+        return true
     }
     
     @objc private func loginTapped() {

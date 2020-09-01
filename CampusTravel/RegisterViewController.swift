@@ -11,7 +11,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import JGProgressHUD
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldDelegate {
     
     private let spinner = JGProgressHUD(style: .dark)
        
@@ -106,6 +106,17 @@ class RegisterViewController: UIViewController {
         return signUp
     }()
     
+    private let links: UITextView = {
+        let links = UITextView()
+        let text = "By continuing, you agree to our Terms and Conditions and Privacy Policy"
+        let attributedString = NSMutableAttributedString(string: text)
+        attributedString.addAttribute(.link, value: "https://github.com/andrewmo15/GTTravel", range: NSRange(location: 32, length: 20))
+        attributedString.addAttribute(.link, value: "https://github.com/andrewmo15/GTTravel", range: NSRange(location: 57, length: text.count - 57))
+        links.attributedText = attributedString
+        links.textColor = UIColor.lightGray
+        return links
+    }()
+    
     private let error: UILabel = {
         let error = UILabel()
         error.textAlignment = .left
@@ -118,12 +129,19 @@ class RegisterViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        firstName.delegate = self
+        lastName.delegate = self
+        email.delegate = self
+        phone.delegate = self
+        password.delegate = self
+        links.delegate = self
         view.addSubview(firstName)
         view.addSubview(lastName)
         view.addSubview(email)
         view.addSubview(phone)
         view.addSubview(password)
         view.addSubview(signUp)
+        view.addSubview(links)
         view.addSubview(error)
     }
        
@@ -135,10 +153,44 @@ class RegisterViewController: UIViewController {
         phone.frame = CGRect(x: 30, y: 330, width: view.frame.width - 60, height: 52)
         password.frame = CGRect(x: 30, y: 400, width: view.frame.width - 60, height: 52)
         signUp.frame = CGRect(x: 30, y: 470, width: view.frame.width - 60, height: 52)
-        error.frame = CGRect(x: 30, y: 520, width: view.frame.width - 60, height: 104)
+        links.frame = CGRect(x: 30, y: 530, width: view.frame.width - 60, height: 50)
+        error.frame = CGRect(x: 30, y: 580, width: view.frame.width - 60, height: 70)
+    }
+    
+    func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
+        UIApplication.shared.open(URL)
+        return false
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case firstName:
+            textField.resignFirstResponder()
+            lastName.becomeFirstResponder()
+        case lastName:
+            textField.resignFirstResponder()
+            email.becomeFirstResponder()
+        case email:
+            textField.resignFirstResponder()
+            phone.becomeFirstResponder()
+        case phone:
+            textField.resignFirstResponder()
+            password.becomeFirstResponder()
+        case password:
+            textField.resignFirstResponder()
+            signUpTapped()
+        default:
+            break
+        }
+        return true
     }
     
     @objc private func signUpTapped() {
+        firstName.resignFirstResponder()
+        lastName.resignFirstResponder()
+        email.resignFirstResponder()
+        phone.resignFirstResponder()
+        password.resignFirstResponder()
         guard let first = firstName.text, let last = lastName.text, let emailer = email.text, let phonee = phone.text, let pass = password.text, !first.isEmpty, !last.isEmpty, !phonee.isEmpty, !last.isEmpty, !emailer.isEmpty else {
             let alert = UIAlertController(title: "Error", message: "Please enter in all information", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
