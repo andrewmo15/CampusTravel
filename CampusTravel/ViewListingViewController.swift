@@ -38,7 +38,7 @@ class ViewListingViewController: UIViewController {
     
     private let contact: UIButton = {
         let contact = UIButton()
-        contact.setTitle("Contact Them!", for: .normal)
+        contact.setTitle("Contact", for: .normal)
         contact.setTitleColor(.white, for: .normal)
         contact.backgroundColor = .link
         contact.layer.cornerRadius = 12
@@ -72,10 +72,10 @@ class ViewListingViewController: UIViewController {
                     strongSelf.acceptedBy.text = dict?["first_name"] as? String ?? "Failed To Retrieve Name"
                     strongSelf.acceptedBy.text? += " "
                     strongSelf.acceptedBy.text? += dict?["last_name"] as? String ?? ""
-                    strongSelf.acceptedBy.text? += " accepted your listing!"
+                    strongSelf.acceptedBy.text? += " accepted your listing"
                 })
             } else {
-                acceptedBy.text = "You accepted their listing!"
+                acceptedBy.text = "You accepted their listing"
             }
             view.addSubview(acceptedBy)
             view.addSubview(contact)
@@ -152,7 +152,7 @@ class ViewListingViewController: UIViewController {
                 })
             }
         } else {
-            let alert = UIAlertController(title: "Error!", message: "Cannot open iMessage!", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error", message: "Cannot open iMessage", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
             present(alert, animated: true)
         }

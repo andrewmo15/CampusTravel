@@ -29,7 +29,7 @@
 		357D98F408A1C96979CC5587 /* Pods_CampusTravel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampusTravel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4088F50421045C2668E93F61 /* Pods-CampusTravel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampusTravel.debug.xcconfig"; path = "Target Support Files/Pods-CampusTravel/Pods-CampusTravel.debug.xcconfig"; sourceTree = "<group>"; };
 		4916A16324F9F649001B09F8 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
-		493E058224F314CC00F8BFB1 /* GTTravel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GTTravel.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		493E058224F314CC00F8BFB1 /* GT Travel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GT Travel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		493E058524F314CC00F8BFB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		493E058724F314CC00F8BFB1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		493E058924F314CC00F8BFB1 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -90,7 +90,7 @@
 		493E058324F314CC00F8BFB1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				493E058224F314CC00F8BFB1 /* GTTravel.app */,
+				493E058224F314CC00F8BFB1 /* GT Travel.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -137,7 +137,7 @@
 			);
 			name = CampusTravel;
 			productName = CampusTravel;
-			productReference = 493E058224F314CC00F8BFB1 /* GTTravel.app */;
+			productReference = 493E058224F314CC00F8BFB1 /* GT Travel.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -397,7 +397,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrewmo.GTTravel;
-				PRODUCT_NAME = GTTravel;
+				PRODUCT_NAME = "GT Travel";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -416,7 +416,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrewmo.GTTravel;
-				PRODUCT_NAME = GTTravel;
+				PRODUCT_NAME = "GT Travel";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

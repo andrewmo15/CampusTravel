@@ -107,7 +107,7 @@ class LoginViewController: UIViewController {
     @objc private func forgotButtonTapped() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "forgot")
-        vc.modalPresentationStyle = .fullScreen
+        vc.modalPresentationStyle = .automatic
         present(vc, animated: true)
     }
     
@@ -128,8 +128,8 @@ class LoginViewController: UIViewController {
             DispatchQueue.main.async {
                 strongSelf.spinner.dismiss()
             }
-            guard authResult != nil || error == nil else {
-                let alert = UIAlertController(title: "Error", message: "Credentials are incorrect", preferredStyle: .alert)
+            guard authResult != nil, error == nil else {
+                let alert = UIAlertController(title: "Failed to log in!", message: "Check wifi or login credentials", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
                 strongSelf.present(alert, animated: true)
                 return

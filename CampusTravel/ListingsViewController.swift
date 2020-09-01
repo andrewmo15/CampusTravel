@@ -24,7 +24,7 @@ class ListingsViewController: UIViewController {
     
     private let addListing: UIButton = {
         let accept = UIButton()
-        accept.setTitle("Add A Listing!", for: .normal)
+        accept.setTitle("Add a listing", for: .normal)
         accept.setTitleColor(.white, for: .normal)
         accept.backgroundColor = .link
         accept.layer.cornerRadius = 12

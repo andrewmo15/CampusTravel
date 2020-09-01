@@ -166,7 +166,7 @@ class RegisterViewController: UIViewController {
                 return
             }
             guard authResult != nil, error == nil else {
-                let alert = UIAlertController(title: "Error", message: "Failed to sign up", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Failed to sign up!", message: "Check your wifi again", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
                 strongSelf.present(alert, animated: true)
                 return
