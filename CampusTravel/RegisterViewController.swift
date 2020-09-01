@@ -135,6 +135,8 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
         phone.delegate = self
         password.delegate = self
         links.delegate = self
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(RegisterViewController.viewTapped(gestureRecognizer:)))
+        view.addGestureRecognizer(tapGesture)
         view.addSubview(firstName)
         view.addSubview(lastName)
         view.addSubview(email)
@@ -267,5 +269,9 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
             }
         }
         return letter && number && (password.count >= 6)
+    }
+    
+    @objc private func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
 }

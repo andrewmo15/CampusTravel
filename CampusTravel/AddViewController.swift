@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-class AddViewController: UIViewController {
+class AddViewController: UIViewController, UITextFieldDelegate {
     
     private var datePicker: UIDatePicker? = {
         let datePicker = UIDatePicker()
@@ -76,6 +76,8 @@ class AddViewController: UIViewController {
         super.viewDidLoad()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AddViewController.viewTapped(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
+        destination.delegate = self
+        meeting.delegate = self
         time.inputView = datePicker
         view.addSubview(time)
         view.addSubview(destination)
@@ -92,11 +94,28 @@ class AddViewController: UIViewController {
         submit.frame = CGRect(x: 30, y: 360, width: view.frame.width - 60, height: 52)
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case destination:
+            textField.resignFirstResponder()
+            meeting.becomeFirstResponder()
+        case meeting:
+            textField.resignFirstResponder()
+            add()
+        default:
+            break
+        }
+        return true
+    }
+    
     @IBAction private func cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
     @objc private func add() {
+        time.resignFirstResponder()
+        destination.resignFirstResponder()
+        meeting.resignFirstResponder()
         if destination.text!.isEmpty || time.text!.isEmpty || meeting.text!.isEmpty {
             let alert = UIAlertController(title: "Whoops!", message: "Please fill in all information!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))

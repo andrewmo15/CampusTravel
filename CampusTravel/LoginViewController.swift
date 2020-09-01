@@ -89,10 +89,12 @@ class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        validateAuth()
         email.delegate = self
         password.delegate = self
         links.delegate = self
-        validateAuth()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.viewTapped(gestureRecognizer:)))
+        view.addGestureRecognizer(tapGesture)
         view.addSubview(image)
         view.addSubview(email)
         view.addSubview(password)
@@ -194,6 +196,10 @@ class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         let alert = UIAlertController(title: "Error", message: "Please enter in all information", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         present(alert, animated: true)
+    }
+    
+    @objc private func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
 
 }

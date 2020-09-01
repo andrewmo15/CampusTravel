@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseDatabase
 
-class EditProfileViewController: UIViewController {
+class EditProfileViewController: UIViewController, UITextFieldDelegate {
        
     private let firstName: UITextField = {
         let firstName = UITextField()
@@ -82,12 +82,18 @@ class EditProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        firstName.delegate = self
+        lastName.delegate = self
+        phone.delegate = self
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(EditProfileViewController.viewTapped(gestureRecognizer:)))
+        view.addGestureRecognizer(tapGesture)
         view.addSubview(firstName)
         view.addSubview(lastName)
         view.addSubview(phone)
         view.addSubview(error)
         view.addSubview(save)
     }
+
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -97,12 +103,32 @@ class EditProfileViewController: UIViewController {
         save.frame = CGRect(x: 30, y: 360, width: view.frame.width - 60, height: 52)
         error.frame = CGRect(x: 30, y: 410, width: view.frame.width - 60, height: 80)
     }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case firstName:
+            textField.resignFirstResponder()
+            lastName.becomeFirstResponder()
+        case lastName:
+            textField.resignFirstResponder()
+            phone.becomeFirstResponder()
+        case phone:
+            textField.resignFirstResponder()
+            saveTapped()
+        default:
+            break
+        }
+        return true
+    }
 
     @IBAction func cancel(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
     
     @objc private func saveTapped() {
+        firstName.resignFirstResponder()
+        lastName.resignFirstResponder()
+        phone.resignFirstResponder()
         let safeEmail = UserDefaults.standard.object(forKey: "SafeEmail") as? String ?? " "
         if firstName.text != "" {
             Database.database().reference().child("Users").child(safeEmail).child("first_name").setValue(firstName.text)
@@ -134,5 +160,9 @@ class EditProfileViewController: UIViewController {
             }
         }
         return onlyNum && with.count == 10
+    }
+    
+    @objc private func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
 }
