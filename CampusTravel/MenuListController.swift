@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import SafariServices
 
 class MenuListController: UITableViewController {
     
@@ -25,6 +26,7 @@ class MenuListController: UITableViewController {
         items.append(phone)
         items.append(" ")
         items.append("Edit Profile")
+        items.append("About")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -36,6 +38,7 @@ class MenuListController: UITableViewController {
         items.append(phone)
         items.append(" ")
         items.append("Edit Profile")
+        items.append("About")
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -60,6 +63,11 @@ class MenuListController: UITableViewController {
         cell.textLabel?.numberOfLines = 3
         cell.textLabel?.textColor = .white
         cell.backgroundColor = UIColor(red: 33/255.0, green: 33/255.0, blue: 33/255.0, alpha: 1)
+        if indexPath.row != 4 || indexPath.row != 5 {
+            cell.selectionStyle = .none
+        } else {
+            cell.selectionStyle = .default
+        }
         return cell
     }
     
@@ -70,8 +78,21 @@ class MenuListController: UITableViewController {
             let vc = storyboard.instantiateViewController(identifier: "edit")
             vc.modalPresentationStyle = .automatic
             present(vc, animated: true)
+        case 5:
+            showSafariVC(for: "https://github.com/andrewmo15/GTTravel")
         default:
             break
         }
+    }
+    
+    func showSafariVC(for url: String) {
+        guard let url = URL(string: url) else {
+            let alert = UIAlertController(title: "Error", message: "Could not open Safari", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+            present(alert, animated: true)
+            return
+        }
+        let safariVC = SFSafariViewController(url: url)
+        present(safariVC, animated: true)
     }
 }

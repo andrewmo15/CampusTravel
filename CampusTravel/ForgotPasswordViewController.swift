@@ -10,7 +10,7 @@ import UIKit
 import FirebaseAuth
 import JGProgressHUD
 
-class ForgotPasswordViewController: UIViewController {
+class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
     
     private let spinner = JGProgressHUD(style: .dark)
     
@@ -44,6 +44,10 @@ class ForgotPasswordViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Forgot Password"
+        email.delegate = self
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ForgotPasswordViewController.viewTapped(gestureRecognizer:)))
+        view.addGestureRecognizer(tapGesture)
         view.addSubview(email)
         view.addSubview(reset)
     }
@@ -52,6 +56,12 @@ class ForgotPasswordViewController: UIViewController {
         super.viewDidLayoutSubviews()
         email.frame = CGRect(x: 30, y: 150, width: view.frame.width - 60, height: 52)
         reset.frame = CGRect(x: 30, y: 220, width: view.frame.width - 60, height: 52)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        resetPasswordTapped()
+        return true
     }
     
     @IBAction func cancel(_ sender: Any) {
@@ -94,6 +104,10 @@ class ForgotPasswordViewController: UIViewController {
                 onError(error!.localizedDescription)
             }
         }
+    }
+    
+    @objc private func viewTapped(gestureRecognizer: UITapGestureRecognizer) {
+        view.endEditing(true)
     }
 
 }
