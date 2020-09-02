@@ -1,3 +1,3 @@
 # GT Travel
-# About
-This app is about
+## About
+The goal of this app is to help students at the Georgia Institute of Technology spend less money on 
