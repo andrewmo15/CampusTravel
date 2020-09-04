@@ -3,20 +3,21 @@ The goal of this app is to help students at the Georgia Institute of Technology 
 
 # Terms and Conditions
 Last updated: Septeber 3, 2020
-This GT Travel Terms and Condition applies to your access to and use of the mobile app and its services (collectively, the "Services") provided by GT Travel ("GT Travel", "we", or "us"). If you access or use our Services, you agree to these Terms and Conditions and accept to be bound by them. If you want to know how we collect, use, and share information about you when you use our Services, look below at our Privacy Policy
+
+This GT Travel Terms and Condition applies to your access to and use of the mobile app and its services provided by GT Travel ("GT Travel", "we", or "us"). If you access or use GT Travel, you agree to these Terms and Conditions and accept to be bound by them. If you want to know how we collect, use, and share information about you when you use GT Travel, look below at our Privacy Policy.
 #### PLEASE READ THESE TERMS AND CONDITIONS TO UNDERSTAND OUR BASIC RULES. IF YOU DO NOT AGREE TO THESE TERMS AND CONDITIONS, PLEAES DO NOT USE OUR SERVICES.
 ## Your Account
 ### Creating and securing an account
-To create an account or use our Services, you must be at least 13 years old. If you are in the European Economic Area, you must be older than the age set forth by the laws of your country to create an account and use our Services. If you are not of age, please obtain verifiable consent from your parent or legal guardian and send it to us with the contact information in the "Contact Us" section of this Terms and Conditions.
-Furthermore, you must be human to create your account. We do not permit any machine, robot, computer program, or anything similar to create an account to access our Services. Failure to abide by these rules will result in the immediate termination of your account.
-To use our Services, you may be asked to provide us with your first and last name, your email, your phone number, your Georgia Tech email, and a password. For more information, please visit our Privacy Policy (below) to understand what and how we collect, use, and share your personal information with others.
+To create an account or use GT Travel, you must be at least 13 years old. If you are not of age, please obtain verifiable consent from your parent or legal guardian and send it to us with the contact information in the "Contact Us" section of this Terms and Conditions.
+Furthermore, you must be human to create your account. We do not permit any machine, robot, computer program, or anything similar to create an account to access the services provided by GT Travel. Failure to abide by these rules will result in the immediate termination of your account.
+To use GT Travel, you may be asked to provide us with your first and last name, your email, your phone number, your Georgia Tech email, and a password. For more information, please visit our Privacy Policy (below) to understand what and how we collect, use, and share your personal information with others.
 You are solely responsible for maintaining the security of your account. We suggest that you create a strong password to properly secure your account. During the process of creating an account, we have required you to have a password that has at the minimum 6 characters, at least one numerical digit and at least one alphabetical character. However, to properly secure your account, we recommend that you add more to your password these these three requirements. If you suspect that another person has accessed your account without your consent, please immediately notify us by using the contact information provided in the "Contact Us" section of these Terms and Conditions.
 ### Using your account to access our services
-Our Services are for solely for your personal use and may not be shared with anyone else. GT Travel grants you a personal, non-transferrable, non-exclusive, and revocable account to use and access the Services permitted by these Terms. If you are to use your account, you are not permitted to:
-1. sell, transfer, distribute, host, or in any way exploit the Services;
+The services that we provide are solely for your personal use and may not be shared with anyone else. GT Travel grants you a personal, non-transferrable, non-exclusive, and revocable account to use and access GT Travel permitted by these Terms. If you are to use your account, you are not permitted to:
+1. sell, transfer, distribute, host, or in any way exploit GT Travel;
 2. use any data mining, data gathering, or data extration methods;
 3. test the vulnerability of our system or network or breah any security or authentication measures that we have installed;
-4. modify, prepare derivative works of, disassemble, decompile, or reverse engineer any part of the Services or Content; or
+4. modify, prepare derivative works of, disassemble, decompile, or reverse engineer any part of GT Travel; or
 5. access our services to create a similar, competitive product or service.
 Any attempt at using your account with any malicious intent as stated but not limited to what is above will result in the immediate termination of your account, personal infromation, listings, or any affliliations you have with GT Travel. 
 ## Your Content
@@ -31,7 +32,7 @@ If you choose to terminate your account, you can use our contact information in 
 ## Limitation of Liability
 UNDER NO CIRCUMSTANCES WILL WE BE LIABLE FOR ANYTHING THAT HAPPENS TO YOU OR ANY THIRD PARTY INVOLVED FOR ANY FORM OF DAMAGES, INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, DATA, USE, GOOD-WILL, THAT RESULT FROM THE COLLECTION, USE, AND MODIFICATION OF YOUR CONTENT, YOUR USE OR INABILITY TO USE GT TRAVEL, YOUR TERMINATION FROM GT TRAVEL, CONDUCT OR CONTENT OF ANY THURD PARTY THAT HAS ACCESS AND USE GT TRAVEL. YOU ARE SOLELY RESPONSIBLE FOR ANY DAMAGE TO YOUR DEVICE AS A RESULT OF ACCESSING AND USING GT TRAVEL. OUR LIABILITY IS LIMITED TO OUR KNOWLEDGE OF THE POSSIBLITY OF SUCH DAMAGE. WE HAVE NO LIABILITY FOR ANY MATTERS BEYOND OUR REASONABLE CONTROL. USE THE SERVICES PROVIDED BY GT TRAVEL AT YOUR OWN RISK.
 ## Changes to Our Terms and Conditions
-The contents of our Terms and Conditions may be altered at any time, at our discretion. However, an email will be sent out to let our users know when these statements are altered. The date at the top of this Terms and Conditions will also be changed to the date that it was altered. We encourage you to review the Terms and Conditions whenever you access or use our GT Travel or otherwise interact with us to stay informed about what we expect from you as you continue to use our Service. By continuing to use GT Travel after these changes go into effect, you agree to be bound by the revised policy.
+The contents of our Terms and Conditions may be altered at any time, at our discretion. However, an email will be sent out to let our users know when these statements are altered. The date at the top of this Terms and Conditions will also be changed to the date that it was altered. We encourage you to review the Terms and Conditions whenever you access or use our GT Travel or otherwise interact with us to stay informed about what we expect from you as you continue to use GT Travek. By continuing to use GT Travel after these changes go into effect, you agree to be bound by the revised policy.
 
 ## Contact Us
 If you have any questions about this Privacy Policy or any general questions about GT Travel, please contact us at andrewmoapps@gmail.com.
@@ -58,13 +59,12 @@ We use information about you as required or permitted by law to:
 2. Send you technical notices, updates, security alerts, and other administrative messages;
 3. Respond to your questions, concerns, or requests;
 4. Allow you to reset your password if you forgot what your password was;
-5. Help protect the safety and security of GT Travel and our users, which includes blocking suspected spammers, addressing abuse, and enforcing the GT Travel Terms and Conditions and other policies;
+5. Help protect the safety and security of GT Travel and our users, which includes blocking suspected spammers, addressing abuse, and enforcing the GT Travel Terms and Conditions and other policies.
 ## How Information About You Is Shared
 We may share or disclose information in the following ways:
 1. With Other Users: When you use GT Travel, certain information may be shared with other users with your consent. Again, the only information that will be shared to other users of the GT Travel will be when you decide to post a listing. Information that will become public to users will be the destination, arrival time, meeting location, and your first name and last name. Only when another user accepts your listing can you see their phone number, and they can see your phone number, meaning that your phone number will only be shared to those who accept your listing. Your email and password cannot be viewed, modified, or deleted by anyone but yourself.
-2. Protection of GT Travel and Others: We may share or disclose certain information if we believe in good faith that doing so is necessary or appropriate to (i) protect or defend the rights, safety, or property of GT Travel or third parties, including to defend or enforce our Privacy Policy, our Terms and Conditions, or any other contractual arrangement or (ii) to respond to claims that content violates the rights of third parties; (iii) respond to your requests for customer service; and/or (iv) protect the rights, property or personal safety of GT Travel, its agents and affiliates, users and/or the public.
-3. Legal Requirements: We may share or disclose certain information if we believe in good faith that doing so is necessary or appropriate to comply with any law enforcement, legal, or regulatory process, such as to respond to a warrant, subpoena, court order, or other applicable laws and regulations.
-4. With Your Consent / At Your Direction: We also may share or disclose your information with your consent or at your direction.
+2. Protection of GT Travel and Others: We may share or disclose certain information if we believe that it is necessary or appropriate to protect or defend the rights and safety of GT Travel or third parties, including to defend or enforce our Privacy Policy, our Terms and Conditions, or any other contractual arrangement
+3. With Your Consent / At Your Direction: We also may share or disclose your information with your consent or at your direction.
 ## Your choices
 As a GT Travel user, you can protect and limit the amount of information that we collect, use, and share.
 ### Accessing and Changing Your Information
