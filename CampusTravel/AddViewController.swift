@@ -24,7 +24,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         time.layer.cornerRadius = 12
         time.layer.borderWidth = 1
         time.layer.borderColor = UIColor.lightGray.cgColor
-        let placeholderText = NSAttributedString(string: "Enter a time", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        let placeholderText = NSAttributedString(string: "Enter a departure time", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         time.attributedPlaceholder = placeholderText
         time.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         time.leftViewMode = .always
