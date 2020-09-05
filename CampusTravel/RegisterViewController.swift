@@ -15,34 +15,19 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
     
     private let spinner = JGProgressHUD(style: .dark)
        
-    private let firstName: UITextField = {
-        let firstName = UITextField()
-        firstName.textColor = .black
-        firstName.autocorrectionType = .no
-        firstName.layer.cornerRadius = 12
-        firstName.layer.borderWidth = 1
-        firstName.layer.borderColor = UIColor.lightGray.cgColor
-        let placeholderText = NSAttributedString(string: "Enter First Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
-        firstName.attributedPlaceholder = placeholderText
-        firstName.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
-        firstName.leftViewMode = .always
-        firstName.backgroundColor = .white
-        return firstName
-    }()
-       
-    private let lastName: UITextField = {
-        let lastName = UITextField()
-        lastName.textColor = .black
-        lastName.autocorrectionType = .no
-        lastName.layer.cornerRadius = 12
-        lastName.layer.borderWidth = 1
-        lastName.layer.borderColor = UIColor.lightGray.cgColor
-        let placeholderText = NSAttributedString(string: "Enter Last Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
-        lastName.attributedPlaceholder = placeholderText
-        lastName.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
-        lastName.leftViewMode = .always
-        lastName.backgroundColor = .white
-        return lastName
+    private let name: UITextField = {
+        let name = UITextField()
+        name.textColor = .black
+        name.autocorrectionType = .no
+        name.layer.cornerRadius = 12
+        name.layer.borderWidth = 1
+        name.layer.borderColor = UIColor.lightGray.cgColor
+        let placeholderText = NSAttributedString(string: "Enter Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        name.attributedPlaceholder = placeholderText
+        name.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
+        name.leftViewMode = .always
+        name.backgroundColor = .white
+        return name
     }()
        
     private let email: UITextField = {
@@ -129,16 +114,14 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        firstName.delegate = self
-        lastName.delegate = self
+        name.delegate = self
         email.delegate = self
         phone.delegate = self
         password.delegate = self
         links.delegate = self
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(RegisterViewController.viewTapped(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
-        view.addSubview(firstName)
-        view.addSubview(lastName)
+        view.addSubview(name)
         view.addSubview(email)
         view.addSubview(phone)
         view.addSubview(password)
@@ -149,8 +132,7 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
        
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        firstName.frame = CGRect(x: 30, y: 120, width: view.frame.width - 60, height: 52)
-        lastName.frame = CGRect(x: 30, y: 190, width: view.frame.width - 60, height: 52)
+        name.frame = CGRect(x: 30, y: 120, width: view.frame.width - 60, height: 52)
         email.frame = CGRect(x: 30, y: 260, width: view.frame.width - 60, height: 52)
         phone.frame = CGRect(x: 30, y: 330, width: view.frame.width - 60, height: 52)
         password.frame = CGRect(x: 30, y: 400, width: view.frame.width - 60, height: 52)
@@ -166,10 +148,7 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
-        case firstName:
-            textField.resignFirstResponder()
-            lastName.becomeFirstResponder()
-        case lastName:
+        case name:
             textField.resignFirstResponder()
             email.becomeFirstResponder()
         case email:
@@ -188,12 +167,11 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
     }
     
     @objc private func signUpTapped() {
-        firstName.resignFirstResponder()
-        lastName.resignFirstResponder()
+        name.resignFirstResponder()
         email.resignFirstResponder()
         phone.resignFirstResponder()
         password.resignFirstResponder()
-        guard let first = firstName.text, let last = lastName.text, let emailer = email.text, let phonee = phone.text, let pass = password.text, !first.isEmpty, !last.isEmpty, !phonee.isEmpty, !last.isEmpty, !emailer.isEmpty else {
+        guard let myname = name.text, let emailer = email.text, let phonee = phone.text, let pass = password.text, !myname.isEmpty, !phonee.isEmpty, !emailer.isEmpty, !pass.isEmpty else {
             let alert = UIAlertController(title: "Error", message: "Please enter in all information", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
             present(alert, animated: true)
@@ -229,12 +207,11 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
             safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
             UserDefaults.standard.set(safeEmail, forKey: "SafeEmail")
             UserDefaults.standard.set(emailer, forKey: "Email")
-            UserDefaults.standard.set(first + " " + last, forKey: "Name")
+            UserDefaults.standard.set(myname, forKey: "Name")
             UserDefaults.standard.set(phonee, forKey: "Phone")
             Database.database().reference().child("UIDs").child(FirebaseAuth.Auth.auth().currentUser!.uid).setValue(safeEmail)
             Database.database().reference().child("Users").child(safeEmail).setValue([
-                "first_name": first,
-                "last_name": last,
+                "name": myname,
                 "phone_number": phonee,
             ])
             DispatchQueue.main.async {

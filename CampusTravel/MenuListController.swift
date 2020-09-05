@@ -9,6 +9,7 @@
 import UIKit
 import FirebaseDatabase
 import SafariServices
+import FirebaseAuth
 
 class MenuListController: UITableViewController {
     
@@ -27,6 +28,7 @@ class MenuListController: UITableViewController {
         items.append(" ")
         items.append("Edit Profile")
         items.append("About")
+        items.append("Sign Out")
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -39,6 +41,7 @@ class MenuListController: UITableViewController {
         items.append(" ")
         items.append("Edit Profile")
         items.append("About")
+        items.append("Sign Out")
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -63,10 +66,8 @@ class MenuListController: UITableViewController {
         cell.textLabel?.numberOfLines = 3
         cell.textLabel?.textColor = .white
         cell.backgroundColor = UIColor(red: 33/255.0, green: 33/255.0, blue: 33/255.0, alpha: 1)
-        if indexPath.row != 4 || indexPath.row != 5 {
-            cell.selectionStyle = .none
-        } else {
-            cell.selectionStyle = .default
+        if indexPath.row == 6 {
+            cell.textLabel?.textColor = .red
         }
         return cell
     }
@@ -80,12 +81,31 @@ class MenuListController: UITableViewController {
             present(vc, animated: true)
         case 5:
             showSafariVC(for: "https://github.com/andrewmo15/GTTravel")
+        case 6:
+            let confirm = UIAlertController(title: "Are You Sure?", message: "Do you want to sign out?", preferredStyle: .alert)
+            let yes = UIAlertAction(title: "Yes", style: .destructive) { [weak self] action in
+                guard let strongSelf = self else {
+                    return
+                }
+                do {
+                    try FirebaseAuth.Auth.auth().signOut()
+                    strongSelf.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
+                } catch {
+                    let alert = UIAlertController(title: "Error", message: "Failed to sign out", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+                    strongSelf.present(alert, animated: true)
+                }
+            }
+            let no = UIAlertAction(title: "No", style: .default, handler: nil)
+            confirm.addAction(yes)
+            confirm.addAction(no)
+            present(confirm, animated: true, completion: nil)
         default:
             break
         }
     }
     
-    func showSafariVC(for url: String) {
+    private func showSafariVC(for url: String) {
         guard let url = URL(string: url) else {
             let alert = UIAlertController(title: "Error", message: "Could not open Safari", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))

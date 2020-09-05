@@ -177,9 +177,7 @@ class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDele
             UserDefaults.standard.set(safeEmail, forKey: "SafeEmail")
             Database.database().reference().child("Users").child(safeEmail).observe(.value, with: { (snapshot) in
                 let mydict = snapshot.value as? NSDictionary
-                var name = mydict?["first_name"] as? String ?? "Failed to Retrieve First Name"
-                name += " "
-                name += mydict?["last_name"] as? String ?? "and Last Name"
+                let name = mydict?["name"] as? String ?? "Failed to Retrieve Name"
                 UserDefaults.standard.set(name, forKey: "Name")
                 let phone = mydict?["phone_number"] as? String ?? "Failed to Phone Number"
                 UserDefaults.standard.set(phone, forKey: "Phone")

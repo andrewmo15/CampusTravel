@@ -88,8 +88,8 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        time.frame = CGRect(x: 30, y: 150, width: view.frame.width - 60, height: 52)
-        destination.frame = CGRect(x: 30, y: 220, width: view.frame.width - 60, height: 52)
+        destination.frame = CGRect(x: 30, y: 150, width: view.frame.width - 60, height: 52)
+        time.frame = CGRect(x: 30, y: 220, width: view.frame.width - 60, height: 52)
         meeting.frame = CGRect(x: 30, y: 290, width: view.frame.width - 60, height: 52)
         submit.frame = CGRect(x: 30, y: 360, width: view.frame.width - 60, height: 52)
     }
@@ -98,7 +98,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         switch textField {
         case destination:
             textField.resignFirstResponder()
-            meeting.becomeFirstResponder()
+            time.becomeFirstResponder()
         case meeting:
             textField.resignFirstResponder()
             add()

@@ -21,6 +21,7 @@ class ViewListingViewController: UIViewController {
         let acceptedBy = UILabel()
         acceptedBy.font = .systemFont(ofSize: 20)
         acceptedBy.textAlignment = .center
+        acceptedBy.numberOfLines = 2
         return acceptedBy
     }()
     
@@ -47,9 +48,10 @@ class ViewListingViewController: UIViewController {
         contact.addTarget(self, action: #selector(contactTapped), for: .touchUpInside)
         return contact
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.prefersLargeTitles = true
         table.delegate = self
         table.dataSource = self
         listing.append(currentListing!.destination)
@@ -58,8 +60,7 @@ class ViewListingViewController: UIViewController {
         let email = currentListing?.email
         let safeEmail = UserDefaults.standard.string(forKey: "SafeEmail")
         if email == safeEmail && currentListing?.accepted == "No one" {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Delete", style: .done, target: self, action: #selector(deleteListing))
-            navigationItem.rightBarButtonItem?.tintColor = UIColor.systemRed
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Edit", style: .done, target: self, action: #selector(editListing))
         } else if (currentListing?.accepted == "No one" && email != safeEmail) {
             view.addSubview(accept)
         } else {
@@ -69,9 +70,7 @@ class ViewListingViewController: UIViewController {
                         return
                     }
                     let dict = snapshot.value as? NSDictionary
-                    strongSelf.acceptedBy.text = dict?["first_name"] as? String ?? "Failed To Retrieve Name"
-                    strongSelf.acceptedBy.text? += " "
-                    strongSelf.acceptedBy.text? += dict?["last_name"] as? String ?? ""
+                    strongSelf.acceptedBy.text = dict?["name"] as? String ?? "Failed To Retrieve Name"
                     strongSelf.acceptedBy.text? += " accepted your listing"
                 })
             } else {
@@ -88,9 +87,7 @@ class ViewListingViewController: UIViewController {
                     return
                 }
                 let dict = snapshot.value as? NSDictionary
-                var text = dict?["first_name"] as? String ?? "Failed To Retrieve Name"
-                text += " "
-                text += dict?["last_name"] as? String ?? ""
+                let text = dict?["name"] as? String ?? "Failed To Retrieve Name"
                 strongSelf.title = text
             })
         }
@@ -103,7 +100,11 @@ class ViewListingViewController: UIViewController {
         contact.frame = CGRect(x: 30, y: view.frame.height * 0.87, width: view.frame.width - 60, height: 52)
     }
     
-    @objc func acceptTapped() {
+    override func viewDidAppear(_ animated: Bool) {
+        navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    @objc private func acceptTapped() {
         let confirm = UIAlertController(title: "Are You Sure?", message: "This action cannot be undone", preferredStyle: .alert)
         let yes = UIAlertAction(title: "Yes", style: .destructive) { [weak self] action in
             guard let strongSelf = self else {
@@ -126,7 +127,7 @@ class ViewListingViewController: UIViewController {
         present(confirm, animated: true, completion: nil)
     }
     
-    @objc func contactTapped() {
+    @objc private func contactTapped() {
         if messageComposer.canSendText() {
             let email = currentListing?.email
             let safeEmail = UserDefaults.standard.string(forKey: "SafeEmail")
@@ -158,19 +159,10 @@ class ViewListingViewController: UIViewController {
         }
     }
     
-    @objc func deleteListing() {
-        let confirm = UIAlertController(title: "Are You Sure?", message: "This action cannot be undone", preferredStyle: .alert)
-        let yes = UIAlertAction(title: "Yes", style: .destructive) { [weak self] action in
-            guard let strongSelf = self else {
-                return
-            }
-            Database.database().reference().child("Listings").child(strongSelf.currentListing!.listingID).removeValue()
-            strongSelf.navigationController?.popViewController(animated: true)
-        }
-        let no = UIAlertAction(title: "No", style: .default, handler: nil)
-        confirm.addAction(yes)
-        confirm.addAction(no)
-        present(confirm, animated: true, completion: nil)
+    @objc private func editListing() {
+        let vc = EditListingViewController()
+        vc.currentListing = currentListing
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
@@ -199,7 +191,7 @@ extension ViewListingViewController: UITableViewDelegate, UITableViewDataSource 
         case 0:
             return "Destination"
         case 1:
-            return "Time/Date"
+            return "Departure Time/Date"
         case 2:
             return "Meeting location"
         case 3:

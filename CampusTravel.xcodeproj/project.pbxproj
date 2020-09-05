@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		056FF739626743C21D0F1E5F /* Pods_CampusTravel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 357D98F408A1C96979CC5587 /* Pods_CampusTravel.framework */; };
 		4916A16424F9F649001B09F8 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4916A16324F9F649001B09F8 /* ForgotPasswordViewController.swift */; };
+		4933DA8A2503247300A88438 /* EditListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4933DA892503247300A88438 /* EditListingViewController.swift */; };
 		493E058624F314CC00F8BFB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E058524F314CC00F8BFB1 /* AppDelegate.swift */; };
 		493E058824F314CC00F8BFB1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E058724F314CC00F8BFB1 /* SceneDelegate.swift */; };
 		493E058A24F314CC00F8BFB1 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E058924F314CC00F8BFB1 /* LoginViewController.swift */; };
@@ -29,6 +30,7 @@
 		357D98F408A1C96979CC5587 /* Pods_CampusTravel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampusTravel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4088F50421045C2668E93F61 /* Pods-CampusTravel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampusTravel.debug.xcconfig"; path = "Target Support Files/Pods-CampusTravel/Pods-CampusTravel.debug.xcconfig"; sourceTree = "<group>"; };
 		4916A16324F9F649001B09F8 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		4933DA892503247300A88438 /* EditListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditListingViewController.swift; sourceTree = "<group>"; };
 		493E058224F314CC00F8BFB1 /* GT Travel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GT Travel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		493E058524F314CC00F8BFB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		493E058724F314CC00F8BFB1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				493E058724F314CC00F8BFB1 /* SceneDelegate.swift */,
 				493E059B24F317C100F8BFB1 /* ListingsViewController.swift */,
 				49F2B7B724F34A0800BB138E /* ViewListingViewController.swift */,
+				4933DA892503247300A88438 /* EditListingViewController.swift */,
 				49F7E5C024F6E1C000E89BE4 /* MenuListController.swift */,
 				49F2B7B124F323B800BB138E /* AddViewController.swift */,
 				49E2C62324F5EFA300EC53D7 /* MessageComposer.swift */,
@@ -243,6 +246,7 @@
 				493E059A24F3164B00F8BFB1 /* RegisterViewController.swift in Sources */,
 				493E059C24F317C100F8BFB1 /* ListingsViewController.swift in Sources */,
 				49F2B7B824F34A0800BB138E /* ViewListingViewController.swift in Sources */,
+				4933DA8A2503247300A88438 /* EditListingViewController.swift in Sources */,
 				49F2B7B624F3426200BB138E /* EditProfileViewController.swift in Sources */,
 				49E2C62424F5EFA300EC53D7 /* MessageComposer.swift in Sources */,
 			);

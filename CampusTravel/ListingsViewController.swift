@@ -8,7 +8,6 @@
 
 import UIKit
 import FirebaseDatabase
-import FirebaseAuth
 import SideMenu
 
 class ListingsViewController: UIViewController {
@@ -22,21 +21,9 @@ class ListingsViewController: UIViewController {
     var acceptedList = [Listing]()
     var expiredList = [Listing]()
     
-    private let addListing: UIButton = {
-        let accept = UIButton()
-        accept.setTitle("Add a listing", for: .normal)
-        accept.setTitleColor(.white, for: .normal)
-        accept.backgroundColor = .link
-        accept.layer.cornerRadius = 12
-        accept.layer.masksToBounds = true
-        accept.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
-        accept.addTarget(self, action: #selector(addListingTapped), for: .touchUpInside)
-        return accept
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.addSubview(addListing)
+        navigationController?.navigationBar.prefersLargeTitles = true
         menu = SideMenuNavigationController(rootViewController: MenuListController())
         menu?.leftSide = true
         menu?.setNavigationBarHidden(true, animated: false)
@@ -49,17 +36,13 @@ class ListingsViewController: UIViewController {
         loadTable()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        addListing.frame = CGRect(x: 30, y: view.frame.height * 0.87, width: view.frame.width - 60, height: 52)
-    }
-    
     @IBAction func didTapMenu(_ sender: Any) {
         present(menu!, animated: true)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
+        navigationController?.navigationBar.prefersLargeTitles = true
         loadTable()
     }
     
@@ -153,34 +136,6 @@ class ListingsViewController: UIViewController {
             vc.currentListing = sender as? Listing
         }
     }
-    
-    @IBAction func signOutTapped(_ sender: Any) {
-        let confirm = UIAlertController(title: "Are You Sure?", message: "Do you want to sign out?", preferredStyle: .alert)
-        let yes = UIAlertAction(title: "Yes", style: .destructive) { [weak self] action in
-            guard let strongSelf = self else {
-                return
-            }
-            do {
-                try FirebaseAuth.Auth.auth().signOut()
-                strongSelf.dismiss(animated: true, completion: nil)
-            } catch {
-                let alert = UIAlertController(title: "Error", message: "Failed to log in", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
-                strongSelf.present(alert, animated: true)
-            }
-        }
-        let no = UIAlertAction(title: "No", style: .default, handler: nil)
-        confirm.addAction(yes)
-        confirm.addAction(no)
-        present(confirm, animated: true, completion: nil)
-    }
-    
-    @objc private func addListingTapped() {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "adder")
-        vc.modalPresentationStyle = .automatic
-        present(vc, animated: true)
-    }
 }
 
 extension ListingsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -259,10 +214,10 @@ extension ListingsViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 struct Listing {
-    let email: String
-    let time: String
-    let destination: String
-    let meeting: String
-    let listingID: String
-    let accepted: String
+    var email: String
+    var time: String
+    var destination: String
+    var meeting: String
+    var listingID: String
+    var accepted: String
 }
