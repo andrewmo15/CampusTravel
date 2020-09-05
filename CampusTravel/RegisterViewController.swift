@@ -133,12 +133,12 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         name.frame = CGRect(x: 30, y: 120, width: view.frame.width - 60, height: 52)
-        email.frame = CGRect(x: 30, y: 260, width: view.frame.width - 60, height: 52)
-        phone.frame = CGRect(x: 30, y: 330, width: view.frame.width - 60, height: 52)
-        password.frame = CGRect(x: 30, y: 400, width: view.frame.width - 60, height: 52)
-        signUp.frame = CGRect(x: 30, y: 470, width: view.frame.width - 60, height: 52)
-        links.frame = CGRect(x: 30, y: 530, width: view.frame.width - 60, height: 50)
-        error.frame = CGRect(x: 30, y: 580, width: view.frame.width - 60, height: 70)
+        email.frame = CGRect(x: 30, y: 190, width: view.frame.width - 60, height: 52)
+        phone.frame = CGRect(x: 30, y: 260, width: view.frame.width - 60, height: 52)
+        password.frame = CGRect(x: 30, y: 330, width: view.frame.width - 60, height: 52)
+        signUp.frame = CGRect(x: 30, y: 400, width: view.frame.width - 60, height: 52)
+        links.frame = CGRect(x: 30, y: 460, width: view.frame.width - 60, height: 50)
+        error.frame = CGRect(x: 30, y: 510, width: view.frame.width - 60, height: 70)
     }
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {
