@@ -76,7 +76,7 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
             return
         }
         guard emailAddress.contains("@gatech.edu") else {
-            let alert = UIAlertController(title: "Whoops!", message: "Please a valid GT email", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error!", message: "Please a valid GT email", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
             present(alert, animated: true)
             return
@@ -93,7 +93,7 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
             alert.addAction(dismiss)
             strongSelf.present(alert, animated: true)
         }, onError: { (errorMessage) in
-            let alert = UIAlertController(title: "Failed to send email", message: "Is this your actual email?", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Failed to Send Email!", message: "Make sure this is your email", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
             self.present(alert, animated: true)
         })

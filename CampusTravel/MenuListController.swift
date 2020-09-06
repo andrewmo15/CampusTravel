@@ -99,7 +99,7 @@ class MenuListController: UITableViewController {
                     try FirebaseAuth.Auth.auth().signOut()
                     strongSelf.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
                 } catch {
-                    let alert = UIAlertController(title: "Error", message: "Failed to sign out", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Error!", message: "Failed to sign out", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
                     strongSelf.present(alert, animated: true)
                 }
@@ -115,7 +115,7 @@ class MenuListController: UITableViewController {
     
     private func showSafariVC(for url: String) {
         guard let url = URL(string: url) else {
-            let alert = UIAlertController(title: "Error", message: "Could not open Safari", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error!", message: "Could not open Safari", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
             present(alert, animated: true)
             return

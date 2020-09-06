@@ -166,7 +166,7 @@ class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDele
                 strongSelf.spinner.dismiss()
             }
             guard authResult != nil, error == nil else {
-                let alert = UIAlertController(title: "Failed to log in!", message: "Check wifi or login credentials", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Failed to Log In!", message: "Check wifi or login credentials", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
                 strongSelf.present(alert, animated: true)
                 return
@@ -192,7 +192,7 @@ class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDele
     }
     
     private func alertUser() {
-        let alert = UIAlertController(title: "Error", message: "Please enter in all information", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Error!", message: "Please enter in all information", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
         present(alert, animated: true)
     }

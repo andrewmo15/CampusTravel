@@ -105,7 +105,7 @@ class ViewListingViewController: UIViewController {
     }
     
     @objc private func acceptTapped() {
-        let confirm = UIAlertController(title: "Are You Sure?", message: "This action cannot be undone", preferredStyle: .alert)
+        let confirm = UIAlertController(title: "Are you sure?", message: "This action cannot be undone", preferredStyle: .alert)
         let yes = UIAlertAction(title: "Yes", style: .destructive) { [weak self] action in
             guard let strongSelf = self else {
                 return
@@ -137,7 +137,7 @@ class ViewListingViewController: UIViewController {
                         return
                     }
                     let mydict = snapshot.value as? NSDictionary
-                    let contact = mydict?["phone_number"] as? String ?? "Error, cannot get phone number"
+                    let contact = mydict?["phone_number"] as? String ?? "Failed to get phone number"
                     let messageComposeVC = strongSelf.messageComposer.configuredMessageComposeViewController(person: contact)
                     strongSelf.present(messageComposeVC, animated: true, completion: nil)
                 })
@@ -147,13 +147,13 @@ class ViewListingViewController: UIViewController {
                         return
                     }
                     let mydict = snapshot.value as? NSDictionary
-                    let contact = mydict?["phone_number"] as? String ?? "Error, cannot get phone number"
+                    let contact = mydict?["phone_number"] as? String ?? "Failed to get phone number"
                     let messageComposeVC = strongSelf.messageComposer.configuredMessageComposeViewController(person: contact)
                     strongSelf.present(messageComposeVC, animated: true, completion: nil)
                 })
             }
         } else {
-            let alert = UIAlertController(title: "Error", message: "Cannot open iMessage", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error!", message: "Cannot open iMessage", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
             present(alert, animated: true)
         }

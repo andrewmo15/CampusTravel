@@ -172,7 +172,7 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
         phone.resignFirstResponder()
         password.resignFirstResponder()
         guard let myname = name.text, let emailer = email.text, let phonee = phone.text, let pass = password.text, !myname.isEmpty, !phonee.isEmpty, !emailer.isEmpty, !pass.isEmpty else {
-            let alert = UIAlertController(title: "Error", message: "Please enter in all information", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error!", message: "Please enter in all information", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
             present(alert, animated: true)
             return
@@ -198,7 +198,10 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
                 return
             }
             guard authResult != nil, error == nil else {
-                let alert = UIAlertController(title: "Failed to sign up!", message: "Check your wifi again", preferredStyle: .alert)
+                DispatchQueue.main.async {
+                    strongSelf.spinner.dismiss()
+                }
+                let alert = UIAlertController(title: "Failed to Sign Up!", message: "User exists or connection issues", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
                 strongSelf.present(alert, animated: true)
                 return
