@@ -18,6 +18,7 @@
 		493E059224F314CD00F8BFB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 493E059024F314CD00F8BFB1 /* LaunchScreen.storyboard */; };
 		493E059A24F3164B00F8BFB1 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E059924F3164B00F8BFB1 /* RegisterViewController.swift */; };
 		493E059C24F317C100F8BFB1 /* ListingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E059B24F317C100F8BFB1 /* ListingsViewController.swift */; };
+		49BD63992504160F000E87DC /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49BD63982504160F000E87DC /* PageViewController.swift */; };
 		49E2C62424F5EFA300EC53D7 /* MessageComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E2C62324F5EFA300EC53D7 /* MessageComposer.swift */; };
 		49F2B7AC24F31AB700BB138E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49F2B7AB24F31AB700BB138E /* GoogleService-Info.plist */; };
 		49F2B7B224F323B800BB138E /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F2B7B124F323B800BB138E /* AddViewController.swift */; };
@@ -41,6 +42,7 @@
 		493E059324F314CD00F8BFB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		493E059924F3164B00F8BFB1 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		493E059B24F317C100F8BFB1 /* ListingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListingsViewController.swift; sourceTree = "<group>"; };
+		49BD63982504160F000E87DC /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		49E2C62324F5EFA300EC53D7 /* MessageComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageComposer.swift; sourceTree = "<group>"; };
 		49F2B7AB24F31AB700BB138E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		49F2B7B124F323B800BB138E /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 				493E058924F314CC00F8BFB1 /* LoginViewController.swift */,
 				493E059924F3164B00F8BFB1 /* RegisterViewController.swift */,
 				4916A16324F9F649001B09F8 /* ForgotPasswordViewController.swift */,
+				49BD63982504160F000E87DC /* PageViewController.swift */,
 				493E058B24F314CC00F8BFB1 /* Main.storyboard */,
 				493E058E24F314CD00F8BFB1 /* Assets.xcassets */,
 				493E059024F314CD00F8BFB1 /* LaunchScreen.storyboard */,
@@ -247,6 +250,7 @@
 				493E059C24F317C100F8BFB1 /* ListingsViewController.swift in Sources */,
 				49F2B7B824F34A0800BB138E /* ViewListingViewController.swift in Sources */,
 				4933DA8A2503247300A88438 /* EditListingViewController.swift in Sources */,
+				49BD63992504160F000E87DC /* PageViewController.swift in Sources */,
 				49F2B7B624F3426200BB138E /* EditProfileViewController.swift in Sources */,
 				49E2C62424F5EFA300EC53D7 /* MessageComposer.swift in Sources */,
 			);

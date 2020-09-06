@@ -209,6 +209,7 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
             UserDefaults.standard.set(emailer, forKey: "Email")
             UserDefaults.standard.set(myname, forKey: "Name")
             UserDefaults.standard.set(phonee, forKey: "Phone")
+            UserDefaults.standard.set(1, forKey: "HowTo")
             Database.database().reference().child("UIDs").child(FirebaseAuth.Auth.auth().currentUser!.uid).setValue(safeEmail)
             Database.database().reference().child("Users").child(safeEmail).setValue([
                 "name": myname,

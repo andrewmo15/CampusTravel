@@ -82,10 +82,16 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
             return
         }
         spinner.show(in: view)
-        resetPassword(email: emailAddress, onSuccess: {
+        resetPassword(email: emailAddress, onSuccess: { [weak self] in
+            guard let strongSelf = self else {
+                return
+            }
             let alert = UIAlertController(title: "Success!", message: "An email has been sent to you", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
-            self.present(alert, animated: true)
+            let dismiss = UIAlertAction(title: "Dismiss", style: .cancel) { action in
+                strongSelf.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(dismiss)
+            strongSelf.present(alert, animated: true)
         }, onError: { (errorMessage) in
             let alert = UIAlertController(title: "Failed to send email", message: "Is this your actual email?", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))

@@ -194,8 +194,6 @@ extension ViewListingViewController: UITableViewDelegate, UITableViewDataSource 
             return "Departure Time/Date"
         case 2:
             return "Meeting location"
-        case 3:
-            return "Accepted by"
         default:
             return nil
         }

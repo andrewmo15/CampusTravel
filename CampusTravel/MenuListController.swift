@@ -28,7 +28,9 @@ class MenuListController: UITableViewController {
         items.append(" ")
         items.append("Edit Profile")
         items.append("About")
+        items.append("How To")
         items.append("Sign Out")
+        tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -41,7 +43,9 @@ class MenuListController: UITableViewController {
         items.append(" ")
         items.append("Edit Profile")
         items.append("About")
+        items.append("How To")
         items.append("Sign Out")
+        tableView.reloadData()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -66,7 +70,7 @@ class MenuListController: UITableViewController {
         cell.textLabel?.numberOfLines = 3
         cell.textLabel?.textColor = .white
         cell.backgroundColor = UIColor(red: 33/255.0, green: 33/255.0, blue: 33/255.0, alpha: 1)
-        if indexPath.row == 6 {
+        if indexPath.row == 7 {
             cell.textLabel?.textColor = .red
         }
         return cell
@@ -82,6 +86,10 @@ class MenuListController: UITableViewController {
         case 5:
             showSafariVC(for: "https://github.com/andrewmo15/GTTravel")
         case 6:
+            let page = PageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+            page.modalPresentationStyle = .fullScreen
+            present(page, animated: true)
+        case 7:
             let confirm = UIAlertController(title: "Are You Sure?", message: "Do you want to sign out?", preferredStyle: .alert)
             let yes = UIAlertAction(title: "Yes", style: .destructive) { [weak self] action in
                 guard let strongSelf = self else {

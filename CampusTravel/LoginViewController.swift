@@ -175,6 +175,7 @@ class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDele
             safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
             UserDefaults.standard.set(emailer, forKey: "Email")
             UserDefaults.standard.set(safeEmail, forKey: "SafeEmail")
+            UserDefaults.standard.set(0, forKey: "HowTo")
             Database.database().reference().child("Users").child(safeEmail).observe(.value, with: { (snapshot) in
                 let mydict = snapshot.value as? NSDictionary
                 let name = mydict?["name"] as? String ?? "Failed to Retrieve Name"

@@ -34,6 +34,12 @@ class ListingsViewController: UIViewController {
         table.refreshControl = UIRefreshControl()
         table.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         loadTable()
+        if UserDefaults.standard.integer(forKey: "HowTo") == 1 {
+            UserDefaults.standard.set(0, forKey: "HowTo")
+            let page = PageViewController()
+            page.modalPresentationStyle = .fullScreen
+            present(page, animated: true)
+        }
     }
     
     @IBAction func didTapMenu(_ sender: Any) {
