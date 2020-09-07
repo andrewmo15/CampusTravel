@@ -70,7 +70,7 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
     
     @objc private func resetPasswordTapped() {
         guard let emailAddress = email.text, email.text != "" else {
-            let alert = UIAlertController(title: "Whoops!", message: "Please enter your email", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error!", message: "Please enter in your email", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
             present(alert, animated: true)
             return

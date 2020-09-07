@@ -20,30 +20,26 @@ class MenuListController: UITableViewController {
         items.removeAll()
         tableView.backgroundColor = UIColor(red: 33/255.0, green: 33/255.0, blue: 33/255.0, alpha: 1)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell2")
-        let name = UserDefaults.standard.string(forKey: "Name") ?? "Failed to Retrieve Name"
-        let phone = UserDefaults.standard.string(forKey: "Phone") ?? "Failed to Retrieve Phone"
-        items.append("Welcome " + name + "!")
+        items.append("Welcome " + (UserDefaults.standard.string(forKey: "Name") ?? "Failed to Retrieve Name") + "!")
         items.append(UserDefaults.standard.string(forKey: "Email") ?? "Failed to Retrieve Email")
-        items.append(phone)
+        items.append(UserDefaults.standard.string(forKey: "Phone") ?? "Failed to Retrieve Phone")
         items.append(" ")
         items.append("Edit Profile")
         items.append("About")
-        items.append("How To")
+        items.append("Tutorial")
         items.append("Sign Out")
         tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         items.removeAll()
-        let name = UserDefaults.standard.string(forKey: "Name") ?? "Failed to Retrieve Name"
-        let phone = UserDefaults.standard.string(forKey: "Phone") ?? "Failed to Retrieve Phone"
-        items.append("Welcome " + name + "!")
+        items.append("Welcome " + (UserDefaults.standard.string(forKey: "Name") ?? "Failed to Retrieve Name") + "!")
         items.append(UserDefaults.standard.string(forKey: "Email") ?? "Failed to Retrieve Email")
-        items.append(phone)
+        items.append(UserDefaults.standard.string(forKey: "Phone") ?? "Failed to Retrieve Phone")
         items.append(" ")
         items.append("Edit Profile")
         items.append("About")
-        items.append("How To")
+        items.append("Tutorial")
         items.append("Sign Out")
         tableView.reloadData()
     }
@@ -70,6 +66,11 @@ class MenuListController: UITableViewController {
         cell.textLabel?.numberOfLines = 3
         cell.textLabel?.textColor = .white
         cell.backgroundColor = UIColor(red: 33/255.0, green: 33/255.0, blue: 33/255.0, alpha: 1)
+        if indexPath.row == 4 || indexPath.row == 5 || indexPath.row == 6 || indexPath.row == 7 {
+            cell.selectionStyle = .default
+        } else {
+            cell.selectionStyle = .none
+        }
         if indexPath.row == 7 {
             cell.textLabel?.textColor = .red
         }

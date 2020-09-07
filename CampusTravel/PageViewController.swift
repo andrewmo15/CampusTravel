@@ -12,22 +12,27 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
     
     private var orderedViewControllers: [UIViewController] = {
         var orderedViewControllers: [UIViewController] = []
-        for num in 0...7 {
+        for num in 0...5 {
             let page = UIViewController()
-            page.view.backgroundColor = .systemBackground
+            if num == 5 {
+                page.view.backgroundColor = UIColor.white
+            } else {
+                page.view.backgroundColor = UIColor(red: 130.0 / 255.0, green: 130.0 / 255.0, blue: 130.0 / 255.0, alpha: 1)
+            }
             let imageView = UIImageView(image: UIImage(named: "HowTo" + String(num + 1)))
-            imageView.frame = CGRect(x: 0, y: 0, width: page.view.frame.width, height: page.view.frame.height)
+            let picX = (0.5 * page.view.frame.width) - (page.view.frame.height / (2 * 2436.0 / 1125.0))
+            imageView.frame = CGRect(x: picX, y: 0, width: (page.view.frame.height / (2436.0 / 1125.0)), height: page.view.frame.height)
             page.view.addSubview(imageView)
-            if num == 7 {
+            if num == 5 {
                 let done = UIButton()
-                done.setTitle("Exit", for: .normal)
+                done.setTitle("Done", for: .normal)
                 done.setTitleColor(.white, for: .normal)
                 done.backgroundColor = .link
                 done.layer.cornerRadius = 12
                 done.layer.masksToBounds = true
                 done.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
                 done.addTarget(self, action: #selector(doneTapped), for: .touchUpInside)
-                done.frame = CGRect(x: 30, y: page.view.frame.height - 100, width: page.view.frame.width - 60, height: 45)
+                done.frame = CGRect(x: 50, y: page.view.frame.height - 100, width: page.view.frame.width - 100, height: 52)
                 page.view.addSubview(done)
             }
             orderedViewControllers.append(page)

@@ -117,7 +117,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         destination.resignFirstResponder()
         meeting.resignFirstResponder()
         if destination.text!.isEmpty || time.text!.isEmpty || meeting.text!.isEmpty {
-            let alert = UIAlertController(title: "Whoops!", message: "Please fill in all information!", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error!", message: "Please fill in all information!", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
             present(alert, animated: true)
         } else {
