@@ -22,10 +22,17 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        table.backgroundColor = .white
+        search.barTintColor = .white
         search.delegate = self
         table.delegate = self
         table.dataSource = self
         search.placeholder = "Search for a listing"
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        view.endEditing(true)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -75,28 +82,30 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell", for: indexPath)
+        cell.textLabel?.font = UIFont(name: "PerspectiveSans", size: 20)
+        cell.detailTextLabel?.font = UIFont(name: "PerspectiveSans", size: 15)
+        cell.accessoryType = .disclosureIndicator
+        cell.textLabel?.textColor = .black
+        cell.detailTextLabel?.textColor = .black
+        cell.backgroundColor = .clear
         switch indexPath.section {
         case 0:
             cell.textLabel?.text = acceptedFiltered[indexPath.row].destination
             cell.detailTextLabel?.text = acceptedFiltered[indexPath.row].time
-            cell.accessoryType = .disclosureIndicator
         case 1:
             cell.textLabel?.text = myFiltered[indexPath.row].destination
             cell.detailTextLabel?.text = myFiltered[indexPath.row].time
-            cell.accessoryType = .disclosureIndicator
         case 2:
             cell.textLabel?.text = otherFiltered[indexPath.row].destination
             cell.detailTextLabel?.text = otherFiltered[indexPath.row].time
-            cell.accessoryType = .disclosureIndicator
         default:
-            cell.textLabel?.text = "Error"
-            cell.detailTextLabel?.text = "Something went wrong"
+            break
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 90
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

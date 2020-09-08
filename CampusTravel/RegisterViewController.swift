@@ -22,7 +22,7 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
         name.layer.cornerRadius = 12
         name.layer.borderWidth = 1
         name.layer.borderColor = UIColor.lightGray.cgColor
-        let placeholderText = NSAttributedString(string: "Enter Name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        let placeholderText = NSAttributedString(string: "Enter Name", attributes: [NSAttributedString.Key.font: UIFont(name: "PerspectiveSans", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         name.attributedPlaceholder = placeholderText
         name.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         name.leftViewMode = .always
@@ -32,13 +32,14 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
        
     private let email: UITextField = {
         let email = UITextField()
+        email.keyboardType = .emailAddress
         email.textColor = .black
         email.autocapitalizationType = .none
         email.autocorrectionType = .no
         email.layer.cornerRadius = 12
         email.layer.borderWidth = 1
         email.layer.borderColor = UIColor.lightGray.cgColor
-        let placeholderText = NSAttributedString(string: "Enter GT Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        let placeholderText = NSAttributedString(string: "Enter GT Email", attributes: [NSAttributedString.Key.font: UIFont(name: "PerspectiveSans", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         email.attributedPlaceholder = placeholderText
         email.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         email.leftViewMode = .always
@@ -48,13 +49,14 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
        
     private let phone: UITextField = {
         let phone = UITextField()
+        phone.keyboardType = .phonePad
         phone.textColor = .black
         phone.autocapitalizationType = .none
         phone.autocorrectionType = .no
         phone.layer.cornerRadius = 12
         phone.layer.borderWidth = 1
         phone.layer.borderColor = UIColor.lightGray.cgColor
-        let placeholderText = NSAttributedString(string: "Enter Phone Number", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        let placeholderText = NSAttributedString(string: "Enter Phone Number", attributes: [NSAttributedString.Key.font: UIFont(name: "PerspectiveSans", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         phone.attributedPlaceholder = placeholderText
         phone.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         phone.leftViewMode = .always
@@ -70,7 +72,7 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
         password.layer.cornerRadius = 12
         password.layer.borderWidth = 1
         password.layer.borderColor = UIColor.lightGray.cgColor
-        let placeholderText = NSAttributedString(string: "Enter Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        let placeholderText = NSAttributedString(string: "Enter Password", attributes: [NSAttributedString.Key.font: UIFont(name: "PerspectiveSans", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         password.attributedPlaceholder = placeholderText
         password.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         password.leftViewMode = .always
@@ -83,10 +85,10 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
         let signUp = UIButton()
         signUp.setTitle("Sign Up", for: .normal)
         signUp.setTitleColor(.white, for: .normal)
-        signUp.backgroundColor = .link
+        signUp.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
         signUp.layer.cornerRadius = 12
         signUp.layer.masksToBounds = true
-        signUp.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
+        signUp.titleLabel?.font = UIFont(name: "PerspectiveSansBlack", size: 20)
         signUp.addTarget(self, action: #selector(signUpTapped), for: .touchUpInside)
         return signUp
     }()
@@ -99,6 +101,8 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
         attributedString.addAttribute(.link, value: "https://github.com/andrewmo15/GTTravel", range: NSRange(location: 57, length: text.count - 57))
         links.attributedText = attributedString
         links.textColor = UIColor.lightGray
+        links.font = UIFont(name: "PerspectiveSansBlack", size: 12)
+        links.backgroundColor = .white
         return links
     }()
     
@@ -106,14 +110,16 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
         let error = UILabel()
         error.textAlignment = .left
         error.textColor = .red
-        error.font = .systemFont(ofSize: 10, weight: .bold)
+        error.font = UIFont(name: "PerspectiveSansBlack", size: 10)
         error.numberOfLines = 6
         error.minimumScaleFactor = 0.1
+        error.backgroundColor = .white
         return error
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         name.delegate = self
         email.delegate = self
         phone.delegate = self
@@ -128,6 +134,14 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
         view.addSubview(signUp)
         view.addSubview(links)
         view.addSubview(error)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        name.text = ""
+        email.text = ""
+        phone.text = ""
+        password.text = ""
     }
        
     override func viewDidLayoutSubviews() {

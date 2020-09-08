@@ -60,23 +60,23 @@ class EditListingViewController: UIViewController, UITextFieldDelegate {
         let submit = UIButton()
         submit.setTitle("Submit", for: .normal)
         submit.setTitleColor(.white, for: .normal)
-        submit.backgroundColor = .link
+        submit.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
         submit.layer.cornerRadius = 12
         submit.layer.masksToBounds = true
-        submit.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
+        submit.titleLabel?.font = UIFont(name: "PerspectiveSansBlack", size: 20)
         submit.addTarget(self, action: #selector(submitTapped), for: .touchUpInside)
         return submit
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         self.title = "Edit Listing"
         navigationController?.navigationBar.prefersLargeTitles = false
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Delete", style: .done, target: self, action: #selector(deleteListing))
         navigationItem.rightBarButtonItem?.tintColor = .red
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(EditListingViewController.viewTapped(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
-        view.backgroundColor = UIColor.systemBackground
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(cancel))
         let destinationPlaceholder = NSAttributedString(string: currentListing!.destination, attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         destination.attributedPlaceholder = destinationPlaceholder

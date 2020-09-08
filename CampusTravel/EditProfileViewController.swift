@@ -13,7 +13,7 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
        
     private let name: UITextField = {
         let name = UITextField()
-        let placeholderText = NSAttributedString(string: UserDefaults.standard.string(forKey: "Name")!, attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        let placeholderText = NSAttributedString(string: UserDefaults.standard.string(forKey: "Name")!, attributes: [NSAttributedString.Key.font: UIFont(name: "PerspectiveSans", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         name.attributedPlaceholder = placeholderText
         name.textColor = .black
         name.autocorrectionType = .no
@@ -28,7 +28,8 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
        
     private let phone: UITextField = {
         let phone = UITextField()
-        let placeholderText = NSAttributedString(string: UserDefaults.standard.string(forKey: "Phone")!, attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        phone.keyboardType = .phonePad
+        let placeholderText = NSAttributedString(string: UserDefaults.standard.string(forKey: "Phone")!, attributes: [NSAttributedString.Key.font: UIFont(name: "PerspectiveSans", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         phone.attributedPlaceholder = placeholderText
         phone.textColor = .black
         phone.autocorrectionType = .no
@@ -41,13 +42,14 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
         return phone
     }()
     
-    private let error: UILabel = {
+     private let error: UILabel = {
         let error = UILabel()
         error.textAlignment = .left
         error.textColor = .red
-        error.font = .systemFont(ofSize: 15, weight: .bold)
-        error.numberOfLines = 2
+        error.font = UIFont(name: "PerspectiveSansBlack", size: 10)
+        error.numberOfLines = 6
         error.minimumScaleFactor = 0.1
+        error.backgroundColor = .white
         return error
     }()
     
@@ -55,16 +57,18 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
         let save = UIButton()
         save.setTitle("Save", for: .normal)
         save.setTitleColor(.white, for: .normal)
-        save.backgroundColor = .link
+        save.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
         save.layer.cornerRadius = 12
         save.layer.masksToBounds = true
-        save.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
+        save.titleLabel?.font = UIFont(name: "PerspectiveSansBlack", size: 20)
         save.addTarget(self, action: #selector(saveTapped), for: .touchUpInside)
         return save
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavController()
+        view.backgroundColor = .white
         name.delegate = self
         phone.delegate = self
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(EditProfileViewController.viewTapped(gestureRecognizer:)))
@@ -82,6 +86,14 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
         phone.frame = CGRect(x: 30, y: 220, width: view.frame.width - 60, height: 52)
         save.frame = CGRect(x: 30, y: 290, width: view.frame.width - 60, height: 52)
         error.frame = CGRect(x: 30, y: 340, width: view.frame.width - 60, height: 80)
+    }
+    
+    private func configureNavController() {
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "PerspectiveSansBlack", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.white]
+        navBarAppearance.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

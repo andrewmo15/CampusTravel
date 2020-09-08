@@ -23,13 +23,14 @@ class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDele
     
     private let email: UITextField = {
         let email = UITextField()
+        email.keyboardType = .emailAddress
         email.textColor = .black
         email.autocapitalizationType = .none
         email.autocorrectionType = .no
         email.layer.cornerRadius = 12
         email.layer.borderWidth = 1
         email.layer.borderColor = UIColor.lightGray.cgColor
-        let placeholderText = NSAttributedString(string: "Enter GT Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        let placeholderText = NSAttributedString(string: "Enter GT Email", attributes: [NSAttributedString.Key.font: UIFont(name: "PerspectiveSans", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         email.attributedPlaceholder = placeholderText
         email.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         email.leftViewMode = .always
@@ -45,7 +46,7 @@ class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         password.layer.cornerRadius = 12
         password.layer.borderWidth = 1
         password.layer.borderColor = UIColor.lightGray.cgColor
-        let placeholderText = NSAttributedString(string: "Enter Password", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        let placeholderText = NSAttributedString(string: "Enter Password", attributes: [NSAttributedString.Key.font: UIFont(name: "PerspectiveSans", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         password.attributedPlaceholder = placeholderText
         password.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         password.leftViewMode = .always
@@ -58,10 +59,10 @@ class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         let login = UIButton()
         login.setTitle("Log In", for: .normal)
         login.setTitleColor(.white, for: .normal)
-        login.backgroundColor = .link
+        login.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
         login.layer.cornerRadius = 12
         login.layer.masksToBounds = true
-        login.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
+        login.titleLabel?.font = UIFont(name: "PerspectiveSansBlack", size: 20)
         login.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
         return login
     }()
@@ -69,9 +70,9 @@ class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDele
     private let forgotButton: UIButton = {
         let forgotButton = UIButton()
         forgotButton.setTitle("Forgot password?", for: .normal)
-        forgotButton.setTitleColor(.systemBlue, for: .normal)
+        forgotButton.setTitleColor(UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1), for: .normal)
         forgotButton.layer.masksToBounds = true
-        forgotButton.titleLabel?.font = .systemFont(ofSize: 15, weight: .bold)
+        forgotButton.titleLabel?.font = UIFont(name: "PerspectiveSansBlack", size: 15)
         forgotButton.addTarget(self, action: #selector(forgotButtonTapped), for: .touchUpInside)
         return forgotButton
     }()
@@ -84,12 +85,16 @@ class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         attributedString.addAttribute(.link, value: "https://github.com/andrewmo15/GTTravel", range: NSRange(location: 57, length: text.count - 57))
         links.attributedText = attributedString
         links.textColor = UIColor.lightGray
+        links.font = UIFont(name: "PerspectiveSansBlack", size: 12)
+        links.backgroundColor = .white
         return links
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         validateAuth()
+        configureNavController()
+        view.backgroundColor = .white
         email.delegate = self
         password.delegate = self
         links.delegate = self
@@ -101,6 +106,20 @@ class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         view.addSubview(login)
         view.addSubview(forgotButton)
         view.addSubview(links)
+    }
+    
+    private func configureNavController() {
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "PerspectiveSansBlack", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.white]
+        navBarAppearance.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        email.text = ""
+        password.text = ""
     }
     
     override func viewDidLayoutSubviews() {

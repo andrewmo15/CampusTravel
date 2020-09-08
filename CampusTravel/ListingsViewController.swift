@@ -18,11 +18,12 @@ class ListingsViewController: UIViewController {
     var otherList = [Listing]()
     var acceptedList = [Listing]()
     var expiredList = [Listing]()
-    @IBOutlet weak var search: UIButton!
+    @IBOutlet weak var add: UIButton!
+    @IBOutlet weak var search: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
+        configureNavController()
         menu = SideMenuNavigationController(rootViewController: MenuListController())
         menu?.leftSide = true
         menu?.setNavigationBarHidden(true, animated: false)
@@ -32,6 +33,7 @@ class ListingsViewController: UIViewController {
         table.dataSource = self
         table.refreshControl = UIRefreshControl()
         table.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        table.backgroundColor = .white
         loadTable()
         if UserDefaults.standard.integer(forKey: "HowTo") == 1 {
             UserDefaults.standard.set(0, forKey: "HowTo")
@@ -39,12 +41,13 @@ class ListingsViewController: UIViewController {
             page.modalPresentationStyle = .fullScreen
             present(page, animated: true)
         }
-        configureSearch()
+        configureAdd()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        navigationController?.navigationBar.prefersLargeTitles = true
+        configureNavController()
+        view.backgroundColor = .white
         menu = SideMenuNavigationController(rootViewController: MenuListController())
         menu?.leftSide = true
         menu?.setNavigationBarHidden(true, animated: false)
@@ -61,14 +64,25 @@ class ListingsViewController: UIViewController {
             page.modalPresentationStyle = .fullScreen
             present(page, animated: true)
         }
-        configureSearch()
+        configureAdd()
     }
     
-    private func configureSearch() {
-        search.frame = CGRect(x: view.frame.width - 100, y: view.frame.height - 120, width: 80, height: 80)
-        search.layer.cornerRadius = 35
-        search.layer.masksToBounds = true
-        search.setBackgroundImage(UIImage(systemName: "magnifyingglass.circle.fill"), for: .normal)
+    private func configureNavController() {
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "PerspectiveSansBlack", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.white]
+        navBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "PerspectiveSansBlack", size: 35)!, NSAttributedString.Key.foregroundColor: UIColor.white]
+        navBarAppearance.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+    }
+    
+    private func configureAdd() {
+        add.frame = CGRect(x: view.frame.width - 100, y: view.frame.height - 120, width: 80, height: 80)
+        add.layer.cornerRadius = 40
+        add.layer.masksToBounds = true
+        add.setBackgroundImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
     }
     
     @IBAction func didTapMenu(_ sender: Any) {
@@ -190,28 +204,30 @@ extension ListingsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.font = UIFont(name: "PerspectiveSans", size: 20)
+        cell.detailTextLabel?.font = UIFont(name: "PerspectiveSans", size: 15)
+        cell.accessoryType = .disclosureIndicator
+        cell.backgroundColor = .clear
+        cell.textLabel?.textColor = .black
+        cell.detailTextLabel?.textColor = .black
         switch indexPath.section {
         case 0:
             cell.textLabel?.text = acceptedList[indexPath.row].destination
             cell.detailTextLabel?.text = acceptedList[indexPath.row].time
-            cell.accessoryType = .disclosureIndicator
         case 1:
             cell.textLabel?.text = myList[indexPath.row].destination
             cell.detailTextLabel?.text = myList[indexPath.row].time
-            cell.accessoryType = .disclosureIndicator
         case 2:
             cell.textLabel?.text = otherList[indexPath.row].destination
             cell.detailTextLabel?.text = otherList[indexPath.row].time
-            cell.accessoryType = .disclosureIndicator
         default:
-            cell.textLabel?.text = "Error"
-            cell.detailTextLabel?.text = "Something went wrong"
+            break
         }
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 90
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

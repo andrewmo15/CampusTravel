@@ -24,7 +24,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         time.layer.cornerRadius = 12
         time.layer.borderWidth = 1
         time.layer.borderColor = UIColor.lightGray.cgColor
-        let placeholderText = NSAttributedString(string: "Enter a departure time", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        let placeholderText = NSAttributedString(string: "Enter a departure time", attributes: [NSAttributedString.Key.font: UIFont(name: "PerspectiveSans", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         time.attributedPlaceholder = placeholderText
         time.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         time.leftViewMode = .always
@@ -38,7 +38,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         destination.layer.cornerRadius = 12
         destination.layer.borderWidth = 1
         destination.layer.borderColor = UIColor.lightGray.cgColor
-        let placeholderText = NSAttributedString(string: "Enter a destination", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        let placeholderText = NSAttributedString(string: "Enter a destination", attributes: [NSAttributedString.Key.font: UIFont(name: "PerspectiveSans", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         destination.attributedPlaceholder = placeholderText
         destination.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         destination.leftViewMode = .always
@@ -52,7 +52,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         meeting.layer.cornerRadius = 12
         meeting.layer.borderWidth = 1
         meeting.layer.borderColor = UIColor.lightGray.cgColor
-        let placeholderText = NSAttributedString(string: "Enter a meeting location", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        let placeholderText = NSAttributedString(string: "Enter a meeting location", attributes: [NSAttributedString.Key.font: UIFont(name: "PerspectiveSans", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         meeting.attributedPlaceholder = placeholderText
         meeting.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         meeting.leftViewMode = .always
@@ -64,16 +64,18 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         let submit = UIButton()
         submit.setTitle("Submit", for: .normal)
         submit.setTitleColor(.white, for: .normal)
-        submit.backgroundColor = .link
+        submit.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
         submit.layer.cornerRadius = 12
         submit.layer.masksToBounds = true
-        submit.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
+        submit.titleLabel?.font = UIFont(name: "PerspectiveSansBlack", size: 20)
         submit.addTarget(self, action: #selector(add), for: .touchUpInside)
         return submit
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureNavController()
+        view.backgroundColor = .white
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AddViewController.viewTapped(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
         destination.delegate = self
@@ -92,6 +94,14 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         time.frame = CGRect(x: 30, y: 220, width: view.frame.width - 60, height: 52)
         meeting.frame = CGRect(x: 30, y: 290, width: view.frame.width - 60, height: 52)
         submit.frame = CGRect(x: 30, y: 360, width: view.frame.width - 60, height: 52)
+    }
+    
+    private func configureNavController() {
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "PerspectiveSansBlack", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.white]
+        navBarAppearance.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -117,7 +127,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         destination.resignFirstResponder()
         meeting.resignFirstResponder()
         if destination.text!.isEmpty || time.text!.isEmpty || meeting.text!.isEmpty {
-            let alert = UIAlertController(title: "Error!", message: "Please fill in all information!", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Error!", message: "Please fill in all information", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
             present(alert, animated: true)
         } else {

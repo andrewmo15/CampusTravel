@@ -19,8 +19,9 @@ class ViewListingViewController: UIViewController {
     
     private let acceptedBy: UILabel = {
         let acceptedBy = UILabel()
-        acceptedBy.font = .systemFont(ofSize: 20)
+        acceptedBy.font = UIFont(name: "PerspectiveSansBlack", size: 20)
         acceptedBy.textAlignment = .center
+        acceptedBy.textColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
         acceptedBy.numberOfLines = 2
         return acceptedBy
     }()
@@ -29,10 +30,10 @@ class ViewListingViewController: UIViewController {
         let accept = UIButton()
         accept.setTitle("Accept", for: .normal)
         accept.setTitleColor(.white, for: .normal)
-        accept.backgroundColor = .link
+        accept.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
         accept.layer.cornerRadius = 12
         accept.layer.masksToBounds = true
-        accept.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
+        accept.titleLabel?.font = UIFont(name: "PerspectiveSansBlack", size: 20)
         accept.addTarget(self, action: #selector(acceptTapped), for: .touchUpInside)
         return accept
     }()
@@ -41,19 +42,21 @@ class ViewListingViewController: UIViewController {
         let contact = UIButton()
         contact.setTitle("Contact", for: .normal)
         contact.setTitleColor(.white, for: .normal)
-        contact.backgroundColor = .link
+        contact.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
         contact.layer.cornerRadius = 12
         contact.layer.masksToBounds = true
-        contact.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
+        contact.titleLabel?.font = UIFont(name: "PerspectiveSansBlack", size: 20)
         contact.addTarget(self, action: #selector(contactTapped), for: .touchUpInside)
         return contact
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         navigationController?.navigationBar.prefersLargeTitles = true
         table.delegate = self
         table.dataSource = self
+        table.backgroundColor = .white
         listing.append(currentListing!.destination)
         listing.append(currentListing!.time)
         listing.append(currentListing!.meeting)
@@ -170,12 +173,17 @@ extension ViewListingViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath)
+        cell.textLabel?.font = UIFont(name: "PerspectiveSans", size: 20)
+        cell.detailTextLabel?.font = UIFont(name: "PerspectiveSans", size: 15)
+        cell.textLabel?.textColor = .black
+        cell.detailTextLabel?.textColor = .black
+        cell.backgroundColor = .clear
         cell.textLabel?.text = listing[indexPath.section]
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 70
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

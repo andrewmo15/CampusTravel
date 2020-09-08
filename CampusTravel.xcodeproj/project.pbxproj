@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		056FF739626743C21D0F1E5F /* Pods_CampusTravel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 357D98F408A1C96979CC5587 /* Pods_CampusTravel.framework */; };
 		4916A16424F9F649001B09F8 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4916A16324F9F649001B09F8 /* ForgotPasswordViewController.swift */; };
+		492492052508311900F4A5B5 /* persabki.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 492491FF2508311800F4A5B5 /* persabki.ttf */; };
+		492492062508311900F4A5B5 /* persansi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 492492002508311900F4A5B5 /* persansi.ttf */; };
+		492492072508311900F4A5B5 /* persanbk.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 492492012508311900F4A5B5 /* persanbk.ttf */; };
+		492492082508311900F4A5B5 /* persanbi.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 492492022508311900F4A5B5 /* persanbi.ttf */; };
+		492492092508311900F4A5B5 /* persansb.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 492492032508311900F4A5B5 /* persansb.ttf */; };
+		4924920A2508311900F4A5B5 /* persans.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 492492042508311900F4A5B5 /* persans.ttf */; };
 		4933DA8A2503247300A88438 /* EditListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4933DA892503247300A88438 /* EditListingViewController.swift */; };
 		4939CF0D2506F2E400C1B8C6 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4939CF0C2506F2E400C1B8C6 /* SearchViewController.swift */; };
 		493E058624F314CC00F8BFB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493E058524F314CC00F8BFB1 /* AppDelegate.swift */; };
@@ -32,6 +38,12 @@
 		357D98F408A1C96979CC5587 /* Pods_CampusTravel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CampusTravel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4088F50421045C2668E93F61 /* Pods-CampusTravel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CampusTravel.debug.xcconfig"; path = "Target Support Files/Pods-CampusTravel/Pods-CampusTravel.debug.xcconfig"; sourceTree = "<group>"; };
 		4916A16324F9F649001B09F8 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		492491FF2508311800F4A5B5 /* persabki.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = persabki.ttf; sourceTree = "<group>"; };
+		492492002508311900F4A5B5 /* persansi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = persansi.ttf; sourceTree = "<group>"; };
+		492492012508311900F4A5B5 /* persanbk.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = persanbk.ttf; sourceTree = "<group>"; };
+		492492022508311900F4A5B5 /* persanbi.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = persanbi.ttf; sourceTree = "<group>"; };
+		492492032508311900F4A5B5 /* persansb.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = persansb.ttf; sourceTree = "<group>"; };
+		492492042508311900F4A5B5 /* persans.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = persans.ttf; sourceTree = "<group>"; };
 		4933DA892503247300A88438 /* EditListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditListingViewController.swift; sourceTree = "<group>"; };
 		4939CF0C2506F2E400C1B8C6 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		493E058224F314CC00F8BFB1 /* GT Travel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GT Travel.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +95,19 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		492491FE2508310F00F4A5B5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				492491FF2508311800F4A5B5 /* persabki.ttf */,
+				492492022508311900F4A5B5 /* persanbi.ttf */,
+				492492012508311900F4A5B5 /* persanbk.ttf */,
+				492492042508311900F4A5B5 /* persans.ttf */,
+				492492032508311900F4A5B5 /* persansb.ttf */,
+				492492002508311900F4A5B5 /* persansi.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		493E057924F314CC00F8BFB1 = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +129,7 @@
 		493E058424F314CC00F8BFB1 /* CampusTravel */ = {
 			isa = PBXGroup;
 			children = (
+				492491FE2508310F00F4A5B5 /* Fonts */,
 				493E058524F314CC00F8BFB1 /* AppDelegate.swift */,
 				493E058724F314CC00F8BFB1 /* SceneDelegate.swift */,
 				493E059B24F317C100F8BFB1 /* ListingsViewController.swift */,
@@ -187,10 +213,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4924920A2508311900F4A5B5 /* persans.ttf in Resources */,
 				493E059224F314CD00F8BFB1 /* LaunchScreen.storyboard in Resources */,
 				49F2B7AC24F31AB700BB138E /* GoogleService-Info.plist in Resources */,
+				492492092508311900F4A5B5 /* persansb.ttf in Resources */,
+				492492082508311900F4A5B5 /* persanbi.ttf in Resources */,
 				493E058F24F314CD00F8BFB1 /* Assets.xcassets in Resources */,
+				492492062508311900F4A5B5 /* persansi.ttf in Resources */,
 				493E058D24F314CC00F8BFB1 /* Main.storyboard in Resources */,
+				492492072508311900F4A5B5 /* persanbk.ttf in Resources */,
+				492492052508311900F4A5B5 /* persabki.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

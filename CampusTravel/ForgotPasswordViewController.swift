@@ -22,7 +22,7 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         email.layer.cornerRadius = 12
         email.layer.borderWidth = 1
         email.layer.borderColor = UIColor.lightGray.cgColor
-        let placeholderText = NSAttributedString(string: "Enter GT Email", attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        let placeholderText = NSAttributedString(string: "Enter GT Email", attributes: [NSAttributedString.Key.font: UIFont(name: "PerspectiveSans", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         email.attributedPlaceholder = placeholderText
         email.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         email.leftViewMode = .always
@@ -34,22 +34,32 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         let reset = UIButton()
         reset.setTitle("Reset Password", for: .normal)
         reset.setTitleColor(.white, for: .normal)
-        reset.backgroundColor = .link
+        reset.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
         reset.layer.cornerRadius = 12
         reset.layer.masksToBounds = true
-        reset.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
+        reset.titleLabel?.font = UIFont(name: "PerspectiveSansBlack", size: 20)
         reset.addTarget(self, action: #selector(resetPasswordTapped), for: .touchUpInside)
         return reset
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
+        configureNavController()
         self.title = "Forgot Password"
         email.delegate = self
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(ForgotPasswordViewController.viewTapped(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
         view.addSubview(email)
         view.addSubview(reset)
+    }
+    
+    private func configureNavController() {
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.configureWithOpaqueBackground()
+        navBarAppearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "PerspectiveSansBlack", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.white]
+        navBarAppearance.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
     }
     
     override func viewDidLayoutSubviews() {
@@ -69,6 +79,7 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
     }
     
     @objc private func resetPasswordTapped() {
+        email.resignFirstResponder()
         guard let emailAddress = email.text, email.text != "" else {
             let alert = UIAlertController(title: "Error!", message: "Please enter in your email", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))

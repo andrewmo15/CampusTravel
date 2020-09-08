@@ -18,7 +18,7 @@ class MenuListController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         items.removeAll()
-        tableView.backgroundColor = UIColor(red: 33/255.0, green: 33/255.0, blue: 33/255.0, alpha: 1)
+        tableView.backgroundColor = .white
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell2")
         items.append("Welcome " + (UserDefaults.standard.string(forKey: "Name") ?? "Failed to Retrieve Name") + "!")
         items.append(UserDefaults.standard.string(forKey: "Email") ?? "Failed to Retrieve Email")
@@ -60,12 +60,14 @@ class MenuListController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell2", for: indexPath)
         if indexPath.row == 0 {
-            cell.textLabel?.font = .systemFont(ofSize: 30)
+            cell.textLabel?.font = UIFont(name: "PerspectiveSansBlack", size: 30)
+        } else {
+            cell.textLabel?.font = UIFont(name: "PerspectiveSans", size: 20)
         }
         cell.textLabel?.text = items[indexPath.row]
         cell.textLabel?.numberOfLines = 3
-        cell.textLabel?.textColor = .white
-        cell.backgroundColor = UIColor(red: 33/255.0, green: 33/255.0, blue: 33/255.0, alpha: 1)
+        cell.backgroundColor = .clear
+        cell.textLabel?.textColor = .black
         if indexPath.row == 4 || indexPath.row == 5 || indexPath.row == 6 || indexPath.row == 7 {
             cell.selectionStyle = .default
         } else {
