@@ -1,6 +1,27 @@
+# Table of Contents
+1. About
+2. Frequently Asked Questions
+3. Terms and Conditions
+4. Privacy Policy
+
 # About
 Spend less when traveling off-campus! Through this app, students with similar destinations can connect, find a time that works for everyone, and save money through sharing an Uber or Lyft. It’s as easy as posting a listing - say, to Ponce City Market or Atlanta Airport with a departure time - and waiting for responses, or responding to a listing yourself! Carpooling splits transportation costs and is environmentally friendly at the same time.
 
+# Frequently Asked Questions
+#### Q: How do I create an account?
+A: You can create an account by tapping the "Register" button on the Login screen. Enter in your name, email, phone number, and password. You do not need to enter in your full name if you do not feel comfortable sharing that information. However, you must enter in a valid Georgia Tech email. Your phone number must only contain 10 numeric digits (no dashes, forward slashes, parenthesis, etc.). Your password must be at least 6 characters long and must contain at least one alphabetical character and at least one numeric digit.
+#### Q: What do I do if I forget my password?
+A: If you forgot your password, visit the Login screen and tap the "Forgot Password?" button. Enter in your Georgia Tech email, and then visit your email inbox. There will be a link to change your password.
+#### Q: What do I do if I want to edit my profile?
+A: To edit your profile, visit the side bar menu and tap the "Edit Profile" option. You can change either your name, your phone number, or both. However, you cannot change your email.
+#### Q: How do I create a listing?
+A: To create a listing, tap the plus button at the top-right of the home screen. Enter in your destination, your intended arrival time, and your meeting location. After you submit, you will see your listing in the "My Listings" section and can edit or delete it if someone has not accepted it yet. Your listing will be visible to everyone who uses GT Travel.
+#### Q: Can I change my listing after I have already created one?
+A: Yes, you can edit or delete your listing after you have already created it. To do so, tap on the listing that you want to change; there will be an "Edit" button at top-right. You can either edit your destination, arrival time/date, or your meeting location, or you can delete it. However, you cannot edit your your listing information after someone has accepted your listing.
+#### Q: What do I do when someone accepts my listing?
+A: If someone has accepted your listing, that means that they want to travel with you. You can contact each other by tapping the "Contact" button when you tap on any of your accepted listings. This will open up your iMessage with his/her phone number. Now, you two can make arrangements on sharing an Uber or Lyft.
+#### Q: Can I cancel a listing that I have already accepted?
+You cannot directly cancel a listing that you have already accepted and vice versa. Contact the other person and tell them that you have to cancel. Therefore, the other person knows to either accept another listing or post a new listing for someone else to accept.
 # Terms and Conditions
 Last updated: Septeber 4, 2020
 

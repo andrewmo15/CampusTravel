@@ -13,13 +13,12 @@ import SideMenu
 class ListingsViewController: UIViewController {
 
     @IBOutlet weak var table: UITableView!
-    
     var menu: SideMenuNavigationController?
-    
     var myList = [Listing]()
     var otherList = [Listing]()
     var acceptedList = [Listing]()
     var expiredList = [Listing]()
+    @IBOutlet weak var search: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,16 +39,40 @@ class ListingsViewController: UIViewController {
             page.modalPresentationStyle = .fullScreen
             present(page, animated: true)
         }
-    }
-    
-    @IBAction func didTapMenu(_ sender: Any) {
-        present(menu!, animated: true)
+        configureSearch()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         navigationController?.navigationBar.prefersLargeTitles = true
+        menu = SideMenuNavigationController(rootViewController: MenuListController())
+        menu?.leftSide = true
+        menu?.setNavigationBarHidden(true, animated: false)
+        SideMenuManager.default.leftMenuNavigationController = menu
+        SideMenuManager.default.addPanGestureToPresent(toView: view)
+        table.delegate = self
+        table.dataSource = self
+        table.refreshControl = UIRefreshControl()
+        table.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         loadTable()
+        if UserDefaults.standard.integer(forKey: "HowTo") == 1 {
+            UserDefaults.standard.set(0, forKey: "HowTo")
+            let page = PageViewController()
+            page.modalPresentationStyle = .fullScreen
+            present(page, animated: true)
+        }
+        configureSearch()
+    }
+    
+    private func configureSearch() {
+        search.frame = CGRect(x: view.frame.width - 100, y: view.frame.height - 120, width: 80, height: 80)
+        search.layer.cornerRadius = 35
+        search.layer.masksToBounds = true
+        search.setBackgroundImage(UIImage(systemName: "magnifyingglass.circle.fill"), for: .normal)
+    }
+    
+    @IBAction func didTapMenu(_ sender: Any) {
+        present(menu!, animated: true)
     }
     
     @objc private func refresh() {
@@ -140,6 +163,12 @@ class ListingsViewController: UIViewController {
         if segue.identifier == "showIt" {
             let vc = segue.destination as! ViewListingViewController
             vc.currentListing = sender as? Listing
+        }
+        if segue.identifier == "showSearch" {
+            let vc = segue.destination as! SearchViewController
+            vc.myList = myList
+            vc.acceptedList = acceptedList
+            vc.otherList = otherList
         }
     }
 }

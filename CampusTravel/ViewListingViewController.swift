@@ -119,7 +119,7 @@ class ViewListingViewController: UIViewController {
                 "time_date": strongSelf.currentListing?.time
             ])
             Database.database().reference().child("Listings").child(strongSelf.currentListing!.listingID).removeValue()
-            strongSelf.navigationController?.popViewController(animated: true)
+            strongSelf.navigationController?.popToRootViewController(animated: true)
         }
         let no = UIAlertAction(title: "No", style: .default, handler: nil)
         confirm.addAction(yes)
