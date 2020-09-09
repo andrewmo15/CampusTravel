@@ -19,7 +19,6 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
         let name = UITextField()
         name.textColor = .black
         name.autocorrectionType = .no
-        name.layer.cornerRadius = 12
         name.layer.borderWidth = 1
         name.layer.borderColor = UIColor.lightGray.cgColor
         let placeholderText = NSAttributedString(string: "Enter Name", attributes: [NSAttributedString.Key.font: UIFont(name: "PerspectiveSans", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
@@ -36,7 +35,6 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
         email.textColor = .black
         email.autocapitalizationType = .none
         email.autocorrectionType = .no
-        email.layer.cornerRadius = 12
         email.layer.borderWidth = 1
         email.layer.borderColor = UIColor.lightGray.cgColor
         let placeholderText = NSAttributedString(string: "Enter GT Email", attributes: [NSAttributedString.Key.font: UIFont(name: "PerspectiveSans", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
@@ -53,7 +51,6 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
         phone.textColor = .black
         phone.autocapitalizationType = .none
         phone.autocorrectionType = .no
-        phone.layer.cornerRadius = 12
         phone.layer.borderWidth = 1
         phone.layer.borderColor = UIColor.lightGray.cgColor
         let placeholderText = NSAttributedString(string: "Enter Phone Number", attributes: [NSAttributedString.Key.font: UIFont(name: "PerspectiveSans", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
@@ -69,7 +66,6 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
         password.textColor = .black
         password.autocapitalizationType = .none
         password.autocorrectionType = .no
-        password.layer.cornerRadius = 12
         password.layer.borderWidth = 1
         password.layer.borderColor = UIColor.lightGray.cgColor
         let placeholderText = NSAttributedString(string: "Enter Password", attributes: [NSAttributedString.Key.font: UIFont(name: "PerspectiveSans", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
@@ -85,10 +81,9 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
         let signUp = UIButton()
         signUp.setTitle("Sign Up", for: .normal)
         signUp.setTitleColor(.white, for: .normal)
-        signUp.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
-        signUp.layer.cornerRadius = 12
+        signUp.backgroundColor = .black
         signUp.layer.masksToBounds = true
-        signUp.titleLabel?.font = UIFont(name: "PerspectiveSansBlack", size: 20)
+        signUp.titleLabel?.font = UIFont(name: "PerspectiveSans", size: 23)
         signUp.addTarget(self, action: #selector(signUpTapped), for: .touchUpInside)
         return signUp
     }()
@@ -100,8 +95,9 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
         attributedString.addAttribute(.link, value: "https://github.com/andrewmo15/GTTravel", range: NSRange(location: 32, length: 20))
         attributedString.addAttribute(.link, value: "https://github.com/andrewmo15/GTTravel", range: NSRange(location: 57, length: text.count - 57))
         links.attributedText = attributedString
-        links.textColor = UIColor.lightGray
-        links.font = UIFont(name: "PerspectiveSansBlack", size: 12)
+        links.textColor = UIColor.darkGray
+        links.tintColor = .link
+        links.font = UIFont(name: "PerspectiveSans", size: 12)
         links.backgroundColor = .white
         return links
     }()
@@ -110,7 +106,7 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
         let error = UILabel()
         error.textAlignment = .left
         error.textColor = .red
-        error.font = UIFont(name: "PerspectiveSansBlack", size: 10)
+        error.font = UIFont(name: "PerspectiveSans", size: 10)
         error.numberOfLines = 6
         error.minimumScaleFactor = 0.1
         error.backgroundColor = .white
@@ -150,9 +146,9 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
         email.frame = CGRect(x: 30, y: 190, width: view.frame.width - 60, height: 52)
         phone.frame = CGRect(x: 30, y: 260, width: view.frame.width - 60, height: 52)
         password.frame = CGRect(x: 30, y: 330, width: view.frame.width - 60, height: 52)
-        signUp.frame = CGRect(x: 30, y: 400, width: view.frame.width - 60, height: 52)
-        links.frame = CGRect(x: 30, y: 460, width: view.frame.width - 60, height: 50)
-        error.frame = CGRect(x: 30, y: 510, width: view.frame.width - 60, height: 70)
+        signUp.frame = CGRect(x: 30, y: 400, width: view.frame.width - 60, height: 45)
+        links.frame = CGRect(x: 30, y: 450, width: view.frame.width - 60, height: 50)
+        error.frame = CGRect(x: 30, y: 500, width: view.frame.width - 60, height: 70)
     }
     
     func textView(_ textView: UITextView, shouldInteractWith URL: URL, in characterRange: NSRange, interaction: UITextItemInteraction) -> Bool {

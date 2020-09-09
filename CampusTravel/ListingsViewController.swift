@@ -72,7 +72,7 @@ class ListingsViewController: UIViewController {
         navBarAppearance.configureWithOpaqueBackground()
         navBarAppearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "PerspectiveSansBlack", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.white]
         navBarAppearance.largeTitleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "PerspectiveSansBlack", size: 35)!, NSAttributedString.Key.foregroundColor: UIColor.white]
-        navBarAppearance.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
+        navBarAppearance.backgroundColor = .black
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
@@ -83,6 +83,7 @@ class ListingsViewController: UIViewController {
         add.layer.cornerRadius = 40
         add.layer.masksToBounds = true
         add.setBackgroundImage(UIImage(systemName: "plus.circle.fill"), for: .normal)
+        add.tintColor = .black
     }
     
     @IBAction func didTapMenu(_ sender: Any) {

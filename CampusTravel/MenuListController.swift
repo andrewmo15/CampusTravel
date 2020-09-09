@@ -18,8 +18,9 @@ class MenuListController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         items.removeAll()
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = UIColor(red: 33 / 255.0, green: 33 / 255.0, blue: 33 / 255.0, alpha: 1)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell2")
+        tableView.separatorColor = .white
         items.append("Welcome " + (UserDefaults.standard.string(forKey: "Name") ?? "Failed to Retrieve Name") + "!")
         items.append(UserDefaults.standard.string(forKey: "Email") ?? "Failed to Retrieve Email")
         items.append(UserDefaults.standard.string(forKey: "Phone") ?? "Failed to Retrieve Phone")
@@ -67,9 +68,9 @@ class MenuListController: UITableViewController {
         cell.textLabel?.text = items[indexPath.row]
         cell.textLabel?.numberOfLines = 3
         cell.backgroundColor = .clear
-        cell.textLabel?.textColor = .black
+        cell.textLabel?.textColor = .white
         if indexPath.row == 4 || indexPath.row == 5 || indexPath.row == 6 || indexPath.row == 7 {
-            cell.selectionStyle = .blue
+            cell.selectionStyle = .default
         } else {
             cell.selectionStyle = .none
         }

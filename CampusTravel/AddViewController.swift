@@ -21,7 +21,6 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     private let time: UITextField = {
         let time = UITextField()
         time.textColor = .black
-        time.layer.cornerRadius = 12
         time.layer.borderWidth = 1
         time.layer.borderColor = UIColor.lightGray.cgColor
         let placeholderText = NSAttributedString(string: "Enter a departure time", attributes: [NSAttributedString.Key.font: UIFont(name: "PerspectiveSans", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
@@ -36,7 +35,6 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     private let destination: UITextField = {
         let destination = UITextField()
         destination.textColor = .black
-        destination.layer.cornerRadius = 12
         destination.layer.borderWidth = 1
         destination.layer.borderColor = UIColor.lightGray.cgColor
         let placeholderText = NSAttributedString(string: "Enter a destination", attributes: [NSAttributedString.Key.font: UIFont(name: "PerspectiveSans", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
@@ -51,7 +49,6 @@ class AddViewController: UIViewController, UITextFieldDelegate {
     private let meeting: UITextField = {
         let meeting = UITextField()
         meeting.textColor = .black
-        meeting.layer.cornerRadius = 12
         meeting.layer.borderWidth = 1
         meeting.layer.borderColor = UIColor.lightGray.cgColor
         let placeholderText = NSAttributedString(string: "Enter a meeting location", attributes: [NSAttributedString.Key.font: UIFont(name: "PerspectiveSans", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
@@ -67,10 +64,9 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         let submit = UIButton()
         submit.setTitle("Submit", for: .normal)
         submit.setTitleColor(.white, for: .normal)
-        submit.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
-        submit.layer.cornerRadius = 12
+        submit.backgroundColor = .black
         submit.layer.masksToBounds = true
-        submit.titleLabel?.font = UIFont(name: "PerspectiveSansBlack", size: 20)
+        submit.titleLabel?.font = UIFont(name: "PerspectiveSans", size: 23)
         submit.addTarget(self, action: #selector(add), for: .touchUpInside)
         return submit
     }()
@@ -96,14 +92,14 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         destination.frame = CGRect(x: 30, y: 150, width: view.frame.width - 60, height: 52)
         time.frame = CGRect(x: 30, y: 220, width: view.frame.width - 60, height: 52)
         meeting.frame = CGRect(x: 30, y: 290, width: view.frame.width - 60, height: 52)
-        submit.frame = CGRect(x: 30, y: 360, width: view.frame.width - 60, height: 52)
+        submit.frame = CGRect(x: 30, y: 360, width: view.frame.width - 60, height: 45)
     }
     
     private func configureNavController() {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()
         navBarAppearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "PerspectiveSansBlack", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.white]
-        navBarAppearance.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
+        navBarAppearance.backgroundColor = .black
         navigationController?.navigationBar.standardAppearance = navBarAppearance
     }
     

@@ -27,7 +27,6 @@ class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         email.textColor = .black
         email.autocapitalizationType = .none
         email.autocorrectionType = .no
-        email.layer.cornerRadius = 12
         email.layer.borderWidth = 1
         email.layer.borderColor = UIColor.lightGray.cgColor
         let placeholderText = NSAttributedString(string: "Enter GT Email", attributes: [NSAttributedString.Key.font: UIFont(name: "PerspectiveSans", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
@@ -44,7 +43,6 @@ class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         password.textColor = .black
         password.autocapitalizationType = .none
         password.autocorrectionType = .no
-        password.layer.cornerRadius = 12
         password.layer.borderWidth = 1
         password.layer.borderColor = UIColor.lightGray.cgColor
         let placeholderText = NSAttributedString(string: "Enter Password", attributes: [NSAttributedString.Key.font: UIFont(name: "PerspectiveSans", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
@@ -61,10 +59,9 @@ class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         let login = UIButton()
         login.setTitle("Log In", for: .normal)
         login.setTitleColor(.white, for: .normal)
-        login.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
-        login.layer.cornerRadius = 12
+        login.backgroundColor = .black
         login.layer.masksToBounds = true
-        login.titleLabel?.font = UIFont(name: "PerspectiveSansBlack", size: 20)
+        login.titleLabel?.font = UIFont(name: "PerspectiveSans", size: 23)
         login.addTarget(self, action: #selector(loginTapped), for: .touchUpInside)
         return login
     }()
@@ -72,7 +69,7 @@ class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDele
     private let forgotButton: UIButton = {
         let forgotButton = UIButton()
         forgotButton.setTitle("Forgot password?", for: .normal)
-        forgotButton.setTitleColor(UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1), for: .normal)
+        forgotButton.setTitleColor(.black, for: .normal)
         forgotButton.layer.masksToBounds = true
         forgotButton.titleLabel?.font = UIFont(name: "PerspectiveSansBlack", size: 15)
         forgotButton.addTarget(self, action: #selector(forgotButtonTapped), for: .touchUpInside)
@@ -86,9 +83,10 @@ class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         attributedString.addAttribute(.link, value: "https://github.com/andrewmo15/GTTravel", range: NSRange(location: 32, length: 20))
         attributedString.addAttribute(.link, value: "https://github.com/andrewmo15/GTTravel", range: NSRange(location: 57, length: text.count - 57))
         links.attributedText = attributedString
-        links.textColor = UIColor.lightGray
-        links.font = UIFont(name: "PerspectiveSansBlack", size: 12)
+        links.textColor = UIColor.darkGray
+        links.font = UIFont(name: "PerspectiveSans", size: 12)
         links.backgroundColor = .white
+        links.tintColor = .link
         return links
     }()
 
@@ -114,7 +112,7 @@ class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()
         navBarAppearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "PerspectiveSansBlack", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.white]
-        navBarAppearance.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
+        navBarAppearance.backgroundColor = .black
         navigationController?.navigationBar.standardAppearance = navBarAppearance
     }
     
@@ -129,9 +127,9 @@ class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         image.frame = CGRect(x: (view.frame.width / 2) - 50, y: 150, width: 100, height: 100)
         email.frame = CGRect(x: 30, y: 300, width: view.frame.width - 60, height: 52)
         password.frame = CGRect(x: 30, y: 370, width: view.frame.width - 60, height: 52)
-        login.frame = CGRect(x: 30, y: 440, width: view.frame.width - 60, height: 52)
-        links.frame = CGRect(x: 30, y: 500, width: view.frame.width - 60, height: 50)
-        forgotButton.frame = CGRect(x: 30, y: 550, width: view.frame.width - 60, height: 40)
+        login.frame = CGRect(x: 30, y: 440, width: view.frame.width - 60, height: 45)
+        links.frame = CGRect(x: 30, y: 490, width: view.frame.width - 60, height: 50)
+        forgotButton.frame = CGRect(x: 30, y: 540, width: view.frame.width - 60, height: 40)
     }
     
     private func validateAuth() {

@@ -19,7 +19,6 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         email.textColor = .black
         email.autocapitalizationType = .none
         email.autocorrectionType = .no
-        email.layer.cornerRadius = 12
         email.layer.borderWidth = 1
         email.layer.borderColor = UIColor.lightGray.cgColor
         let placeholderText = NSAttributedString(string: "Enter GT Email", attributes: [NSAttributedString.Key.font: UIFont(name: "PerspectiveSans", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
@@ -35,10 +34,9 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         let reset = UIButton()
         reset.setTitle("Reset Password", for: .normal)
         reset.setTitleColor(.white, for: .normal)
-        reset.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
-        reset.layer.cornerRadius = 12
+        reset.backgroundColor = .black
         reset.layer.masksToBounds = true
-        reset.titleLabel?.font = UIFont(name: "PerspectiveSansBlack", size: 20)
+        reset.titleLabel?.font = UIFont(name: "PerspectiveSans", size: 23)
         reset.addTarget(self, action: #selector(resetPasswordTapped), for: .touchUpInside)
         return reset
     }()
@@ -59,14 +57,14 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()
         navBarAppearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "PerspectiveSansBlack", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.white]
-        navBarAppearance.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
+        navBarAppearance.backgroundColor = .black
         navigationController?.navigationBar.standardAppearance = navBarAppearance
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         email.frame = CGRect(x: 30, y: 150, width: view.frame.width - 60, height: 52)
-        reset.frame = CGRect(x: 30, y: 220, width: view.frame.width - 60, height: 52)
+        reset.frame = CGRect(x: 30, y: 220, width: view.frame.width - 60, height: 45)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -23,7 +23,6 @@ class EditListingViewController: UIViewController, UITextFieldDelegate {
     private let time: UITextField = {
         let time = UITextField()
         time.textColor = .black
-        time.layer.cornerRadius = 12
         time.layer.borderWidth = 1
         time.layer.borderColor = UIColor.lightGray.cgColor
         time.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
@@ -36,7 +35,6 @@ class EditListingViewController: UIViewController, UITextFieldDelegate {
     private let destination: UITextField = {
         let destination = UITextField()
         destination.textColor = .black
-        destination.layer.cornerRadius = 12
         destination.layer.borderWidth = 1
         destination.layer.borderColor = UIColor.lightGray.cgColor
         destination.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
@@ -49,7 +47,6 @@ class EditListingViewController: UIViewController, UITextFieldDelegate {
     private let meeting: UITextField = {
         let meeting = UITextField()
         meeting.textColor = .black
-        meeting.layer.cornerRadius = 12
         meeting.layer.borderWidth = 1
         meeting.layer.borderColor = UIColor.lightGray.cgColor
         meeting.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
@@ -63,10 +60,9 @@ class EditListingViewController: UIViewController, UITextFieldDelegate {
         let submit = UIButton()
         submit.setTitle("Submit", for: .normal)
         submit.setTitleColor(.white, for: .normal)
-        submit.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
-        submit.layer.cornerRadius = 12
+        submit.backgroundColor = .black
         submit.layer.masksToBounds = true
-        submit.titleLabel?.font = UIFont(name: "PerspectiveSansBlack", size: 20)
+        submit.titleLabel?.font = UIFont(name: "PerspectiveSans", size: 23)
         submit.addTarget(self, action: #selector(submitTapped), for: .touchUpInside)
         return submit
     }()
@@ -81,11 +77,11 @@ class EditListingViewController: UIViewController, UITextFieldDelegate {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(EditListingViewController.viewTapped(gestureRecognizer:)))
         view.addGestureRecognizer(tapGesture)
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(cancel))
-        let destinationPlaceholder = NSAttributedString(string: currentListing!.destination, attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        let destinationPlaceholder = NSAttributedString(string: currentListing!.destination, attributes: [NSAttributedString.Key.font: UIFont(name: "PerspectiveSans", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         destination.attributedPlaceholder = destinationPlaceholder
-        let meetingPlaceholder = NSAttributedString(string: currentListing!.meeting, attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        let meetingPlaceholder = NSAttributedString(string: currentListing!.meeting, attributes: [NSAttributedString.Key.font: UIFont(name: "PerspectiveSans", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         meeting.attributedPlaceholder = meetingPlaceholder
-        let timePlaceholder = NSAttributedString(string: currentListing!.time, attributes: [NSAttributedString.Key.foregroundColor: UIColor.darkGray])
+        let timePlaceholder = NSAttributedString(string: currentListing!.time, attributes: [NSAttributedString.Key.font: UIFont(name: "PerspectiveSans", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.darkGray])
         time.attributedPlaceholder = timePlaceholder
         destination.delegate = self
         meeting.delegate = self
@@ -102,7 +98,7 @@ class EditListingViewController: UIViewController, UITextFieldDelegate {
         destination.frame = CGRect(x: 30, y: 150, width: view.frame.width - 60, height: 52)
         time.frame = CGRect(x: 30, y: 220, width: view.frame.width - 60, height: 52)
         meeting.frame = CGRect(x: 30, y: 290, width: view.frame.width - 60, height: 52)
-        submit.frame = CGRect(x: 30, y: 360, width: view.frame.width - 60, height: 52)
+        submit.frame = CGRect(x: 30, y: 360, width: view.frame.width - 60, height: 45)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

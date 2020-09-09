@@ -17,7 +17,6 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
         name.attributedPlaceholder = placeholderText
         name.textColor = .black
         name.autocorrectionType = .no
-        name.layer.cornerRadius = 12
         name.layer.borderWidth = 1
         name.layer.borderColor = UIColor.lightGray.cgColor
         name.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
@@ -34,7 +33,6 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
         phone.attributedPlaceholder = placeholderText
         phone.textColor = .black
         phone.autocorrectionType = .no
-        phone.layer.cornerRadius = 12
         phone.layer.borderWidth = 1
         phone.layer.borderColor = UIColor.lightGray.cgColor
         phone.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
@@ -48,7 +46,7 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
         let error = UILabel()
         error.textAlignment = .left
         error.textColor = .red
-        error.font = UIFont(name: "PerspectiveSansBlack", size: 10)
+        error.font = UIFont(name: "PerspectiveSans", size: 10)
         error.numberOfLines = 6
         error.minimumScaleFactor = 0.1
         error.backgroundColor = .white
@@ -59,10 +57,9 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
         let save = UIButton()
         save.setTitle("Save", for: .normal)
         save.setTitleColor(.white, for: .normal)
-        save.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
-        save.layer.cornerRadius = 12
+        save.backgroundColor = .black
         save.layer.masksToBounds = true
-        save.titleLabel?.font = UIFont(name: "PerspectiveSansBlack", size: 20)
+        save.titleLabel?.font = UIFont(name: "PerspectiveSans", size: 23)
         save.addTarget(self, action: #selector(saveTapped), for: .touchUpInside)
         return save
     }()
@@ -86,7 +83,7 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLayoutSubviews()
         name.frame = CGRect(x: 30, y: 150, width: view.frame.width - 60, height: 52)
         phone.frame = CGRect(x: 30, y: 220, width: view.frame.width - 60, height: 52)
-        save.frame = CGRect(x: 30, y: 290, width: view.frame.width - 60, height: 52)
+        save.frame = CGRect(x: 30, y: 290, width: view.frame.width - 60, height: 45)
         error.frame = CGRect(x: 30, y: 340, width: view.frame.width - 60, height: 80)
     }
     
@@ -94,7 +91,7 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
         let navBarAppearance = UINavigationBarAppearance()
         navBarAppearance.configureWithOpaqueBackground()
         navBarAppearance.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "PerspectiveSansBlack", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.white]
-        navBarAppearance.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
+        navBarAppearance.backgroundColor = .black
         navigationController?.navigationBar.standardAppearance = navBarAppearance
     }
     

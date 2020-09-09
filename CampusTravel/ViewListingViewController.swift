@@ -19,9 +19,9 @@ class ViewListingViewController: UIViewController {
     
     private let acceptedBy: UILabel = {
         let acceptedBy = UILabel()
-        acceptedBy.font = UIFont(name: "PerspectiveSansBlack", size: 20)
+        acceptedBy.font = UIFont(name: "PerspectiveSans", size: 23)
         acceptedBy.textAlignment = .center
-        acceptedBy.textColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
+        acceptedBy.textColor = .black
         acceptedBy.numberOfLines = 2
         return acceptedBy
     }()
@@ -30,10 +30,9 @@ class ViewListingViewController: UIViewController {
         let accept = UIButton()
         accept.setTitle("Accept", for: .normal)
         accept.setTitleColor(.white, for: .normal)
-        accept.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
-        accept.layer.cornerRadius = 12
+        accept.backgroundColor = .black
         accept.layer.masksToBounds = true
-        accept.titleLabel?.font = UIFont(name: "PerspectiveSansBlack", size: 20)
+        accept.titleLabel?.font = UIFont(name: "PerspectiveSans", size: 23)
         accept.addTarget(self, action: #selector(acceptTapped), for: .touchUpInside)
         return accept
     }()
@@ -42,10 +41,9 @@ class ViewListingViewController: UIViewController {
         let contact = UIButton()
         contact.setTitle("Contact", for: .normal)
         contact.setTitleColor(.white, for: .normal)
-        contact.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
-        contact.layer.cornerRadius = 12
+        contact.backgroundColor = .black
         contact.layer.masksToBounds = true
-        contact.titleLabel?.font = UIFont(name: "PerspectiveSansBlack", size: 20)
+        contact.titleLabel?.font = UIFont(name: "PerspectiveSans", size: 23)
         contact.addTarget(self, action: #selector(contactTapped), for: .touchUpInside)
         return contact
     }()
@@ -99,8 +97,8 @@ class ViewListingViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         acceptedBy.frame = CGRect(x: 30, y: view.frame.height * 0.8, width: view.frame.width - 60, height: 52)
-        accept.frame = CGRect(x: 30, y: view.frame.height * 0.87, width: view.frame.width - 60, height: 52)
-        contact.frame = CGRect(x: 30, y: view.frame.height * 0.87, width: view.frame.width - 60, height: 52)
+        accept.frame = CGRect(x: 30, y: view.frame.height * 0.87, width: view.frame.width - 60, height: 45)
+        contact.frame = CGRect(x: 30, y: view.frame.height * 0.87, width: view.frame.width - 60, height: 45)
     }
     
     @objc private func acceptTapped() {
@@ -175,6 +173,15 @@ extension ViewListingViewController: UITableViewDelegate, UITableViewDataSource 
         cell.detailTextLabel?.textColor = .black
         cell.backgroundColor = .clear
         cell.textLabel?.text = listing[indexPath.section]
+        cell.selectionStyle = .none
+        cell.textLabel?.numberOfLines = 2
+        if indexPath.section == 0 {
+            cell.imageView?.image = UIImage(named: "destination")
+        } else if indexPath.section == 1 {
+            cell.imageView?.image = UIImage(named: "time")
+        } else {
+            cell.imageView?.image = UIImage(named: "meeting")
+        }
         return cell
     }
     
