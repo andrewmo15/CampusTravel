@@ -83,7 +83,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="NKA-Xa-qJN" detailTextLabel="WhL-9w-qnY" rowHeight="85" style="IBUITableViewCellStyleSubtitle" id="uNc-WQ-1x9">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" textLabel="NKA-Xa-qJN" detailTextLabel="WhL-9w-qnY" rowHeight="85" style="IBUITableViewCellStyleSubtitle" id="uNc-WQ-1x9">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="85"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="uNc-WQ-1x9" id="Z0a-no-BAn">
@@ -163,7 +163,7 @@
                                 <rect key="frame" x="0.0" y="140" width="414" height="722"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell3" textLabel="dgf-MD-hWu" rowHeight="56" style="IBUITableViewCellStyleDefault" id="Itt-Lb-bHh">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" indentationWidth="10" reuseIdentifier="cellView" textLabel="dgf-MD-hWu" rowHeight="56" style="IBUITableViewCellStyleDefault" id="Itt-Lb-bHh">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="56"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Itt-Lb-bHh" id="Ft0-ji-926">
@@ -294,7 +294,7 @@
                                 <rect key="frame" x="0.0" y="196" width="414" height="666"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="searchCell" textLabel="Pq5-pK-iiP" detailTextLabel="XvC-Ps-dME" style="IBUITableViewCellStyleSubtitle" id="1KM-qr-W1k">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="searchCell" textLabel="Pq5-pK-iiP" detailTextLabel="XvC-Ps-dME" style="IBUITableViewCellStyleSubtitle" id="1KM-qr-W1k">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="55.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1KM-qr-W1k" id="akO-7p-VbD">
@@ -322,6 +322,7 @@
                             </tableView>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ozY-r6-FA1">
                                 <rect key="frame" x="0.0" y="140" width="414" height="56"/>
+                                <color key="tintColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                         </subviews>
@@ -405,7 +406,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6Dc-f3-Co2"/>
+        <segue reference="2Tc-9C-Yru"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
     <resources>

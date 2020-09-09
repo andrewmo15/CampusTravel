@@ -27,6 +27,7 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         email.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         email.leftViewMode = .always
         email.backgroundColor = .white
+        email.tintColor = .link
         return email
     }()
     

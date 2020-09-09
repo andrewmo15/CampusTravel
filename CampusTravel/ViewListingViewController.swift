@@ -103,10 +103,6 @@ class ViewListingViewController: UIViewController {
         contact.frame = CGRect(x: 30, y: view.frame.height * 0.87, width: view.frame.width - 60, height: 52)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        navigationController?.navigationBar.prefersLargeTitles = true
-    }
-    
     @objc private func acceptTapped() {
         let confirm = UIAlertController(title: "Are you sure?", message: "This action cannot be undone", preferredStyle: .alert)
         let yes = UIAlertAction(title: "Yes", style: .destructive) { [weak self] action in
@@ -172,7 +168,7 @@ class ViewListingViewController: UIViewController {
 extension ViewListingViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell3", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellView", for: indexPath)
         cell.textLabel?.font = UIFont(name: "PerspectiveSans", size: 20)
         cell.detailTextLabel?.font = UIFont(name: "PerspectiveSans", size: 15)
         cell.textLabel?.textColor = .black
@@ -183,7 +179,7 @@ extension ViewListingViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 70
+        return 60
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {

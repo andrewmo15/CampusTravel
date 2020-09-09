@@ -23,6 +23,7 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
         name.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         name.leftViewMode = .always
         name.backgroundColor = .white
+        name.tintColor = .link
         return name
     }()
        
@@ -39,6 +40,7 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
         phone.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         phone.leftViewMode = .always
         phone.backgroundColor = .white
+        phone.tintColor = .link
         return phone
     }()
     

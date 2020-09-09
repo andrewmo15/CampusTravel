@@ -248,6 +248,7 @@ extension ListingsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         switch indexPath.section {
         case 0:
             let listing = acceptedList[indexPath.row]

@@ -29,6 +29,7 @@ class EditListingViewController: UIViewController, UITextFieldDelegate {
         time.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         time.leftViewMode = .always
         time.backgroundColor = .white
+        time.tintColor = .link
         return time
     }()
     
@@ -41,6 +42,7 @@ class EditListingViewController: UIViewController, UITextFieldDelegate {
         destination.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         destination.leftViewMode = .always
         destination.backgroundColor = .white
+        destination.tintColor = .link
         return destination
     }()
     
@@ -53,6 +55,7 @@ class EditListingViewController: UIViewController, UITextFieldDelegate {
         meeting.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         meeting.leftViewMode = .always
         meeting.backgroundColor = .white
+        meeting.tintColor = .link
         return meeting
     }()
     

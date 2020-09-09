@@ -35,6 +35,7 @@ class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         email.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         email.leftViewMode = .always
         email.backgroundColor = .white
+        email.tintColor = .link
         return email
     }()
     
@@ -52,6 +53,7 @@ class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         password.leftViewMode = .always
         password.backgroundColor = .white
         password.isSecureTextEntry = true
+        password.tintColor = .link
         return password
     }()
     

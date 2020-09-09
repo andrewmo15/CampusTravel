@@ -32,7 +32,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
                 done.layer.masksToBounds = true
                 done.titleLabel?.font = UIFont(name: "PerspectiveSansBlack", size: 20)
                 done.addTarget(self, action: #selector(doneTapped), for: .touchUpInside)
-                done.frame = CGRect(x: 50, y: page.view.frame.height - 100, width: page.view.frame.width - 100, height: 52)
+                done.frame = CGRect(x: 30, y: page.view.frame.height - 115, width: page.view.frame.width - 60, height: 55)
                 page.view.addSubview(done)
             }
             orderedViewControllers.append(page)

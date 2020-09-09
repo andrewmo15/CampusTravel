@@ -69,7 +69,7 @@ class MenuListController: UITableViewController {
         cell.backgroundColor = .clear
         cell.textLabel?.textColor = .black
         if indexPath.row == 4 || indexPath.row == 5 || indexPath.row == 6 || indexPath.row == 7 {
-            cell.selectionStyle = .default
+            cell.selectionStyle = .blue
         } else {
             cell.selectionStyle = .none
         }
