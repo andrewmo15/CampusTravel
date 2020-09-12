@@ -29,6 +29,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         time.leftViewMode = .always
         time.backgroundColor = .white
         time.tintColor = .link
+        time.font = UIFont(name: "PerspectiveSans", size: 17)
         return time
     }()
     
@@ -43,6 +44,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         destination.leftViewMode = .always
         destination.backgroundColor = .white
         destination.tintColor = .link
+        destination.font = UIFont(name: "PerspectiveSans", size: 17)
         return destination
     }()
     
@@ -57,6 +59,7 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         meeting.leftViewMode = .always
         meeting.backgroundColor = .white
         meeting.tintColor = .link
+        meeting.font = UIFont(name: "PerspectiveSans", size: 17)
         return meeting
     }()
     

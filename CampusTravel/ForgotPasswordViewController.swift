@@ -27,6 +27,7 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         email.leftViewMode = .always
         email.backgroundColor = .white
         email.tintColor = .link
+        email.font = UIFont(name: "PerspectiveSans", size: 17)
         return email
     }()
     

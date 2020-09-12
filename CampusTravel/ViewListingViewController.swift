@@ -202,11 +202,17 @@ extension ViewListingViewController: UITableViewDelegate, UITableViewDataSource 
         case 0:
             return "Destination"
         case 1:
-            return "Departure Time/Date"
+            return "Arrival Time/Date"
         case 2:
             return "Meeting location"
         default:
             return nil
         }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.font = UIFont(name: "PerspectiveSans", size: 13)
+        header.textLabel?.textColor = .black
     }
 }

@@ -20,7 +20,6 @@ class MenuListController: UITableViewController {
         items.removeAll()
         tableView.backgroundColor = UIColor(red: 33 / 255.0, green: 33 / 255.0, blue: 33 / 255.0, alpha: 1)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell2")
-        tableView.separatorColor = .white
         items.append("Welcome " + (UserDefaults.standard.string(forKey: "Name") ?? "Failed to Retrieve Name") + "!")
         items.append(UserDefaults.standard.string(forKey: "Email") ?? "Failed to Retrieve Email")
         items.append(UserDefaults.standard.string(forKey: "Phone") ?? "Failed to Retrieve Phone")

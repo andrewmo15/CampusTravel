@@ -24,11 +24,18 @@ class SearchViewController: UIViewController, UISearchBarDelegate {
         super.viewDidLoad()
         view.backgroundColor = .white
         table.backgroundColor = .white
-        search.barTintColor = .white
-        search.delegate = self
         table.delegate = self
         table.dataSource = self
+        configureSearch()
+    }
+    
+    private func configureSearch() {
+        search.barTintColor = .white
+        search.tintColor = .link
+        search.searchTextField.textColor = .black
+        search.searchTextField.font = UIFont(name: "PerspectiveSans", size: 17)
         search.placeholder = "Search for a listing"
+        search.delegate = self
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -139,5 +146,11 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         default:
             break
         }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.font = UIFont(name: "PerspectiveSans", size: 13)
+        header.textLabel?.textColor = .black
     }
 }

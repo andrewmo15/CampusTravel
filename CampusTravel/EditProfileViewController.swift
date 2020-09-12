@@ -23,6 +23,7 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
         name.leftViewMode = .always
         name.backgroundColor = .white
         name.tintColor = .link
+        name.font = UIFont(name: "PerspectiveSans", size: 17)
         return name
     }()
        
@@ -39,6 +40,7 @@ class EditProfileViewController: UIViewController, UITextFieldDelegate {
         phone.leftViewMode = .always
         phone.backgroundColor = .white
         phone.tintColor = .link
+        phone.font = UIFont(name: "PerspectiveSans", size: 17)
         return phone
     }()
     

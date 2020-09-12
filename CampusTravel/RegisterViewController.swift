@@ -26,6 +26,7 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
         name.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         name.leftViewMode = .always
         name.backgroundColor = .white
+        name.font = UIFont(name: "PerspectiveSans", size: 17)
         return name
     }()
        
@@ -42,6 +43,7 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
         email.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         email.leftViewMode = .always
         email.backgroundColor = .white
+        email.font = UIFont(name: "PerspectiveSans", size: 17)
         return email
     }()
        
@@ -58,6 +60,7 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
         phone.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: 0))
         phone.leftViewMode = .always
         phone.backgroundColor = .white
+        phone.font = UIFont(name: "PerspectiveSans", size: 17)
         return phone
     }()
        
@@ -74,6 +77,7 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
         password.leftViewMode = .always
         password.backgroundColor = .white
         password.isSecureTextEntry = true
+        password.font = UIFont(name: "PerspectiveSans", size: 17)
         return password
     }()
        

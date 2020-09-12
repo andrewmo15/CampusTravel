@@ -27,12 +27,11 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
                 let done = UIButton()
                 done.setTitle("Done", for: .normal)
                 done.setTitleColor(.white, for: .normal)
-                done.backgroundColor = UIColor(red: 42 / 255.0, green: 168 / 255.0, blue: 242 / 255.0, alpha: 1)
-                done.layer.cornerRadius = 12
+                done.backgroundColor = .black
                 done.layer.masksToBounds = true
-                done.titleLabel?.font = UIFont(name: "PerspectiveSansBlack", size: 20)
+                done.titleLabel?.font = UIFont(name: "PerspectiveSans", size: 23)
                 done.addTarget(self, action: #selector(doneTapped), for: .touchUpInside)
-                done.frame = CGRect(x: 30, y: page.view.frame.height - 115, width: page.view.frame.width - 60, height: 55)
+                done.frame = CGRect(x: 30, y: page.view.frame.height * 0.8, width: page.view.frame.width - 60, height: 45)
                 page.view.addSubview(done)
             }
             orderedViewControllers.append(page)
@@ -46,8 +45,8 @@ class PageViewController: UIPageViewController, UIPageViewControllerDelegate, UI
         pageControl = UIPageControl(frame: CGRect(x: 0, y: view.frame.height - 50, width: view.frame.width, height: 30))
         pageControl.numberOfPages = orderedViewControllers.count
         pageControl.currentPage = 0
-        pageControl.pageIndicatorTintColor = UIColor.white
-        pageControl.currentPageIndicatorTintColor = UIColor.link
+        pageControl.pageIndicatorTintColor = UIColor.black
+        pageControl.currentPageIndicatorTintColor = UIColor.white
         view.addSubview(pageControl)
     }
 

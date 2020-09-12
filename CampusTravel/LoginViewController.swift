@@ -35,6 +35,7 @@ class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         email.leftViewMode = .always
         email.backgroundColor = .white
         email.tintColor = .link
+        email.font = UIFont(name: "PerspectiveSans", size: 17)
         return email
     }()
     
@@ -52,6 +53,7 @@ class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         password.backgroundColor = .white
         password.isSecureTextEntry = true
         password.tintColor = .link
+        password.font = UIFont(name: "PerspectiveSans", size: 17)
         return password
     }()
     

@@ -264,6 +264,12 @@ extension ListingsViewController: UITableViewDelegate, UITableViewDataSource {
             break
         }
     }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        let header = view as! UITableViewHeaderFooterView
+        header.textLabel?.font = UIFont(name: "PerspectiveSans", size: 13)
+        header.textLabel?.textColor = .black
+    }
 }
 
 struct Listing {
