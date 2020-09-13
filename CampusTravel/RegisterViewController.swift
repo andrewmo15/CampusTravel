@@ -103,6 +103,7 @@ class RegisterViewController: UIViewController, UITextViewDelegate, UITextFieldD
         links.tintColor = .link
         links.font = UIFont(name: "PerspectiveSans", size: 12)
         links.backgroundColor = .white
+        links.isEditable = false
         return links
     }()
     

@@ -15,18 +15,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoginIcon" translatesAutoresizingMaskIntoConstraints="NO" id="qss-aE-h3f">
-                                <rect key="frame" x="157" y="194" width="100" height="100"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoginIcon" translatesAutoresizingMaskIntoConstraints="NO" id="ekI-mc-nxD">
+                                <rect key="frame" x="157" y="403" width="100" height="100"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="JZf-gC-N6p"/>
-                                    <constraint firstAttribute="height" constant="100" id="ZSo-lw-fOv"/>
+                                    <constraint firstAttribute="height" constant="100" id="MPM-kt-9c2"/>
+                                    <constraint firstAttribute="width" constant="100" id="uAD-Mu-9dS"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="qss-aE-h3f" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="150" id="srV-yh-CCf"/>
-                            <constraint firstItem="qss-aE-h3f" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="uHv-Ky-zmm"/>
+                            <constraint firstItem="ekI-mc-nxD" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="PV4-CF-9Q1"/>
+                            <constraint firstItem="ekI-mc-nxD" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="m3E-iQ-YKh"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

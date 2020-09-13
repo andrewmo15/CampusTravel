@@ -89,6 +89,7 @@ class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDele
         links.font = UIFont(name: "PerspectiveSans", size: 12)
         links.backgroundColor = .white
         links.tintColor = .link
+        links.isEditable = false
         return links
     }()
 
@@ -126,7 +127,7 @@ class LoginViewController: UIViewController, UITextViewDelegate, UITextFieldDele
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        image.frame = CGRect(x: (view.frame.width / 2) - 50, y: 150, width: 100, height: 100)
+        image.frame = CGRect(x: (view.frame.width / 2) - 75, y: 125, width: 150, height: 150)
         email.frame = CGRect(x: 30, y: 300, width: view.frame.width - 60, height: 52)
         password.frame = CGRect(x: 30, y: 370, width: view.frame.width - 60, height: 52)
         login.frame = CGRect(x: 30, y: 440, width: view.frame.width - 60, height: 45)

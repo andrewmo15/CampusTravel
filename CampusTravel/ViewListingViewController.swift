@@ -168,9 +168,7 @@ extension ViewListingViewController: UITableViewDelegate, UITableViewDataSource 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellView", for: indexPath)
         cell.textLabel?.font = UIFont(name: "PerspectiveSans", size: 20)
-        cell.detailTextLabel?.font = UIFont(name: "PerspectiveSans", size: 15)
         cell.textLabel?.textColor = .black
-        cell.detailTextLabel?.textColor = .black
         cell.backgroundColor = .clear
         cell.textLabel?.text = listing[indexPath.section]
         cell.selectionStyle = .none
