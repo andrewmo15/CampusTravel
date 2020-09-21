@@ -13,4 +13,11 @@ pod 'Firebase/Database'
 pod 'JGProgressHUD'
 pod 'SideMenu'
 
+post_install do |lib|
+    lib.pods_project.targets.each do |target|
+        target.build_configurations.each do |config|
+            config.build_settings.delete 'IPHONEOS_DEPLOYMENT_TARGET'
+        end
+    end
+end
 end
