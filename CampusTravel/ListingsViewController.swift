@@ -103,7 +103,7 @@ class ListingsViewController: UIViewController {
             guard let strongSelf = self else {
                 return
             }
-            if snapshot.childrenCount > 0 {
+            if snapshot.childrenCount >= 0 {
                 strongSelf.otherList.removeAll()
                 strongSelf.myList.removeAll()
                 for code in snapshot.children.allObjects as! [DataSnapshot] {
@@ -136,7 +136,7 @@ class ListingsViewController: UIViewController {
             guard let strongSelf = self else {
                 return
             }
-            if snapshot.childrenCount > 0 {
+            if snapshot.childrenCount >= 0 {
                 strongSelf.acceptedList.removeAll()
                 for code in snapshot.children.allObjects as! [DataSnapshot] {
                     let listingKey = code.key
