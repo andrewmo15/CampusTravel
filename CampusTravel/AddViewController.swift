@@ -15,6 +15,9 @@ class AddViewController: UIViewController, UITextFieldDelegate {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = .dateAndTime
         datePicker.addTarget(self, action: #selector(AddViewController.dateChanged(datePicker:)), for: .valueChanged)
+        if #available(iOS 13.4, *) {
+            datePicker.preferredDatePickerStyle = .wheels
+        }
         return datePicker
     }()
     
