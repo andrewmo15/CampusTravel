@@ -132,27 +132,67 @@
 			children = (
 				49B0B6472519C97D00ECF44A /* GT Travel.entitlements */,
 				492491FE2508310F00F4A5B5 /* Fonts */,
-				493E058524F314CC00F8BFB1 /* AppDelegate.swift */,
-				493E058724F314CC00F8BFB1 /* SceneDelegate.swift */,
-				493E059B24F317C100F8BFB1 /* ListingsViewController.swift */,
-				49F2B7B724F34A0800BB138E /* ViewListingViewController.swift */,
-				4933DA892503247300A88438 /* EditListingViewController.swift */,
-				4939CF0C2506F2E400C1B8C6 /* SearchViewController.swift */,
-				49F7E5C024F6E1C000E89BE4 /* MenuListController.swift */,
-				49F2B7B124F323B800BB138E /* AddViewController.swift */,
-				49E2C62324F5EFA300EC53D7 /* MessageComposer.swift */,
-				49F2B7B524F3426200BB138E /* EditProfileViewController.swift */,
-				493E058924F314CC00F8BFB1 /* LoginViewController.swift */,
-				493E059924F3164B00F8BFB1 /* RegisterViewController.swift */,
-				4916A16324F9F649001B09F8 /* ForgotPasswordViewController.swift */,
-				49BD63982504160F000E87DC /* PageViewController.swift */,
-				493E058B24F314CC00F8BFB1 /* Main.storyboard */,
+				49888D5A259E84C20032FDDE /* Resources */,
+				49888D5C259E84E60032FDDE /* Storyboards */,
+				49888D57259E84920032FDDE /* Authentication */,
+				49888D5D259E85210032FDDE /* Side Menu */,
+				49888D5E259E854D0032FDDE /* Listings */,
 				493E058E24F314CD00F8BFB1 /* Assets.xcassets */,
-				493E059024F314CD00F8BFB1 /* LaunchScreen.storyboard */,
 				493E059324F314CD00F8BFB1 /* Info.plist */,
 				49F2B7AB24F31AB700BB138E /* GoogleService-Info.plist */,
 			);
 			path = CampusTravel;
+			sourceTree = "<group>";
+		};
+		49888D57259E84920032FDDE /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				493E058924F314CC00F8BFB1 /* LoginViewController.swift */,
+				493E059924F3164B00F8BFB1 /* RegisterViewController.swift */,
+				4916A16324F9F649001B09F8 /* ForgotPasswordViewController.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		49888D5A259E84C20032FDDE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				49E2C62324F5EFA300EC53D7 /* MessageComposer.swift */,
+				493E058524F314CC00F8BFB1 /* AppDelegate.swift */,
+				493E058724F314CC00F8BFB1 /* SceneDelegate.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		49888D5C259E84E60032FDDE /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				493E058B24F314CC00F8BFB1 /* Main.storyboard */,
+				493E059024F314CD00F8BFB1 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		49888D5D259E85210032FDDE /* Side Menu */ = {
+			isa = PBXGroup;
+			children = (
+				49F7E5C024F6E1C000E89BE4 /* MenuListController.swift */,
+				49F2B7B524F3426200BB138E /* EditProfileViewController.swift */,
+				49BD63982504160F000E87DC /* PageViewController.swift */,
+			);
+			path = "Side Menu";
+			sourceTree = "<group>";
+		};
+		49888D5E259E854D0032FDDE /* Listings */ = {
+			isa = PBXGroup;
+			children = (
+				49F2B7B724F34A0800BB138E /* ViewListingViewController.swift */,
+				4939CF0C2506F2E400C1B8C6 /* SearchViewController.swift */,
+				49F2B7B124F323B800BB138E /* AddViewController.swift */,
+				4933DA892503247300A88438 /* EditListingViewController.swift */,
+				493E059B24F317C100F8BFB1 /* ListingsViewController.swift */,
+			);
+			path = Listings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,7 +224,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1210;
+				LastUpgradeCheck = 1230;
 				ORGANIZATIONNAME = "Andrew Mo";
 				TargetAttributes = {
 					493E058124F314CC00F8BFB1 = {
@@ -437,6 +477,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "CampusTravel/GT Travel.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEVELOPMENT_TEAM = RD4JHDYVT6;
 				INFOPLIST_FILE = CampusTravel/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -444,6 +485,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrewmo.GTTravel;
 				PRODUCT_NAME = "GT Travel";
 				SWIFT_VERSION = 5.0;
@@ -458,6 +500,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "CampusTravel/GT Travel.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.2;
 				DEVELOPMENT_TEAM = RD4JHDYVT6;
 				INFOPLIST_FILE = CampusTravel/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -465,6 +508,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = com.andrewmo.GTTravel;
 				PRODUCT_NAME = "GT Travel";
 				SWIFT_VERSION = 5.0;
